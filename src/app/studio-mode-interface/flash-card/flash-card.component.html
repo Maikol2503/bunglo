@@ -1,0 +1,26 @@
+<swiper-container 
+  navigation="true" 
+  pagination="true"
+  slides-per-view="1"
+  space-between="20"
+  class="flashcard-container"
+>
+  <swiper-slide *ngFor="let card of data; let i = index" class="slide">
+    <div class="flashcard" [class.flipped]="card.flipped" (click)="toggleCard(i)">
+      <div class="flashcard-front">
+        <div class="card-content">
+          <h3>Pregunta</h3>
+          <p>{{ card.question }}</p>
+          <small>Click para voltear</small>
+        </div>
+      </div>
+      <div class="flashcard-back">
+        <div class="card-content">
+          <h3>Respuesta</h3>
+          <p>{{ card.answer }}</p>
+          <small>Click para voltear</small>
+        </div>
+      </div>
+    </div>
+  </swiper-slide>
+</swiper-container>

@@ -1,0 +1,31 @@
+.container-loader{
+    width: 100%;
+    height: 100%;
+    background-color: #c3e751;
+}
+
+.container-loader .content{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-loader .content .porcentage {
+}
+
+.container-loader .content .porcentage .progress-bar {
+    width: 450px;
+    height: 20px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.container-loader .content .porcentage .progress-bar .progress   {
+    height: 100%;
+    background-color: #559e36; /* Color verde */
+    transition: width 15s ease-in-out;
+}

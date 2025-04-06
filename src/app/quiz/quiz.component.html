@@ -1,0 +1,17 @@
+
+<div class="body">
+    <div class="body-content">
+        <div class="modal-session-modal">
+            <app-quiz-session-modal *ngIf="showModalSession === true" (dataSession)="sessionQuiz($event)"></app-quiz-session-modal>
+        </div>
+        <div class="quiz-options-modal" *ngIf="showModalPersonaliceQuiz === true">
+            <app-quiz-options-modal (dataPersonaliceQuestions)="recivedDataPerzonaliceQuestions($event)"></app-quiz-options-modal>
+        </div>
+        <div class="loader" *ngIf="showLoader1 === true">
+            <app-loader1></app-loader1>
+        </div>
+        <div class="quiz" *ngIf="showQuesions === true">
+            <app-questions [data]="quizData" [id]="id"></app-questions>
+        </div>
+    </div>
+</div>

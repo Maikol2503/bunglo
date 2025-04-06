@@ -1,0 +1,15 @@
+
+<div class="body" *ngIf="materialsData.length > 0">
+    <div class="body-content">
+        <p>Materials</p>
+        <div class="materials">
+            <div class="materials-content" >
+                <div  *ngFor="let data of materialsData" class="material" [routerLink]="['/mode-stude', data.id]" [style.view-transition-name]="'material'+data.id">
+                    <div class="material-content">
+                        <p class="title">{{data.data.dataMindMap.nodes[0].label}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

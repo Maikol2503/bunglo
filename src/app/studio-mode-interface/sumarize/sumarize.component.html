@@ -1,0 +1,21 @@
+<div class="sumarize">
+    <div class="content-sumarize">
+      <div *ngFor="let item of data; let i = index" class="item">
+        
+        <!-- Título con botón para desplegar -->
+        <div class="titulo" (click)="toggleDescription(i)">
+          <h3>{{ item.titulo }}</h3>
+          <button>
+            {{ isExpanded(i) ? '▲' : '▼' }}
+          </button>
+        </div>
+  
+        <!-- Descripción con animación -->
+        <div class="descripcion" [ngClass]="{ 'mostrar': isExpanded(i) }">
+          <p>{{ item.descripcion }}</p>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+  

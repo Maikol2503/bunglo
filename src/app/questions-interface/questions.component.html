@@ -1,0 +1,41 @@
+<swiper-container 
+  #swiperRef
+  navigation="false" 
+  pagination="true"
+  slides-per-view="1"
+  space-between="20"
+  class="flashcard-container"
+>
+  <swiper-slide *ngFor="let question of data; let i = index" class="slide">
+    <div class="title-question">
+      <h1>{{ question.question}}</h1>
+    </div>
+    <div class="options-question" >
+      <p *ngFor="let option of question?.options;" 
+          (click)="!question.answered ? seleccionarRespuesta(question, option, i) : null"
+          [ngClass]="{
+            'color-green': question.selected_answer && option === question.answer_correct, 
+            'color-red': question.selected_answer === option && option !== question.answer_correct
+          }"
+      >
+        {{option}}
+      </p>
+    </div>
+  </swiper-slide>
+</swiper-container>
+<div class="nav-buttons">
+  <button (click)="goToPrevious()">Anterior</button>
+
+  <button 
+    (click)="goToNext()" 
+    [disabled]="!data[currentIndex]?.answered">
+    Siguiente
+  </button>
+</div>
+
+
+  
+  
+  
+  
+  

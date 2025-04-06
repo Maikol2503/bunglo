@@ -1,0 +1,40 @@
+.body{
+    width: 100%;
+    height: 100vh;
+}
+
+.body .content-body{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.body .content-body .quiz-container{
+    background-color: rgb(255, 255, 255);
+    padding: 40px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
+.body .content-body .quiz-container .quiz-description{
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.body .content-body .quiz-container .button-action{
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+
+.body .content-body .quiz-container .button-action button{
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+}

@@ -1,0 +1,26 @@
+<div class="body">
+    <div class="quiz-options-modal">
+        <div class="content-quiz-options-modal">
+            <div class="form">
+                <div class="form-content">
+                    <div class="form-group">
+                        <div class="title-num-questions">
+                            <p>{{numQuestions}} Preguntas</p>
+                        </div>
+                        <div class="input-num-questions">
+                            <input type="range" id="numQuestionsInput" [(ngModel)]="numQuestions" min="2" max="30">
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <div class="btn-generate">
+                            <button (click)="generateQuiz()" >Generar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content-body">
+
+    </div>
+</div>

@@ -1,0 +1,56 @@
+.body-search{
+    background-color: rgb(255, 255, 255);
+    padding: 3px;
+    border-radius: 12px;
+    width: 300px;
+    --tw-shadow: 0px 2px 12px 0px rgba(0, 0, 0, .04);
+     --tw-shadow-colored: 0px 2px 12px 0px var(--tw-shadow-color);
+     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+
+.body-search .container-search{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.body-search .container-search .svg{
+    height: 100%;
+    /* background-color: rgb(21, 77, 133); */
+    padding: 5px;
+    border-radius: 11px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    
+}
+
+.body-search .container-search .svg svg{
+    height: 25px;
+    width:25px;
+}
+
+.body-search .container-search .svg svg path{
+    fill: rgb(102, 102, 102);
+}
+
+
+.body-search .container-search .svg:hover svg path{
+    fill: rgb(1, 1, 1);
+}
+
+
+.body-search .container-search input{
+    width: 100%;
+    height: 40px;
+    padding-right: 20px;
+    padding-left: 10px;
+    font-size: 16px;
+    border: none;
+}
+
+.body-search .container-search input:focus{
+    outline: none;
+}

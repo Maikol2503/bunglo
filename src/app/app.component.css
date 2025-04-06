@@ -1,0 +1,23 @@
+.body{
+    width: 100%;
+    display: flex;
+    padding-left: var(--width-sidebar);
+    transition: .3s;
+}
+
+.paddin-letf{
+    padding-left: var(--width-sidebar-minimize);
+}
+
+.body .router-outlet{
+    width: 100%;
+    padding-left: 10px;
+}
+
+.body .sidebar-container{
+    position: fixed;
+    left: 0px;
+    height: 100vh;
+    padding: 10px 0px 10px 10px;
+    /* z-index: 1000; */
+}

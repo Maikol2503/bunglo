@@ -1,0 +1,25 @@
+.body .body-content .materials{
+    margin-top: 20px;
+}
+
+
+.body .body-content .materials .materials-content{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.body .body-content .materials .materials-content .material{
+    background-color: #ffffff;
+    width: auto;
+    min-height: 200px;   
+    border-radius: 15px;
+    padding: 20px;
+     --tw-shadow: 0px 2px 12px 0px rgba(0, 0, 0, .04);
+     --tw-shadow-colored: 0px 2px 12px 0px var(--tw-shadow-color);
+     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.body .body-content .materials .materials-content .material .material-content .title{
+    font-size: 20px;
+}

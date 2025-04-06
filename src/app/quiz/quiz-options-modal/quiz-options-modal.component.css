@@ -1,0 +1,41 @@
+.body{
+    width: 100%;
+    height: 100vh;
+    padding: 15px 20px;
+}
+
+.body .quiz-options-modal{
+    width: 100%;
+    height: 100%;
+}
+
+.body .quiz-options-modal .content-quiz-options-modal{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+
+.body .quiz-options-modal .content-quiz-options-modal .form .form-content{
+    padding: 20px;
+    border-radius: 15px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.body .quiz-options-modal .content-quiz-options-modal .form .form-content .form-actions{
+    width: 100%;
+}
+
+
+.body .quiz-options-modal .content-quiz-options-modal .form .form-content .form-actions .btn-generate{
+    width: 100%;
+    display: flex;
+    justify-content:  flex-end;
+}
