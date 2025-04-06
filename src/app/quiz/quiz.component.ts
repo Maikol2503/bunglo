@@ -22,8 +22,8 @@ export class QuizComponent {
               private modelservices:ApiModelo, 
               private promptServices:PromptService, 
               private localStorageServices:LocalstorageService, 
-              private route: ActivatedRoute,){}
-
+              private route: ActivatedRoute){}
+  
   showModalPersonaliceQuiz:boolean = false;
   showLoader1:boolean = false;
   showModalSession:boolean = false;
@@ -56,6 +56,7 @@ export class QuizComponent {
   sessionQuiz(data:any){
     this.showModalSession=false
     if(data === 'nuevo'){
+      
       this.showModalPersonaliceQuiz=true
       return
     }
@@ -72,7 +73,8 @@ export class QuizComponent {
   }
   
 
-  recivedDataPerzonaliceQuestions(dataConfigQuestions:any){
+  async recivedDataPerzonaliceQuestions(dataConfigQuestions:any){
+    await this.deleteQuiz(this.id)
     this.sidebarServices.Display_None()
     this.showModalPersonaliceQuiz=false;
     this.showLoader1=true;
@@ -132,6 +134,20 @@ export class QuizComponent {
 
   shuffle(array: any[]): any[] {
     return array.sort(() => Math.random() - 0.5);
+  }
+
+
+  async deleteQuiz(id:string){
+    
+    let dataLocalStorage = await this.localStorageServices.getDataQuiz()
+    console.log(dataLocalStorage, 'data localstorage')
+    let res =  dataLocalStorage.filter((item:any)=>{
+      if(item.id !== id){
+        return item
+      }
+    })
+    
+    return res
   }
 
 }

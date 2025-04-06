@@ -40,7 +40,7 @@ export class LocalstorageService {
 
 
   async setNewQuiz(id:string, questions:any):Promise<void>{
-    const existingData = await this.getDataQuiz()
+    const existingData = await this.deleteQuiz(id)
     const newData = [{ id, questions }, ...existingData];
     localStorage.setItem(this.storageKey_quiz, JSON.stringify(newData));
   }
@@ -54,5 +54,15 @@ export class LocalstorageService {
 
   async saveQuizzesData(data: any[]): Promise<void> {
     localStorage.setItem(this.storageKey_quiz, JSON.stringify(data));
+  }
+
+  async deleteQuiz(id:string){
+    let dataLocalStorage = await this.getDataQuiz()
+    let res =  dataLocalStorage.filter((item:any)=>{
+      if(item.id !== id){
+        return item
+      }
+    })
+    return res
   }
 }
