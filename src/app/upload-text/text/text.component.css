@@ -72,6 +72,7 @@
     height: 200px;
     border: none;
     resize: none;
+    padding: 20px;
 }
 
 .wrapper .content-container .input-container .input-group .text-input textarea:focus{

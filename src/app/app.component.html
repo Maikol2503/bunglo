@@ -1,4 +1,6 @@
-<div class="body" [ngClass]="{'paddin-letf':minimize_sidebar_active === true}">
+<div class="body" [ngClass]="{'paddin-letf':minimize_sidebar_active === true, 'no-padding-letf':displayNone_sidebar_active===true
+                                
+}">
     <div *ngIf="!displayNone_sidebar_active" class="sidebar-container" [ngClass]="{'minimize-sidebar':minimize_sidebar_active === true}">                             
         <app-sidebar></app-sidebar>
     </div>

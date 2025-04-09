@@ -62,12 +62,14 @@ export class QuestionsComponent implements OnInit {
       question.answered = true;
     }
   
+    if (this.swiperRef?.nativeElement?.swiper) {
+      this.swiperRef.nativeElement.swiper.allowTouchMove = true;
+    }
     await this.actualizarQuizRespondido(index, option);
   }
   
   private async actualizarQuizRespondido(index: number, selectedOption: string): Promise<void> {
     const allQuestionnaires = await this.LocalStorageServices.getDataQuiz();
-  
     const updatedQuizzes = allQuestionnaires.map((quiz: any) => {
       if (quiz.id === this.id) {
         const updatedQuestions = quiz.questions.map((q: Question, i: number) => {

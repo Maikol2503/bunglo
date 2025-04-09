@@ -144,10 +144,15 @@ transform: rotate(-180deg);
 
 .sidebar .sidebar-menu .menu-item  .submenu-materials .submenu-item a{
     color: rgb(63, 63, 63);
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 400;
 }
 
+.sidebar .submenu-materials .submenu-item a.selected {
+   
+    color: var(--color1) !important;
+    font-weight: 600;
+}
 
 /* .sidebar .sidebar-menu .selected {
     background-color: #267dbc;

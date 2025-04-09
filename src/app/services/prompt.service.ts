@@ -38,18 +38,34 @@ export class PromptService {
   }
 
 
-  getSumarizePrompt(text:string): string{
-    return `Extrae los puntos clave del siguiente texto y devuélvelos en un array de diccionarios JSON.
-            Cada diccionario debe contener un título breve y una descripción del punto clave. 
-            No agregues información adicional ni comentarios. Solo responde en *formato JSON*.
-            en el siguiente formato:
-            
-            {
-            "titulo": "titulo breve",
-            "descripcion": "descripcion"
-            }
-            Aquí está el texto: ${text}`
+  getSumarizePrompt(text: string): string {
+    return `Tu tarea es hacer un *resumen* del siguiente texto.
+  
+  Un resumen consiste en identificar y expresar de forma breve y clara las ideas principales del contenido, sin repetirlo palabra por palabra ni incluir detalles innecesarios. No debes agregar opiniones ni comentarios personales, solo condensar la información esencial.
+  
+  Realiza lo siguiente:
+  
+  1. Genera un único título general que represente el contenido completo del texto.
+  2. Extrae los puntos clave del texto y devuélvelos en un array de diccionarios JSON, cada uno con un título breve y una descripción del punto clave.
+  
+  Devuelve el resultado en un objeto JSON con el siguiente formato:
+  
+  {
+    "titulo_general": "título que resume el texto completo",
+    "resumenes": [
+      {
+        "titulo": "título breve del punto clave",
+        "descripcion": "descripción del punto clave"
+      },
+      ...
+    ]
   }
+  
+  No agregues información adicional ni comentarios. Solo responde en *formato JSON válido*.
+  
+  Aquí está el texto: ${text}`
+  }
+  
 
 
   getConceptMap(text: string): string {

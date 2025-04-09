@@ -46,6 +46,7 @@ export class StudioModeInterfaceComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.renderer.removeClass(document.body, 'no-scroll')
     // Limpiar la suscripción cuando el componente se destruya
     if (this.routeSub) {
       this.routeSub.unsubscribe();

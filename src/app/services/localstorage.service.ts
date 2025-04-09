@@ -40,7 +40,7 @@ export class LocalstorageService {
 
 
   async setNewQuiz(id:string, questions:any):Promise<void>{
-    const existingData = await this.deleteQuiz(id)
+    const existingData = await this.deleteQuiz(id) //si hay hubiese un quiz con el mismo id lo elimino
     const newData = [{ id, questions }, ...existingData];
     localStorage.setItem(this.storageKey_quiz, JSON.stringify(newData));
   }

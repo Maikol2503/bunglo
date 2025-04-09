@@ -74,7 +74,7 @@ export class QuizComponent {
   
 
   async recivedDataPerzonaliceQuestions(dataConfigQuestions:any){
-    await this.deleteQuiz(this.id)
+    let data = await this.deleteQuiz(this.id)
     this.sidebarServices.Display_None()
     this.showModalPersonaliceQuiz=false;
     this.showLoader1=true;

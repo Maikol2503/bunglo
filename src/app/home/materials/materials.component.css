@@ -9,6 +9,10 @@
     gap: 20px;
 }
 
+.body .body-content .title-content-body{
+    font-weight: 600;
+}
+
 .body .body-content .materials .materials-content .material{
     background-color: #ffffff;
     width: auto;
@@ -20,6 +24,39 @@
      box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+.body .body-content .materials .materials-content .material .material-content{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+
+.body .body-content .materials .materials-content .material .material-content .footer{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.body .body-content .materials .materials-content .material .material-content .footer button{
+    border: none;
+    background-color: #dbefff;
+    display: flex;
+    align-items: flex-end;
+    align-items: center;
+    padding:  10px 15px;
+    border-radius: 13px;
+    color:var(--color1);
+    font-weight: 600;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.body .body-content .materials .materials-content .material .material-content .footer button svg path{
+    fill: var(--color1);
+}
+
 .body .body-content .materials .materials-content .material .material-content .title{
-    font-size: 20px;
+    font-size: 16px;
+    
 }

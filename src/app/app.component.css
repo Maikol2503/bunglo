@@ -9,6 +9,10 @@
     padding-left: var(--width-sidebar-minimize);
 }
 
+.no-padding-letf{
+    padding-left: 0px;
+}
+
 .body .router-outlet{
     width: 100%;
     padding-left: 10px;

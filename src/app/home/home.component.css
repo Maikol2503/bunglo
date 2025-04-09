@@ -14,7 +14,7 @@
 .home-body .home-container{
     max-width: 1400px;
     margin: 0 auto 0 auto;
-    padding: 10px 20px;
+    padding: 10px 40px;
 }
 
 .home-body .home-container .sidebar-container{
@@ -35,8 +35,8 @@
 
 .home-body .home-container .body-content{
     transition: .3s;
-    /* padding: 10px 20px; */
     width: 100%;
+    margin-top: 40px;
 }
 
 .home-body .home-container .body-content .materials{

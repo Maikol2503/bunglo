@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { SidebarService } from '../services-interfas/sidebar.service';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { LocalstorageService } from '../services/localstorage.service';
 
 @Component({
@@ -14,11 +14,13 @@ export class SidebarComponent {
   materialsData:any[]=[]
   view_materials_is_active = false
   minimize_sidebar_active = false
-  activeItem:any = 'home';
+  // activeItem:any = 'home';
+  isModeStude:boolean=false;
   
   constructor(
     private sidebar_services:SidebarService, 
     private route: ActivatedRoute, 
+    private router: Router,
     private localStorageservices:LocalstorageService){
     this.sidebar_services.get_SideBar_State_Minimize().subscribe((state: boolean) => {
       this.minimize_sidebar_active = state;
@@ -27,8 +29,17 @@ export class SidebarComponent {
 
   async ngOnInit(): Promise<any>  {
     this.materialsData = await this.localStorageservices.getData()
-    this.route.paramMap.subscribe(params => {
-      this.activeItem = params;
+    this.checkIfInModeStude(); 
+  }
+
+   // Función para verificar si estamos en la ruta 'mode-stude'
+   private checkIfInModeStude(): void {
+    this.router.events.subscribe(() => {
+      if (this.router.url.startsWith('/mode-stude')) {
+        this.isModeStude = true;
+      } else {
+        this.isModeStude = false;
+      }
     });
   }
 
@@ -37,7 +48,7 @@ export class SidebarComponent {
   }
 
   toggleActiveItem(item: string): void {
-    this.activeItem = item;
+    // this.activeItem = item;
   }
 
   toggleMaterials() {

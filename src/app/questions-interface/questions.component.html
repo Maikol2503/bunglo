@@ -1,9 +1,9 @@
 <swiper-container 
   #swiperRef
   navigation="false" 
-  pagination="true"
-  slides-per-view="1"
+  pagination="false"
   space-between="20"
+  allow-touch-move="false"
   class="flashcard-container"
 >
   <swiper-slide *ngFor="let question of data; let i = index" class="slide">
