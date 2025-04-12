@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-quiz-options-modal',
   imports: [CommonModule, FormsModule],
@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './quiz-options-modal.component.css'
 })
 export class QuizOptionsModalComponent {
-
+  constructor(private location:Location){}
   numQuestions:number=2
   @Output() dataPersonaliceQuestions = new EventEmitter<any>();
 
@@ -20,4 +20,7 @@ export class QuizOptionsModalComponent {
     this.dataPersonaliceQuestions.emit(data)
   }
 
+  back(){
+    this.location.back()
+  }
 }

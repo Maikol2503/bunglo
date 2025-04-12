@@ -52,7 +52,7 @@
             </div>
             <ul class="submenu-materials" *ngIf="view_materials_is_active && !minimize_sidebar_active" >
                 <!-- <li class="submenu-item"><a href="#">Ver todos</a></li> -->
-                <li *ngFor="let data of materialsData" class="submenu-item" ><a [routerLink]="['/mode-stude/'+data.id]" routerLinkActive="selected"  [routerLinkActiveOptions]="{ exact: true }">{{data.data.dataSummarize.titulo_general}}</a></li>
+                <li *ngFor="let data of materialsData" class="submenu-item" ><a [routerLink]="['/mode-stude/'+data.id]" routerLinkActive="selected"  [routerLinkActiveOptions]="{ exact: true }">{{data.data?.dataSummarize?.titulo_general}}</a></li>
             </ul>
         </li>
         

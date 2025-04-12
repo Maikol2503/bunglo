@@ -14,6 +14,7 @@
 }
 
 .body .body-content .materials .materials-content .material{
+    position: relative;
     background-color: #ffffff;
     width: auto;
     min-height: 200px;   
@@ -22,6 +23,26 @@
      --tw-shadow: 0px 2px 12px 0px rgba(0, 0, 0, .04);
      --tw-shadow-colored: 0px 2px 12px 0px var(--tw-shadow-color);
      box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.body .body-content .materials .materials-content .material .btn-delete{
+    position: absolute;
+    right: 7px;
+    top: 7px;
+    border: none;
+    background-color: #ffffff00;
+    height: 25px;
+    width: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.body .body-content .materials .materials-content .material .btn-delete:hover{
+    background-color: #eaeaea;
 }
 
 .body .body-content .materials .materials-content .material .material-content{

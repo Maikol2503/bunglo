@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { register } from 'swiper/element/bundle';
+import { Location } from '@angular/common';
 import { LocalstorageService } from '../services/localstorage.service';
 register();
 
@@ -24,18 +25,24 @@ interface Question {
 })
 export class QuestionsComponent implements OnInit {
 
-  constructor(private LocalStorageServices:LocalstorageService){}
+  constructor(private LocalStorageServices:LocalstorageService, private location:Location){}
 
   @Input() data!: any[];  
   questions:Question[]=[]
   @Input() id!: string; 
+  progress = 0
+  currentStep = 0;
+  totalSteps = 6
+  currentIndex: number = 0;
   @ViewChild('swiperRef', { static: false }) swiperRef!: ElementRef;
 
   ngOnInit(): void {
-    this.questions=this.data
+    this.questions=this.data;
+    this.totalSteps = this.data.length;
+    this.currentStep=1;
+    this.updateProgress();
   }
 
-  currentIndex: number = 0;
 
 
 
@@ -46,6 +53,8 @@ export class QuestionsComponent implements OnInit {
       this.swiperRef.nativeElement.swiper.slideNext();
      
     }
+    this.currentStep++;
+    this.updateProgress()
   }
   
   goToPrevious() {
@@ -54,6 +63,11 @@ export class QuestionsComponent implements OnInit {
     if (this.swiperRef?.nativeElement?.swiper) {
       this.swiperRef.nativeElement.swiper.slidePrev();
     }
+
+    this.currentStep--;
+    this.updateProgress()
+
+
   }
 
   async seleccionarRespuesta(question: Question, option: string, index: number) {
@@ -62,11 +76,21 @@ export class QuestionsComponent implements OnInit {
       question.answered = true;
     }
   
-    if (this.swiperRef?.nativeElement?.swiper) {
-      this.swiperRef.nativeElement.swiper.allowTouchMove = true;
-    }
     await this.actualizarQuizRespondido(index, option);
+
+  
+
+  
   }
+
+
+
+ 
+
+  updateProgress = () => {
+    this.progress = (this.currentStep / this.totalSteps) * 100;
+      
+  };
   
   private async actualizarQuizRespondido(index: number, selectedOption: string): Promise<void> {
     const allQuestionnaires = await this.LocalStorageServices.getDataQuiz();
@@ -95,5 +119,8 @@ export class QuestionsComponent implements OnInit {
   }
   
   
+  back(){
+    this.location.back()
+  }
   
 }

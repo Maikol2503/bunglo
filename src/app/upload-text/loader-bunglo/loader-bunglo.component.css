@@ -27,5 +27,5 @@
 .container-loader .content .porcentage .progress-bar .progress   {
     height: 100%;
     background-color: #559e36; /* Color verde */
-    transition: width 15s ease-in-out;
+    transition: width 5s ease-in-out;
 }

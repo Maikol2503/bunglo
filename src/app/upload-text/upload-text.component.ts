@@ -20,6 +20,7 @@ import { LoaderBungloComponent } from './loader-bunglo/loader-bunglo.component';
 export class UploadTextComponent implements OnInit {
   
   tipe_upload:any = 'text'
+  textPdf:string=""
   text:string ='';
   id!: string;
   showLoading:boolean = false
@@ -41,8 +42,11 @@ ngOnInit() {
 
 handleSendData(data:string):void{
   this.text=data
+  console.log(data)
   this.generateModeStude(data)
 }
+
+
 
 generateUniqueId(): string {
   const timestamp = Math.floor(Date.now() / 1000); // Segundos desde 1970
@@ -54,6 +58,7 @@ generateUniqueId(): string {
 async generateModeStude(text: string) {
   try {
     console.log('Generando datos...');
+    console.log(text)
     this.showLoading=true
     this.loaderBungloServices.updateProgress(0); // Inicializa el progreso
 
@@ -88,7 +93,7 @@ async generateModeStude(text: string) {
 
     if (mindMap && summarize) {
       this.id = this.generateUniqueId();
-      await this.localStorageServices.setData(this.id, {
+      await this.localStorageServices.setNewMaterial(this.id, {
         dataMindMap: mindMap,
         dataSummarize: summarize,
         dataFlashCard: flashCard,

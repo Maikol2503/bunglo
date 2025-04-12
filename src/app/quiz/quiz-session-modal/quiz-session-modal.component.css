@@ -20,6 +20,28 @@
     flex-direction: column;
     justify-content: center;
     gap: 20px;
+    position: relative;
+}
+
+.body .content-body .quiz-container .btn-back{
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    width: 20px;
+    height: 20px;
+    background: 100%;
+    border: none;
+    background-color: #ffffff00;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    transition: .2s;
+}
+
+.body .content-body .quiz-container .btn-back:hover{
+    background-color: #e4e4e4;
 }
 
 .body .content-body .quiz-container .quiz-description{

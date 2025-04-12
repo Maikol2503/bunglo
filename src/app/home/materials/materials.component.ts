@@ -13,7 +13,18 @@ export class MaterialsComponent implements OnInit{
 constructor( private localStorageservices:LocalstorageService){}
     materialsData:any[]=[]
     async ngOnInit(): Promise<any> {
+        this.loadMaterials()
+    }
+
+    async loadMaterials(){
         this.materialsData = await this.localStorageservices.getData()
-        console.log(this.materialsData)
+    }
+
+    async delete(id:string){
+        if(confirm('¿Seguro que desea eliminar este material?')){
+            let data = await this.localStorageservices.deleteMaterial(id);
+            this.localStorageservices.saveMaterialsData(data)
+            this.loadMaterials()
+        }
     }
 }

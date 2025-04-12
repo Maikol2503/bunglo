@@ -7,9 +7,11 @@ export class PromptService {
 
   constructor() { }
 
-  getQuizPrompt(texto: string, tnum_preguntas:number): string {
+  getQuizPrompt(texto: string, tnum_preguntas:number, preguntas_generadas:any): string {
+    let text_preguntas_generadas = `- no vuelvas a hacer estas preguntas ${preguntas_generadas} `
     return `
     Genera ${tnum_preguntas} preguntas basadas en el siguiente texto, cumpliendo estrictamente estas instrucciones:
+    ${preguntas_generadas.length > 0 ? text_preguntas_generadas : ''}
     - La pregunta debe estar basada exclusivamente en el texto proporcionado.
     - Devuelve únicamente un objeto JSON válido, sin ningún texto adicional.
     - Debe generarse exactamente **${tnum_preguntas} * preguntas.

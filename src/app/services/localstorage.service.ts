@@ -14,7 +14,11 @@ export class LocalstorageService {
     return storageData ? JSON.parse(storageData) : [];
   }
 
-  async setData(id: string, data: any): Promise<void> {
+  saveMaterialsData(data:any){
+    localStorage.setItem(this.storageKey_modeStude, JSON.stringify(data));
+  }
+
+  async setNewMaterial(id: string, data: any): Promise<void> {
     const existingData = await this.getData();
     const newData = [{ id, data }, ...existingData];
     localStorage.setItem(this.storageKey_modeStude, JSON.stringify(newData));
@@ -28,6 +32,16 @@ export class LocalstorageService {
   }
 
 
+  async deleteMaterial(id:string){
+    let dataLocalStorage = await this.getData()
+    let res =  dataLocalStorage.filter((item:any)=>{
+      if(item.id !== id){
+        return item
+      }
+    })
+    return res
+  }
+  
 
 
 

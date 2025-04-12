@@ -8,7 +8,7 @@
             
         </div>
         <div class="" *ngIf="tipe_upload === 'pdf'">
-            <app-pdf></app-pdf>
+            <app-pdf (onTextExtracted)="handleSendData($event)"></app-pdf>
         </div>
         <div class="" *ngIf="tipe_upload === 'image'">
             <app-image></app-image>

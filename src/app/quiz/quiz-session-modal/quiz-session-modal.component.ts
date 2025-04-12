@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-quiz-session-modal',
   imports: [],
@@ -8,12 +8,17 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class QuizSessionModalComponent {
 
+  constructor(private location:Location){}
  
   @Output() dataSession = new EventEmitter<any>();
 
   sessionQuiz(session:string){
     const data:any = session
     this.dataSession.emit(data)
+  }
+
+  back(){
+    this.location.back()
   }
 
   

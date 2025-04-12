@@ -88,19 +88,43 @@ export class QuizComponent {
     return text
   }
 
-  async senToApi(){
-    let text = await this.getText(this.id)
-    let prompt = this.promptServices.getQuizPrompt(text, this.numQuestions)
-    this.showLoader1=true
-    this.modelservices.getCompletion(prompt).subscribe(response=>{
-      const data = response.choices[0].message.content
-      this.quizData = this.extraerJSON(data)
-      this.quizData = this.formatQuestion(this.quizData)
-      this.localStorageServices.setNewQuiz(this.id, this.quizData)
-      this.showLoader1=false
-      this.showQuesions=true
-    })
+  async senToApi() {
+    let allPreguntas: any[] = [];
+    let text = await this.getText(this.id);
+  
+    this.showLoader1 = true;
+  
+    while (allPreguntas.length < this.numQuestions) {
+      console.log('entro el el wile')
+      console.log(allPreguntas.length, 'preguntas generadas')
+      let faltan = Math.abs(allPreguntas.length - this.numQuestions);
+      const prompt = this.promptServices.getQuizPrompt(text, faltan, allPreguntas);
+      console.log(prompt)
+      const response: any = await new Promise((resolve) => {
+        this.modelservices.getCompletion(prompt).subscribe(resolve);
+      });
+  
+      const data = response.choices[0].message.content;
+      const nuevasPreguntas = this.extraerJSON(data) || [];
+    
+      // Eliminar duplicadas por texto de pregunta
+      const nuevasFiltradas = nuevasPreguntas.filter((p:any) =>
+        !allPreguntas.some(prev => prev.pregunta === p.pregunta)
+      );
+  
+      allPreguntas.push(...nuevasFiltradas);
+    }
+  
+    // Si se pasaron, cortamos el exceso
+    allPreguntas = allPreguntas.slice(0, this.numQuestions);
+  
+    // Formatear y guardar
+    this.quizData = this.formatQuestion(allPreguntas);
+    this.localStorageServices.setNewQuiz(this.id, this.quizData);
+    this.showLoader1 = false;
+    this.showQuesions = true;
   }
+  
 
 
   extraerJSON(texto: string): any {
@@ -140,7 +164,6 @@ export class QuizComponent {
   async deleteQuiz(id:string){
     
     let dataLocalStorage = await this.localStorageServices.getDataQuiz()
-    console.log(dataLocalStorage, 'data localstorage')
     let res =  dataLocalStorage.filter((item:any)=>{
       if(item.id !== id){
         return item

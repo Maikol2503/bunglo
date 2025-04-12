@@ -1,6 +1,6 @@
 <div class="sumarize">
     <div class="content-sumarize">
-      <div *ngFor="let item of data.resumenes; let i = index" class="item">
+      <div *ngFor="let item of data?.resumenes; let i = index" class="item">
         
         <!-- Título con botón para desplegar -->
         <div class="titulo" (click)="toggleDescription(i)">
