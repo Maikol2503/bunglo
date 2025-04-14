@@ -40,11 +40,16 @@ export class QuizComponent {
       this.id = params.get('id'); // Obtener el 'id' de la URL
     });
 
+    
+
     this.initQuiz()
   }
 
   async initQuiz(){
+
+  
     this.quizData = await this.loadQuiz()
+    
     if(this.quizData){
       this.showModalSession=true;
     } else {

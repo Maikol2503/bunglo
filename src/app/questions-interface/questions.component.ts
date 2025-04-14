@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { register } from 'swiper/element/bundle';
 import { Location } from '@angular/common';
 import { LocalstorageService } from '../services/localstorage.service';
+import { ModalResultOfQuestionComponent } from './modal-result-of-question/modal-result-of-question.component';
 register();
 
 // Modelo para las preguntas
@@ -18,7 +19,7 @@ interface Question {
 
 @Component({
   selector: 'app-questions',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ModalResultOfQuestionComponent],
   templateUrl: './questions.component.html',
   styleUrl: './questions.component.css',
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
@@ -32,8 +33,11 @@ export class QuestionsComponent implements OnInit {
   @Input() id!: string; 
   progress = 0
   currentStep = 0;
-  totalSteps = 6
+  totalSteps = 0;
   currentIndex: number = 0;
+  showModalResultOfQuiz:boolean=false
+  showQuiz:boolean=true
+  dataResultOfQuiz:any[] = []
   @ViewChild('swiperRef', { static: false }) swiperRef!: ElementRef;
 
   ngOnInit(): void {
@@ -119,6 +123,35 @@ export class QuestionsComponent implements OnInit {
   }
   
   
+
+  showModalResulOftQuiz() {
+    this.showModalResultOfQuiz = true;
+    this.showQuiz = false;
+  
+    let correctas = 0;
+    let incorrectas = 0;
+  
+    this.questions.forEach((q: Question) => {
+      if (q.answered && q.selected_answer) {
+        if (q.selected_answer === q.answer_correct) {
+          correctas++;
+        } else {
+          incorrectas++;
+        }
+      }
+    });
+  
+    this.dataResultOfQuiz = [
+      {
+        idQuiz:this.id,
+        numQuestions: this.questions.length,
+        correctas: correctas,
+        incorrectas: incorrectas
+      }
+    ];
+  }
+  
+
   back(){
     this.location.back()
   }
