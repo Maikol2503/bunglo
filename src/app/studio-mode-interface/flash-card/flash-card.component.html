@@ -5,7 +5,7 @@
   space-between="20"
   class="flashcard-container"
 >
-  <swiper-slide *ngFor="let card of data; let i = index" class="slide">
+  <swiper-slide *ngFor="let card of data  | slice:0:20; let i = index" class="slide">
     <div class="flashcard" [class.flipped]="card.flipped" (click)="toggleCard(i)">
       <div class="flashcard-front">
         <div class="card-content">

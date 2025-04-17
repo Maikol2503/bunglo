@@ -1,0 +1,59 @@
+<div class="body">
+    <div class="body-content">
+        <div class="header">
+            <div class="bar" (click)="desplegableVisible=true">
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="40" x="0" y="0" viewBox="0 0 100 100" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><path d="M25.9 38.5H74c.7 0 1.2-.6 1.2-1.2s-.4-1.3-1.1-1.3H25.9c-.7 0-1.2.6-1.2 1.2s.5 1.3 1.2 1.3zM74.1 48.7H25.9c-.7 0-1.2.6-1.2 1.2s.6 1.2 1.2 1.2H74c.7 0 1.2-.6 1.2-1.2s-.4-1.2-1.1-1.2zM74.1 61.5H25.9c-.7 0-1.2.6-1.2 1.2s.6 1.2 1.2 1.2H74c.7 0 1.2-.6 1.2-1.2s-.4-1.2-1.1-1.2z" fill="#000000" opacity="1" data-original="#000000"></path></g></svg>
+            </div>
+            <div class="logo">
+                <h3>BUNGLO</h3>
+            </div>
+        </div>
+
+
+        <div class="desplegable" [ngClass]="{'desplegable-visible': desplegableVisible === true}">
+            <p (click)="desplegableVisible=false">x</p>
+            <div class="menu-container">
+                <ul class="menu-list">
+                    <li class="menu-item" 
+                        [routerLink]="['/home']"
+                        routerLinkActive="selected"
+                        >
+                        <div class="title-wrapper">
+                            <div class="icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
+                                    <path d="M 23.951172 4 A 1.50015 1.50015 0 0 0 23.072266 4.3222656 L 8.859375 15.519531 C 7.0554772 16.941163 6 19.113506 6 21.410156 L 6 40.5 C 6 41.863594 7.1364058 43 8.5 43 L 18.5 43 C 19.863594 43 21 41.863594 21 40.5 L 21 30.5 C 21 30.204955 21.204955 30 21.5 30 L 26.5 30 C 26.795045 30 27 30.204955 27 30.5 L 27 40.5 C 27 41.863594 28.136406 43 29.5 43 L 39.5 43 C 40.863594 43 42 41.863594 42 40.5 L 42 21.410156 C 42 19.113506 40.944523 16.941163 39.140625 15.519531 L 24.927734 4.3222656 A 1.50015 1.50015 0 0 0 23.951172 4 z M 24 7.4101562 L 37.285156 17.876953 C 38.369258 18.731322 39 20.030807 39 21.410156 L 39 40 L 30 40 L 30 30.5 C 30 28.585045 28.414955 27 26.5 27 L 21.5 27 C 19.585045 27 18 28.585045 18 30.5 L 18 40 L 9 40 L 9 21.410156 C 9 20.030807 9.6307412 18.731322 10.714844 17.876953 L 24 7.4101562 z"></path>
+                                </svg>
+                            </div>
+                            <a class="menu-title-container" *ngIf="!minimize_sidebar_active">
+                                <p href="#" class="menu-title">Home</p>
+                                <img src="" alt="">
+                            </a>
+                        </div>
+                    </li>
+                    
+                    <li
+                        >
+                        <div class="title-wrapper">
+                            <div class="icon">
+                                <svg  width="24" height="24" viewBox="80 35 30 30" xmlns="http://www.w3.org/2000/svg">
+                                    <path xmlns="http://www.w3.org/2000/svg"  d="m 101.9,57.009 c 0,0.551 -0.51765,0.991 -1.09725,0.991 h -3.15 C 97.0742,58 96.65,57.56 96.65,57.009 v -3 C 96.65,53.458 97.0742,53 97.65275,53 h 3.15 c 0.5796,0 1.09725,0.458 1.09725,1.009 z M 100.80275,51 h -3.15 C 95.9129,51 94.55,52.352 94.55,54.009 v 3 c 0,1.657 1.3629,2.991 3.10275,2.991 h 3.15 C 102.5426,60 104,58.666 104,57.009 v -3 C 104,52.352 102.5426,51 100.80275,51 Z M 90.35,57.009 C 90.35,57.56 89.83235,58 89.25275,58 h -3.15 C 85.5242,58 85.1,57.56 85.1,57.009 v -3 C 85.1,53.458 85.5242,53 86.10275,53 h 3.15 c 0.5796,0 1.09725,0.458 1.09725,1.009 z M 89.25275,51 h -3.15 C 84.3629,51 83,52.352 83,54.009 v 3 C 83,58.666 84.3629,60 86.10275,60 h 3.15 C 90.9926,60 92.45,58.666 92.45,57.009 v -3 C 92.45,52.352 90.9926,51 89.25275,51 Z M 101.9,46.009 c 0,0.551 -0.51765,0.991 -1.09725,0.991 h -3.15 C 97.0742,47 96.65,46.56 96.65,46.009 v -3 C 96.65,42.458 97.0742,42 97.65275,42 h 3.15 c 0.5796,0 1.09725,0.458 1.09725,1.009 z M 100.80275,40 h -3.15 C 95.9129,40 94.55,41.352 94.55,43.009 v 3 c 0,1.657 1.3629,2.991 3.10275,2.991 h 3.15 C 102.5426,49 104,47.666 104,46.009 v -3 C 104,41.352 102.5426,40 100.80275,40 Z M 90.35,46.009 C 90.35,46.56 89.83235,47 89.25275,47 h -3.15 C 85.5242,47 85.1,46.56 85.1,46.009 v -3 C 85.1,42.458 85.5242,42 86.10275,42 h 3.15 c 0.5796,0 1.09725,0.458 1.09725,1.009 z M 89.25275,40 h -3.15 C 84.3629,40 83,41.352 83,43.009 v 3 C 83,47.666 84.3629,49 86.10275,49 h 3.15 C 90.9926,49 92.45,47.666 92.45,46.009 v -3 C 92.45,41.352 90.9926,40 89.25275,40 Z" id="menu_navigation_grid-[#1528]"/>
+                                </svg>
+                            </div>
+                            <a class="menu-title-container" (click)="toggleMaterials()"  *ngIf="!minimize_sidebar_active"  [ngClass]="{'svg-rotate':view_materials_is_active===true}">
+                                <p class="menu-title">Materials</p>
+                                <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M6.26255 9.32461C6.63556 8.91732 7.26812 8.88954 7.6754 9.26255L12.0007 13.2239L16.3245 9.26266C16.7317 8.88958 17.3643 8.91726 17.7374 9.32449C18.1104 9.73171 18.0827 10.3643 17.6755 10.7374L12.6763 15.3174C12.2941 15.6675 11.7077 15.6676 11.3254 15.3175L6.32461 10.7375C5.91732 10.3644 5.88954 9.73189 6.26255 9.32461Z"></path>
+                                </svg>
+                            </a>
+                        </div>
+                        <ul class="submenu-materials" *ngIf="view_materials_is_active && !minimize_sidebar_active" >
+                            <!-- <li class="submenu-item"><a href="#">Ver todos</a></li> -->
+                            <li *ngFor="let data of materialsData" class="submenu-item" ><a [routerLink]="['/mode-stude/'+data.id]" routerLinkActive="selected"  [routerLinkActiveOptions]="{ exact: true }">{{data.data?.dataSummarize?.titulo_general}}</a></li>
+                        </ul>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

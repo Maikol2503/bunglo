@@ -1,0 +1,24 @@
+.body .body-content .header{
+    height: 60px;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 10px;
+}
+
+
+.body .body-content .desplegable {
+    background-color: rgb(255, 255, 255);
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    transform: translateX(-100%);
+    width: 100%;
+    min-height: 100vh;
+}
+
+.body .body-content .desplegable.desplegable-visible{
+    transform: translateX(0%);
+}

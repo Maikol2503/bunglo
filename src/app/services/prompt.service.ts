@@ -119,11 +119,11 @@ getConceptMap(text: string): string {
 }
 
 getFlashCardPrompt(text: string): string {
-  return `Extrae la información del siguiente texto para crear tarjetas flash que incluyan:
+  return `Extrae la información del siguiente texto para crear **hasta 20** tarjetas flash que incluyan:
         - Preguntas con huecos (de una, dos o hasta tres palabras) y su respuesta completada.
         - Preguntas completas y respuestas completas.
 
-        El resultado debe ser un JSON EXACTO con el siguiente esquema, sin ningún texto o comentario adicional:
+        El resultado debe ser un JSON EXACTO con el siguiente esquema, sin ningún texto o comentario adicional, y sin exceder las 20 entradas:
 
         [
           {
@@ -137,7 +137,7 @@ getFlashCardPrompt(text: string): string {
             "flipped": false
           },
           {
-            "question": "La fotosíntesis ocurre en los ____.",
+            "question": "La fotosíntesis ocurre en los ____. ",
             "answer": "cloroplastos",
             "flipped": false
           }
@@ -145,5 +145,6 @@ getFlashCardPrompt(text: string): string {
 
         Texto: ${text}`;
 }
+
 
 }  

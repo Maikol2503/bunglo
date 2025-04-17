@@ -1,10 +1,12 @@
 .modal-quiz-result .modal-quiz-result-content .modal-header .modal-title{
     font-size: 20px;
     text-align: center;
+   width: 100%;
     /* margin-bottom: 80px; */
 }
 
-.modal-quiz-result .modal-quiz-result-content .modal-body{
+.modal-quiz-result .modal-quiz-result-content {
+    width: 100%;
 }
 
 .modal-quiz-result .modal-quiz-result-content .modal-body .result-summary{
@@ -113,4 +115,43 @@
 
 .modal-quiz-result .modal-quiz-result-content .modal-body .result-summary .result-actions .button-group .divider{
     border-left: 1px solid #ececec;
+}
+
+
+
+
+
+@media(max-width:550px){
+
+    .modal-quiz-result{
+        padding: 10px;
+        width: 100vw;
+    }
+
+    .modal-quiz-result .modal-quiz-result-content .modal-header .modal-title{
+        font-size: 18px;
+    }
+
+    .modal-quiz-result .modal-quiz-result-content .modal-body .result-summary{
+        min-width: 100%;
+    }
+
+    .modal-quiz-result .modal-quiz-result-content .modal-body .result-summary .score-breakdown .score-item{
+        padding: 10px;
+    }
+
+    .modal-quiz-result .modal-quiz-result-content .modal-body .result-summary .score-breakdown .score-item .score-card p{
+        font-size: 14px;
+    }
+
+    .modal-quiz-result .modal-quiz-result-content .modal-body .result-summary .congrats-section .congrats-message .message-porcentaje{
+        font-size: 16px;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .modal-quiz-result .modal-quiz-result-content .modal-body .result-summary .result-actions .button-group .button-wrapper button{
+        font-size: 13px;
+        font-weight: 600;
+    }
 }

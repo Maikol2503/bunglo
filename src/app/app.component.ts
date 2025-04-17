@@ -4,10 +4,11 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { SidebarService } from './services-interfas/sidebar.service';
+import { NavMobileComponent } from './nav-mobile/nav-mobile.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule, FormsModule, SidebarComponent],
+  imports: [RouterOutlet, CommonModule, FormsModule, SidebarComponent, NavMobileComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

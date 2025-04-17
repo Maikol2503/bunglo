@@ -1,4 +1,7 @@
 <div class="body">
+    <div class="btn-back" *ngIf="!enlargeMap">
+        <app-btn-back></app-btn-back>
+    </div>
     <div class="content-body" [style.view-transition-name]="'material'+id">
         <div class="mind-map item" >
             <p class="title-item">Mapa</p>

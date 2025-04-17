@@ -94,3 +94,25 @@ small {
   font-size: 0.8rem;
   opacity: 0.8;
 }
+
+
+
+
+
+@media(max-width:700px){
+  .flashcard-container {
+    padding: 10px;
+  }
+
+  .flashcard-container .slide .flashcard .flashcard-front{
+    padding: 40px 50px;
+  }
+
+  .flashcard-container .slide .flashcard .flashcard-front .card-content h3{
+    font-size: 18px;
+  }
+  .flashcard-container .slide .flashcard .flashcard-front .card-content p{
+    font-size: 16px;
+    line-height: 30px;
+  }
+}

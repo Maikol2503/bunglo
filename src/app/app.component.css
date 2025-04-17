@@ -5,6 +5,10 @@
     transition: .3s;
 }
 
+.body .nav-mobile{
+    display: none;
+}
+
 .paddin-letf{
     padding-left: var(--width-sidebar-minimize);
 }
@@ -24,4 +28,45 @@
     height: 100vh;
     padding: 10px 0px 10px 10px;
     /* z-index: 1000; */
+}
+
+
+
+
+
+
+
+
+
+
+@media(max-width:700px){
+    .body {
+        padding-left: 0px;
+        display: block;
+    }
+
+    .body .nav-mobile{
+        display:block;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        z-index: 1000;
+    } 
+
+    .body .sidebar-container{
+        display: none;
+    }
+
+    .body .router-outlet{
+        padding-left: 0px;
+    }
+
+    .paddin-letf{
+        padding-left: 0px;
+    }
+
+    .body .sidebar-container{
+        padding: 0px;
+    }
 }

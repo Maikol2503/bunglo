@@ -1,5 +1,12 @@
 .body{
 width: 100%;
+position: relative;
+}
+
+.body .btn-back{
+  position: absolute;
+  left: 20px;
+  top:10px;
 }
 
 .content-body{
@@ -125,7 +132,36 @@ cursor: pointer;
 }
 
 
+@media(max-width:700px){
+  .body .btn-back{
+    position: fixed;
+    left: 10px;
+    top:10px;
+    z-index: 1;
+  }
 
+  .content-body{
+    padding: 10px;
+    width: 100%;
+  }
+
+  .body .content-body .mind-map{
+    margin-top: 80px;
+  }
+
+  .body .content-body .section-quiz .content-section-quiz{
+    gap: 15px;
+  }
+
+  .body .content-body .section-quiz .content-section-quiz .title .title-text{
+    font-size: 28px;
+  }
+
+  .body .content-body .section-quiz .content-section-quiz .btn-generate{
+    margin-top: 20px;
+  }
+  
+}
 
 
 
