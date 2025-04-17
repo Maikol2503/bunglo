@@ -27,20 +27,26 @@
 
   <ng-template #nodeTemplate let-node>
     <svg:g class="node">
-      <svg:rect
-        [attr.width]="node.dimension.width"
-        [attr.height]="node.dimension.height"
-        [attr.fill]="node.data.color"
-      />
-      <svg:text alignment-baseline="central" [attr.x]="10" [attr.y]="node.dimension.height / 2">
-        {{node.label}}
-      </svg:text>
+      <svg:foreignObject
+      width="250"
+      [attr.height]="calculateNodeHeight(node.label)"
+      x="0"
+      y="0"
+      style="overflow: visible;"
+    >
+      <xhtml:div xmlns="http://www.w3.org/1999/xhtml">
+        <div class="node-content" [style.background]="node?.color">
+          {{ node.label }}
+        </div>
+      </xhtml:div>
+    </svg:foreignObject>
+    
     </svg:g>
   </ng-template>
 
   <ng-template #linkTemplate let-link>
     <svg:g class="edge">
-      <svg:path class="line" stroke-width="2" marker-end="url(#arrow)"></svg:path>
+      <svg:path class="line" stroke-width="4" marker-end="url(#arrow)"></svg:path>
       <svg:text class="edge-label" text-anchor="middle">
         <textPath
           class="text-path"

@@ -19,10 +19,10 @@ export class ApiModelo {
       'HTTP-Referer': 'https://github.com/OpenRouterTeam/openrouter-examples',
     });
   }
-  // de pago "google/gemini-2.5-pro-preview-03-25"
+  // de pago "google/gemini-2.5-pro-preview-03-25  ....   "google/gemini-2.0-flash-001""
   // gratis "google/gemini-2.0-flash-thinking-exp:free"
   // Aquí el parámetro 'prompt' ahora es dinámico.
-  getCompletion(prompt: string, model: string = "google/gemini-2.0-flash-thinking-exp:free"): Observable<any> {
+  getCompletion(prompt: string, model: string = "google/gemini-2.0-flash-001"): Observable<any> {
     const body = {
       model,
       messages: [{ role: 'user', content: prompt }],

@@ -1,7 +1,7 @@
 .modal-quiz-result .modal-quiz-result-content .modal-header .modal-title{
     font-size: 20px;
     text-align: center;
-    margin-bottom: 40px;
+    /* margin-bottom: 80px; */
 }
 
 .modal-quiz-result .modal-quiz-result-content .modal-body{
@@ -11,6 +11,7 @@
     background-color: rgb(255, 255, 255);
     border-radius: 20px;
     min-width: 400px;
+    margin-top: 80px;
 }
 
 .modal-quiz-result .modal-quiz-result-content .modal-body .result-summary .congrats-section .congrats-icon{

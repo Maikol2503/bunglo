@@ -1,0 +1,11 @@
+.node-content {
+    /* background: rgb(178, 40, 40); */
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 8px;
+    font-family: sans-serif;
+    /* color: white; */
+    width: 250px;
+    text-align: center;
+  }
+  

@@ -14,4 +14,9 @@ export class MindmapComponent {
 
   @Input() data?:any; 
 
+  calculateNodeHeight(label: string): number {
+    const lineHeight = 25; // Establece la altura de línea según tu fuente
+    const lines = Math.ceil(label.length / 30); // Aproximación del número de líneas
+    return lines * lineHeight;
+  }
 }

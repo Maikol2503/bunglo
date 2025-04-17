@@ -1,9 +1,7 @@
-
 <ngx-graph
-
   class="chart-container"
   [view]="[1800, 1550]"
-  [links]="data?.links ?? []" 
+  [links]="data?.links ?? []"
   [nodes]="data?.nodes ?? []"
   layout="dagreCluster"
 >
@@ -25,16 +23,23 @@
     </svg:g>
   </ng-template>
 
+  <!-- Aquí es donde cambiamos la forma de aplicar el estilo -->
   <ng-template #nodeTemplate let-node>
     <svg:g class="node">
-      <svg:rect
-        [attr.width]="node.dimension.width"
-        [attr.height]="node.dimension.height"
-        [attr.fill]="node.data.color"
-      />
-      <svg:text alignment-baseline="central" [attr.x]="10" [attr.y]="node.dimension.height / 2">
-        {{node.label}}
-      </svg:text>
+      <svg:foreignObject
+      width="250"
+      [attr.height]="calculateNodeHeight(node.label)"
+      x="0"
+      y="0"
+      style="overflow: visible;"
+    >
+      <xhtml:div xmlns="http://www.w3.org/1999/xhtml">
+        <div class="node-content" [style.background]="node.color">
+          {{ node.label }}
+        </div>
+      </xhtml:div>
+    </svg:foreignObject>
+    
     </svg:g>
   </ng-template>
 
@@ -54,4 +59,3 @@
     </svg:g>
   </ng-template>
 </ngx-graph>
-<p>kjbnlñnlk</p>
