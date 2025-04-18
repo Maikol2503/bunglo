@@ -17,8 +17,65 @@
     transform: translateX(-100%);
     width: 100%;
     min-height: 100vh;
+    transition: .2s;
 }
 
 .body .body-content .desplegable.desplegable-visible{
     transform: translateX(0%);
+}
+
+.body .body-content .desplegable .btn-close{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 30px;
+}
+
+
+.body .body-content .desplegable .menu-container{
+    padding: 20px;
+}
+
+
+.body .body-content .desplegable .menu-container .menu-list{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+
+.body .body-content .desplegable .menu-container .menu-list .menu-item .title-wrapper{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.body .body-content .desplegable .menu-container .menu-list .menu-item .title-wrapper p{
+   font-size: 20px;
+}
+
+.body .body-content .desplegable .menu-container .menu-list .menu-item .menu-title-container{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.body .body-content .desplegable .menu-container .menu-list .menu-item  .submenu-materials{
+    margin-top: 10px;
+}
+
+.body .body-content .desplegable .menu-container .menu-list .menu-item  .submenu-materials .submenu-item{
+    padding: 10px 10px 10px 35px;
+}
+
+
+.body .body-content .desplegable .menu-container .menu-list .menu-item  .submenu-materials .submenu-item a{
+    color: #515151;
+}
+
+
+.body .body-content .desplegable .menu-container .menu-list .menu-item  .submenu-materials .submenu-item a.selected{
+    color: var(--color1);
+    font-weight: 600;
 }

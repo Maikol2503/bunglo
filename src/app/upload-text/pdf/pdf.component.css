@@ -280,6 +280,94 @@
 
 
 
+  @media(max-width:450px){
+
+    .body {
+      padding: 10px;
+      
+    }
+
+
+    .body  .btn-back{
+      position: fixed;
+      top: 67px;
+      z-index: 1000;
+      left: 7px;
+  }
+
+    .body .body-content .inputFile {
+      max-width: 300px;
+      height: 250px;
+    }
+
+    .body .body-content .inputFile2{
+      width: 86px;
+      height: 50px;
+      margin-top: 57px;
+      position: relative;
+      right: calc(-100% - 2px) ;
+      transform: translateX(-100%);
+      border-radius: 25px;
+    }
+
+    .body .body-content .mensaje-seleccionar{
+      margin-top: 30px;
+    }
+
+    .body .body-content .viewFiles .pdf-block {
+      padding:40px 20px;
+     
+      justify-content: flex-start;
+    }
+
+    .body .body-content .viewFiles .pdf-block .page-block{
+      max-width: 260px;
+      min-width: 260px;
+    }
+
+
+    .body .body-content .view-num-caracteres{
+      height: auto;
+      right:  auto;
+      left: 10px;
+      bottom: 10px;
+      padding: 0px;
+    }
+
+
+    .body .body-content .view-num-caracteres-content .count-min-max{
+      padding: 10px 15px;
+      font-size: 12px;
+      height: auto;
+
+  }
+
+  .body .btn-generar{
+    width: auto;
+    height: auto;
+    border-radius: 30px;
+    background-color: var(--color1);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:10px;
+    font-weight: 600;
+    font-size: 12px;
+    right: 10px;
+    bottom: 10px;
+    padding: 10px 20px;
+  }
+    
+  }
+
+
+
+
+
+
+
+
 
 
 
