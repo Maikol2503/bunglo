@@ -1,11 +1,15 @@
 
 <ngx-graph
-
+  #graph
   class="chart-container"
-  [view]="[1800, 1550]"
+  [view]="[size[0], size[1]]"
   [links]="data?.links || []"
   [nodes]="data?.nodes || []"
   layout="dagreCluster"
+  [enableZoom]="true"
+    [panOnZoom]="true"
+    [zoomSpeed]="0.1"
+  
 >
   <ng-template #defsTemplate>
     <svg:marker id="arrow" viewBox="0 -5 10 10" refX="8" refY="0" markerWidth="4" markerHeight="4" orient="auto">
@@ -60,3 +64,6 @@
     </svg:g>
   </ng-template>
 </ngx-graph>
+
+<!-- <button (click)="zoomIn()">+</button>
+<button (click)="zoomOut()">-</button> -->

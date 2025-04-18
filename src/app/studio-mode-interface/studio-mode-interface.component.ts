@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Renderer2 } from '@angular/core';
+import { Component, OnInit, OnDestroy, Renderer2, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MindmapComponent } from './mindmap/mindmap.component';
@@ -16,8 +16,9 @@ import { SidebarService } from '../services-interfas/sidebar.service';
   templateUrl: './studio-mode-interface.component.html',
   styleUrls: ['./studio-mode-interface.component.css'],
 })
-export class StudioModeInterfaceComponent implements OnInit, OnDestroy {
+export class StudioModeInterfaceComponent implements OnInit, AfterViewInit, OnDestroy {
 
+  @ViewChild('mindmap') mindMapContainer!: ElementRef<HTMLDivElement>;
   id: string | null = null;
   mindMapData: any = null;
   sumarizeData: any = null;
@@ -25,7 +26,7 @@ export class StudioModeInterfaceComponent implements OnInit, OnDestroy {
   text: string | null = null;
   expandedIndex: number | null = null;
   enlargeMap: boolean = false;
-
+  view: [number, number] = [100, 100];
   private routeSub: Subscription | null = null;
 
   constructor(
@@ -44,6 +45,24 @@ export class StudioModeInterfaceComponent implements OnInit, OnDestroy {
       await this.loadData();
     });
   }
+
+
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      this.initializeView()
+    });
+  }
+
+  initializeView(): void {
+    // Obtiene el tamaño del contenedor del gráfico y ajusta la vista
+    const element = this.mindMapContainer.nativeElement;
+    const width = element.offsetWidth;
+    const height = element.offsetHeight;
+    this.view = [width, height];
+    console.log("View initialized:", this.view);
+  }
+
+
 
   ngOnDestroy(): void {
     this.renderer.removeClass(document.body, 'no-scroll')
@@ -79,9 +98,11 @@ export class StudioModeInterfaceComponent implements OnInit, OnDestroy {
   }
 
   toggleMap(){
+   
     this.enlargeMap = !this.enlargeMap;
 
     if (this.enlargeMap) {
+      this.view = [1000, 1000]
       this.renderer.addClass(document.body, 'no-scroll');  // Bloquear scroll
     } else {
       this.renderer.removeClass(document.body, 'no-scroll');  // Restaurar scroll

@@ -3,12 +3,12 @@
         <app-btn-back></app-btn-back>
     </div>
     <div class="content-body" [style.view-transition-name]="'material'+id">
-        <div class="mind-map item" >
+        <div class="mind-map item" #mindmap>
             <p class="title-item">Mapa</p>
-            <div class="content-mind-map" [ngClass]="{'enlargeMap':enlargeMap === true}">
+            <div class="content-mind-map" #mindmap [ngClass]="{'enlargeMap':enlargeMap === true}">
                 <button (click)="toggleMap()" [ngClass]="{'btn-rotate':enlargeMap === true}" class="btn-toggle"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25" x="0" y="0" viewBox="0 0 24 24" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><path fill="#ffffff" d="M17 21H6a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h4a1 1 0 0 1 0 2H6a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4a1 1 0 0 1 2 0v4a3 3 0 0 1-3 3z" opacity="1" data-original="#55abff" class=""></path><path fill="#ffffff" d="M20 3h-6a1 1 0 0 0 0 2h3.59l-9.3 9.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0L19 6.41V10a1 1 0 0 0 2 0V4a1 1 0 0 0-1-1z" opacity="1" data-original="#0078ee" class=""></path></g></svg></button>
                 <div class="app-map">
-                    <app-mindmap  [data]="mindMapData" ></app-mindmap>
+                    <app-mindmap  [data]="mindMapData" [size]="view"></app-mindmap>
                 </div>
             </div>
         </div>

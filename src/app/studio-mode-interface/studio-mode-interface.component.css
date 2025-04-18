@@ -48,6 +48,8 @@ position: relative;
 
 
 .body .content-body .mind-map .enlargeMap{
+  width: 100vw;
+  height: 100vh;
   position: fixed;
   top:0px;
   left: 0px;
@@ -159,6 +161,12 @@ cursor: pointer;
 
   .body .content-body .section-quiz .content-section-quiz .btn-generate{
     margin-top: 20px;
+  }
+
+  .body .content-body .mind-map .content-mind-map .btn-rotate{
+    transform: rotate(180deg);
+    right: 10px;
+    top:70px;
   }
   
 }
