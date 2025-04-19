@@ -15,17 +15,32 @@ position: relative;
   position: fixed;
   top: 0%;
   left: 0%;
+  width: 100vw;
+  height: 100vh;
   z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffffb6;
+  backdrop-filter: blur(2px); 
 }
 
-.body .modal-update-name-of-material svg{
+.body .modal-update-name-of-material .modal-update-container{
+  position: relative;
+}
+.body .modal-update-name-of-material .modal-update-container .content-btn-back{
   position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: #ffffff;
-  padding: 10px;
+  top: 20px;
+  right: 20px;
   border-radius: 10px;
   z-index: 1001;
+  height: 20px;
+  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f3f5f7;
+  
 }
 
 .content-body{

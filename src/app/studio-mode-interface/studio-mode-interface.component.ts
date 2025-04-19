@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Renderer2, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, Renderer2, ElementRef, ViewChild, AfterViewInit, HostListener } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MindmapComponent } from './mindmap/mindmap.component';
@@ -40,6 +40,12 @@ export class StudioModeInterfaceComponent implements OnInit, AfterViewInit, OnDe
     
   ) {}
 
+  @HostListener('document:click', ['$event'])
+  onClickOutside(event: MouseEvent) {
+    this.showModalUpdateNamematerial=false;
+  } 
+
+  
   ngOnInit(): void {
     this.sidebarServices.set_SideBar_State_Minimize(true);
     this.sidebarServices.show_SideBar()
