@@ -10,7 +10,9 @@ import { Location } from '@angular/common';
 })
 export class QuizOptionsModalComponent {
   constructor(private location:Location){}
-  numQuestions:number=2
+  numQuestions:number=2;
+  openModalNumQuestions:boolean = false;
+  openModalNumAnswer:boolean = false;
   @Output() dataPersonaliceQuestions = new EventEmitter<any>();
 
   generateQuiz(){
@@ -18,6 +20,10 @@ export class QuizOptionsModalComponent {
       'numQuestions':this.numQuestions
     }
     this.dataPersonaliceQuestions.emit(data)
+  }
+
+  applyNumQuestions(num:number){
+    this.numQuestions = num
   }
 
   back(){

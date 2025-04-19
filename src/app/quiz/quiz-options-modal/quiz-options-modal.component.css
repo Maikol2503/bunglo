@@ -24,6 +24,7 @@
     padding: 40px;
     border-radius: 15px;
     background-color: #ffffff;
+    min-width: 350px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -52,6 +53,23 @@
     background-color: rgb(229, 229, 229);
 }
 
+
+.body .quiz-options-modal .content-quiz-options-modal .form .form-content .form-group .select-options-group .select-options-label,
+.body .quiz-options-modal .content-quiz-options-modal .form .form-content .form-group .select-num-questions-group .select-num-questions-label{
+    border: 1px solid red;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.body .quiz-options-modal .content-quiz-options-modal .form .form-content .form-group .select-options-group .select-options-label .selected-option,
+.body .quiz-options-modal .content-quiz-options-modal .form .form-content .form-group .select-num-questions-group .select-num-questions-label .selected-option{
+    border: 1px solid red;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
 .body .quiz-options-modal .content-quiz-options-modal .form .form-content .form-actions{
     width: 100%;
 }
@@ -62,3 +80,4 @@
     display: flex;
     justify-content:  flex-end;
 }
+

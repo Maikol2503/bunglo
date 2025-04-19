@@ -8,11 +8,12 @@ import { FlashCardComponent } from './flash-card/flash-card.component';
 import { LocalstorageService } from '../services/localstorage.service';
 import { Subscription } from 'rxjs';
 import { SidebarService } from '../services-interfas/sidebar.service';
+import { ModalUpdateNameMaterialComponent } from './modal-update-name-material/modal-update-name-material.component';
 
 @Component({
   selector: 'app-studio-mode-interface',
   standalone: true, // Agregar si es necesario
-  imports: [CommonModule, MindmapComponent, SumarizeComponent, BtnBackComponent, FlashCardComponent, RouterModule],
+  imports: [CommonModule, MindmapComponent, SumarizeComponent, BtnBackComponent, FlashCardComponent, RouterModule, ModalUpdateNameMaterialComponent],
   templateUrl: './studio-mode-interface.component.html',
   styleUrls: ['./studio-mode-interface.component.css'],
 })
@@ -26,14 +27,17 @@ export class StudioModeInterfaceComponent implements OnInit, AfterViewInit, OnDe
   text: string | null = null;
   expandedIndex: number | null = null;
   enlargeMap: boolean = false;
+  showModalUpdateNamematerial:boolean = false
   view: [number, number] = [100, 100];
   private routeSub: Subscription | null = null;
+  title:string = '';
 
   constructor(
     private route: ActivatedRoute,
     private localStorageServices: LocalstorageService,
     private renderer: Renderer2,
-    private sidebarServices:SidebarService
+    private sidebarServices:SidebarService,
+    
   ) {}
 
   ngOnInit(): void {
@@ -53,6 +57,18 @@ export class StudioModeInterfaceComponent implements OnInit, AfterViewInit, OnDe
     });
   }
 
+  recivedNewName(newName:string){
+    this.updateNameMaterial(newName)
+  }
+
+  async updateNameMaterial(newName:string){
+    const materialData = await this.getDataMaterial()
+    materialData.data.dataSummarize.titulo_general = newName
+    this.localStorageServices.updateMaterial(this.id ?? '', materialData)
+    this.title = newName
+    this.showModalUpdateNamematerial=false
+  }
+
   initializeView(): void {
     // Obtiene el tamaño del contenedor del gráfico y ajusta la vista
     const element = this.mindMapContainer.nativeElement;
@@ -62,6 +78,16 @@ export class StudioModeInterfaceComponent implements OnInit, AfterViewInit, OnDe
     console.log("View initialized:", this.view);
   }
 
+  async getDataMaterial(){
+    const storedData: any = await this.localStorageServices.getData(); // Obtener datos del localStorage
+
+    if (!Array.isArray(storedData)) {
+      console.warn("Los datos en localStorage no son un array.");
+      return;
+    }
+
+    return storedData.find((item: { id: string | null }) => item.id === this.id);
+  }
 
 
   ngOnDestroy(): void {
@@ -74,15 +100,10 @@ export class StudioModeInterfaceComponent implements OnInit, AfterViewInit, OnDe
 
   // Función para cargar los datos desde el localStorage
   private async loadData(): Promise<void> {
-    const storedData: any = await this.localStorageServices.getData(); // Obtener datos del localStorage
+   
+    const foundData = await this.getDataMaterial()
 
-    if (!Array.isArray(storedData)) {
-      console.warn("Los datos en localStorage no son un array.");
-      return;
-    }
-
-    const foundData = storedData.find((item: { id: string | null }) => item.id === this.id);
-
+    this.title = foundData.data.dataSummarize.titulo_general
     if (foundData?.data) {
       const { dataMindMap, dataSummarize, dataFlashCard } = foundData.data;
       this.mindMapData = dataMindMap || null;

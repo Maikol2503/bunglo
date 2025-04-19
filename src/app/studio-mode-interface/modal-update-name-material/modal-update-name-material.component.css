@@ -1,0 +1,41 @@
+.body{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #00000048;
+
+}
+
+.body .form{
+    width: 300px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.body .form .textarea textarea{
+    width: 100%;
+    height: 100px;
+    font-size: 18px;
+    border: none;
+    resize: none;
+    
+}
+
+.body .form .btn-emit{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.body .form .btn-emit button{
+    background-color: var(--color1);
+    border: none;
+    padding: 10px;
+    color: #ffffff;
+    border-radius: 10px;
+}
+

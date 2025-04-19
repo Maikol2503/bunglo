@@ -23,6 +23,18 @@ export class LocalstorageService {
     const newData = [{ id, data }, ...existingData];
     localStorage.setItem(this.storageKey_modeStude, JSON.stringify(newData));
   }
+
+  async updateMaterial(id:string, newData:any){
+    const existingData = await this.getData();
+    let res =  existingData.filter((item:any)=>{
+      if(item.id !== id){
+        return item
+      }
+    })
+    
+    const editedMaterialData = [newData, ...res];
+    localStorage.setItem(this.storageKey_modeStude, JSON.stringify(editedMaterialData));
+  }
   
   async getDataById(id:any){
     let dataLocalstorage = await this.getData()
