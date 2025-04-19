@@ -21,8 +21,8 @@ position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #ffffffb6;
-  backdrop-filter: blur(2px); 
+  background-color: #ffffffb1;
+  backdrop-filter: blur(5px); 
 }
 
 .body .modal-update-name-of-material .modal-update-container{
