@@ -30,7 +30,7 @@ export class QuizComponent {
   showQuesions:boolean = false;
   id!:any
   quizData:any[]=[]
-  numQuestions:number=2
+  numQuestions:number=10
   numSelecOption:number = 3
   
   ngOnInit(): void {

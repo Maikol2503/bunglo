@@ -171,8 +171,8 @@ cursor: pointer;
 @media(max-width:700px){
   .body .btn-back{
     position: fixed;
-    left: 10px;
-    top:10px;
+    left: 8px;
+    top:67px;
     z-index: 1;
   }
 
@@ -181,8 +181,18 @@ cursor: pointer;
     width: 100%;
   }
 
+  .body .content-body .header {
+    margin-top: 120px;
+  }
+
+  .body .content-body .header .header-content .title .title-item{
+    font-size: 25px;
+    font-weight: 600;
+   }
+   
+
   .body .content-body .mind-map{
-    margin-top: 80px;
+    margin-top: 40px;
   }
 
   .body .content-body .section-quiz .content-section-quiz{
