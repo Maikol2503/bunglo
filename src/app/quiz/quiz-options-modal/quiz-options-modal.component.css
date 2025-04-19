@@ -54,20 +54,56 @@
 }
 
 
+
+.body .quiz-options-modal .content-quiz-options-modal .form .form-content .form-group {
+    width: 100%;
+}
+
 .body .quiz-options-modal .content-quiz-options-modal .form .form-content .form-group .select-options-group .select-options-label,
 .body .quiz-options-modal .content-quiz-options-modal .form .form-content .form-group .select-num-questions-group .select-num-questions-label{
-    border: 1px solid red;
+    padding: 10px 0px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
+.body .quiz-options-modal .content-quiz-options-modal .form .form-content .form-group .select-options-group .select-options-label .selected-option svg,
+.body .quiz-options-modal .content-quiz-options-modal .form .form-content .form-group .select-num-questions-group .select-num-questions-label .selected-option svg{
+    width: 15px;
+    height: 15px;
+}
+
 .body .quiz-options-modal .content-quiz-options-modal .form .form-content .form-group .select-options-group .select-options-label .selected-option,
 .body .quiz-options-modal .content-quiz-options-modal .form .form-content .form-group .select-num-questions-group .select-num-questions-label .selected-option{
-    border: 1px solid red;
     display: flex;
     gap: 5px;
     align-items: center;
+}
+.body .quiz-options-modal .content-quiz-options-modal .form .form-content .form-group .select-options-group .options,
+.body .quiz-options-modal .content-quiz-options-modal .form .form-content .form-group .select-num-questions-group .options{
+    position: absolute;
+    right: 0%;
+    border-radius: 15px;
+    background-color: #ffffff;
+    max-height: 200px;
+    width: 130px;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+
+.body .quiz-options-modal .content-quiz-options-modal .form .form-content .form-group .select-options-group .option,
+.body .quiz-options-modal .content-quiz-options-modal .form .form-content .form-group .select-num-questions-group .option{
+    font-size: 18px;
+    padding: 5px;
+    border-radius: 5px;
+    &:hover{
+        background-color: rgb(245, 245, 245);
+    }
 }
 
 .body .quiz-options-modal .content-quiz-options-modal .form .form-content .form-actions{
@@ -79,5 +115,14 @@
     width: 100%;
     display: flex;
     justify-content:  flex-end;
+   margin-top: 10px;
+}
+
+.body .quiz-options-modal .content-quiz-options-modal .form .form-content .form-actions .btn-generate button{
+    background-color: var(--color1);
+    border: none;
+    padding: 10px 15px;
+    color: #ffffff;
+    border-radius: 15px;
 }
 

@@ -13,49 +13,34 @@
                             <p>{{numQuestions}} Preguntas</p>
                         </div> -->
 
-                        <div class="select-options-group">
+                        <div class="select-options-group" (click)="togleModalSelectedOption();  $event.stopPropagation()">
                             <div class="select-options-label">
                                 <p class="label-text">Opciones</p>
                                 <div class="selected-option">
-                                    <p class="selected-value-text">2</p>
-                                    <img src="" alt="">
+                                    <p class="selected-value-text">{{numSelectedOption}}</p>
+                                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" x="0" y="0" viewBox="0 0 451.847 451.847" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><path d="M225.923 354.706c-8.098 0-16.195-3.092-22.369-9.263L9.27 151.157c-12.359-12.359-12.359-32.397 0-44.751 12.354-12.354 32.388-12.354 44.748 0l171.905 171.915 171.906-171.909c12.359-12.354 32.391-12.354 44.744 0 12.365 12.354 12.365 32.392 0 44.751L248.292 345.449c-6.177 6.172-14.274 9.257-22.369 9.257z" fill="#000000" opacity="1" data-original="#000000"></path></g></svg>
                                 </div>
                             </div>
-                            <ul class="options" *ngIf="openModalNumAnswer===true">
-                                <li class="option">2</li>
-                                <li class="option">3</li>
-                                <li class="option">4</li>
+                            <ul class="options" *ngIf="openModalNumOption===true" (click)="$event.stopPropagation()">
+                                <li class="option" *ngFor="let num of [].constructor(3); let i = index"  (click)="applyNumSelectedOption(i + 2)">{{ i + 2 }}</li>
                             </ul>
                         </div>
 
-                        <div class="select-num-questions-group" (click)="openModalNumQuestions = openModalNumQuestions ? false : true">
+                        <div class="select-num-questions-group" (click)="togleModalNumQuestion();  $event.stopPropagation()">
                             <div class="select-num-questions-label">
                                 <p class="label-text">Número de preguntas</p>
                                 <div class="selected-option">
                                     <p class="selected-value-text">{{numQuestions}}</p>
-                                    <img src="" alt="">
+                                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" x="0" y="0" viewBox="0 0 451.847 451.847" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><path d="M225.923 354.706c-8.098 0-16.195-3.092-22.369-9.263L9.27 151.157c-12.359-12.359-12.359-32.397 0-44.751 12.354-12.354 32.388-12.354 44.748 0l171.905 171.915 171.906-171.909c12.359-12.354 32.391-12.354 44.744 0 12.365 12.354 12.365 32.392 0 44.751L248.292 345.449c-6.177 6.172-14.274 9.257-22.369 9.257z" fill="#000000" opacity="1" data-original="#000000"></path></g></svg>
                                 </div>
                             </div>
-                            <ul class="options" *ngIf="openModalNumQuestions===true">
-                                <li class="option" (click)="applyNumQuestions(2)">2</li>
-                                <li class="option" (click)="applyNumQuestions(3)">3</li>
-                                <li class="option" (click)="applyNumQuestions(4)">4</li>
-                                <li class="option" (click)="applyNumQuestions(5)">5</li>
-                                <li class="option" (click)="applyNumQuestions(6)">6</li>
-                                <li class="option" (click)="applyNumQuestions(7)">7</li>
-                                <li class="option" (click)="applyNumQuestions(8)">8</li>
-                                <li class="option" (click)="applyNumQuestions(9)">9</li>
-                                <li class="option" (click)="applyNumQuestions(10)">10</li>
-                                <li class="option" (click)="applyNumQuestions(11)">11</li>
-                                <li class="option" (click)="applyNumQuestions(12)">12</li>
-                                <li class="option" (click)="applyNumQuestions(13)">13</li>
-                                <li class="option" (click)="applyNumQuestions(14)">14</li>
-                                <li class="option" (click)="applyNumQuestions(15)">15</li>
-                                <li class="option" (click)="applyNumQuestions(16)">16</li>
-                                <li class="option" (click)="applyNumQuestions(17)">17</li>
-                                <li class="option" (click)="applyNumQuestions(18)">18</li>
-                                <li class="option" (click)="applyNumQuestions(19)">19</li>
-                                <li class="option" (click)="applyNumQuestions(20)">20</li>
+                            <ul class="options" *ngIf="openModalNumQuestions===true" (click)="$event.stopPropagation()">
+                                <li 
+                                    class="option" 
+                                    *ngFor="let num of [].constructor(19); let i = index" 
+                                    (click)="applyNumQuestions(i + 2)">
+                                    {{ i + 2 }}
+                                </li>
                             </ul>
                         </div>
 

@@ -7,16 +7,17 @@ export class PromptService {
 
 constructor() { }
 
-getQuizPrompt(texto: string, tnum_preguntas:number, preguntas_generadas:any): string {
+getQuizPrompt(texto: string, num_preguntas:number, num_options:number, preguntas_generadas:any): string {
+  console.log(num_options)
   let text_preguntas_generadas = `- no vuelvas a hacer estas preguntas ${preguntas_generadas} `
   return `
-  Genera ${tnum_preguntas} preguntas basadas en el siguiente texto, cumpliendo estrictamente estas instrucciones:
+  Genera ${num_preguntas} preguntas basadas en el siguiente texto, cumpliendo estrictamente estas instrucciones:
   ${preguntas_generadas.length > 0 ? text_preguntas_generadas : ''}
   - La pregunta debe estar basada exclusivamente en el texto proporcionado.
   - Devuelve únicamente un objeto JSON válido, sin ningún texto adicional.
-  - Debe generarse exactamente **${tnum_preguntas} * preguntas.
+  - Debe generarse exactamente **${num_preguntas}** preguntas.
   - Cada pregunta debe incluir una única respuesta correcta.
-  - Cada pregunta debe incluir exactamente tres respuestas incorrectas.
+  - Cada pregunta debe incluir exactamente **${num_options - 1}**  respuestas incorrectas.
   - Una explicación detallada.
   - El objeto JSON debe seguir exactamente esta estructura:
 

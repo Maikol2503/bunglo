@@ -31,6 +31,7 @@ export class QuizComponent {
   id!:any
   quizData:any[]=[]
   numQuestions:number=2
+  numSelecOption:number = 3
   
   ngOnInit(): void {
     this.sidebarServices.set_SideBar_State_Minimize(true);
@@ -84,6 +85,7 @@ export class QuizComponent {
     this.showModalPersonaliceQuiz=false;
     this.showLoader1=true;
     this.numQuestions = dataConfigQuestions.numQuestions
+    this.numSelecOption = dataConfigQuestions.numSelecOption
     this.senToApi()
   }
 
@@ -100,10 +102,8 @@ export class QuizComponent {
     this.showLoader1 = true;
   
     while (allPreguntas.length < this.numQuestions) {
-      console.log('entro el el wile')
-      console.log(allPreguntas.length, 'preguntas generadas')
       let faltan = Math.abs(allPreguntas.length - this.numQuestions);
-      const prompt = this.promptServices.getQuizPrompt(text, faltan, allPreguntas);
+      const prompt = this.promptServices.getQuizPrompt(text, faltan, this.numSelecOption, allPreguntas);
       console.log(prompt)
       const response: any = await new Promise((resolve) => {
         this.modelservices.getCompletion(prompt).subscribe(resolve);
