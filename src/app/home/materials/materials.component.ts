@@ -17,14 +17,14 @@ constructor( private localStorageservices:LocalstorageService){}
     }
 
     async loadMaterials(){
-        this.materialsData = await this.localStorageservices.getData()
+        this.materialsData = await this.localStorageservices.getMaterialsData()
+        console.log(this.materialsData)
     }
 
     async delete(id:string){
         if(confirm('¿Seguro que desea eliminar este material?')){
-            let data = await this.localStorageservices.deleteMaterial(id);
-            this.localStorageservices.saveMaterialsData(data)
-            this.loadMaterials()
+            await this.localStorageservices.deleteMaterial(id);
+            await this.loadMaterials()
         }
     }
 }

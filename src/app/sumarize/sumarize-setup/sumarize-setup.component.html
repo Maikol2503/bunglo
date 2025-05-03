@@ -1,0 +1,13 @@
+<div class="body">
+    <div class="modal-upload-text" *ngIf="showModalUlploadOptions === true">
+        <div class="upload-text-container">
+            <div class="upload-text-file-options">
+                <app-file-upload-options (sendDataEvent)="recivedTextToGenerateSumarize($event)"></app-file-upload-options>
+            </div>
+        </div>
+    </div>
+
+    <div class="loader"*ngIf="showLoader1===true">
+        <app-loader1 ></app-loader1>
+    </div>
+</div>

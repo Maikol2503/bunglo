@@ -1,0 +1,73 @@
+<div class="btn-close">
+  <app-close></app-close>
+</div>
+
+<ngx-graph
+  #graph
+  class="chart-container"
+  [view]="[size[0], size[1]]"
+  [links]="data?.links || []"
+  [nodes]="data?.nodes || []"
+  layout="dagre"
+  [enableZoom]="true"
+  [panOnZoom]="true"
+  [zoomSpeed]="0.0080"
+  [draggingEnabled]="false"
+  [style.view-transition-name]="'material'+id"
+>
+  <ng-template #defsTemplate>
+    <svg:marker id="arrow" viewBox="0 -5 10 10" refX="8" refY="0" markerWidth="4" markerHeight="4" orient="auto">
+      <svg:path d="M0,-5L10,0L0,5" class="arrow-head" />
+    </svg:marker>
+  </ng-template>
+
+  <ng-template #clusterTemplate let-cluster>
+    <svg:g class="node cluster">
+      <svg:rect
+        rx="5"
+        ry="5"
+        [attr.width]="cluster.dimension.width"
+        [attr.height]="cluster.dimension.height"
+        [attr.fill]="cluster.data.color"
+      />
+    </svg:g>
+  </ng-template>
+
+  <ng-template #nodeTemplate let-node>
+    <svg:g class="node">
+      <svg:foreignObject
+      width="250"
+      [attr.height]="calculateNodeHeight(node.label)"
+      x="0"
+      y="0"
+      style="overflow: visible;"
+    >
+      <xhtml:div xmlns="http://www.w3.org/1999/xhtml">
+        <div class="node-content" [style.background]="node?.color">
+          {{ node.label }}
+        </div>
+      </xhtml:div>
+    </svg:foreignObject>
+    
+    </svg:g>
+  </ng-template>
+
+  <ng-template #linkTemplate let-link>
+    <svg:g class="edge">
+      <svg:path class="line" stroke-width="4" marker-end="url(#arrow)"></svg:path>
+      <svg:text class="edge-label" text-anchor="middle">
+        <textPath
+          class="text-path"
+          [attr.href]="'#' + link.id"
+          [style.dominant-baseline]="link.dominantBaseline"
+          startOffset="50%"
+        >
+          {{link.label}}
+        </textPath>
+      </svg:text>
+    </svg:g>
+  </ng-template>
+</ngx-graph>
+
+<!-- <button (click)="zoomIn()">+</button>
+<button (click)="zoomOut()">-</button> -->

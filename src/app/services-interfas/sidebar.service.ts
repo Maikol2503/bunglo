@@ -20,6 +20,7 @@ export class SidebarService {
 
   sidebar_apply_minimize(boolean:boolean){
     this.sidebar_Minimize.next(boolean);
+    this.show_SideBar()
   }
 
 

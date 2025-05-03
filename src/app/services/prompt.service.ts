@@ -7,6 +7,23 @@ export class PromptService {
 
 constructor() { }
 
+getTitutloPrompt(text: string, type: string): string {
+  return `
+    Genera un título breve que resuma el siguiente texto de manera clara. 
+    Solo proporciona el título sin ninguna explicación ni detalles adicionales.
+    Texto: 
+    ${text}
+
+    Devuelve el título en el siguiente formato JSON:
+
+    {
+      "title": "titulo breve"
+    }
+  `;
+}
+
+
+
 getQuizPrompt(texto: string, num_preguntas:number, num_options:number, preguntas_generadas:any): string {
   console.log(num_options)
   let text_preguntas_generadas = `- no vuelvas a hacer estas preguntas ${preguntas_generadas} `

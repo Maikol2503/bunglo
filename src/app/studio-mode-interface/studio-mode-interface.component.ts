@@ -3,7 +3,6 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MindmapComponent } from './mindmap/mindmap.component';
 import { SumarizeComponent } from './sumarize/sumarize.component';
-import { BtnBackComponent } from '../upload-text/btn-back/btn-back.component';
 import { FlashCardComponent } from './flash-card/flash-card.component';
 import { LocalstorageService } from '../services/localstorage.service';
 import { Subscription } from 'rxjs';
@@ -13,7 +12,7 @@ import { ModalUpdateNameMaterialComponent } from './modal-update-name-material/m
 @Component({
   selector: 'app-studio-mode-interface',
   standalone: true, // Agregar si es necesario
-  imports: [CommonModule, MindmapComponent, SumarizeComponent, BtnBackComponent, FlashCardComponent, RouterModule, ModalUpdateNameMaterialComponent],
+  imports: [CommonModule, MindmapComponent, SumarizeComponent, FlashCardComponent, RouterModule, ModalUpdateNameMaterialComponent],
   templateUrl: './studio-mode-interface.component.html',
   styleUrls: ['./studio-mode-interface.component.css'],
 })

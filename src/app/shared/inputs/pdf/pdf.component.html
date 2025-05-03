@@ -1,0 +1,78 @@
+<div class="body">
+    <div class="btn-back">
+      <!-- <app-btn-back></app-btn-back> -->
+    </div>
+    <div class="body-content">
+        <!-- Mostrar input de archivo cuando no haya PDFs cargados -->
+        
+        <div [style.view-transition-name]="'pdf-container'" class="inputFile" *ngIf="pdfList.length < 1">
+        <input type="file" (change)="handleFileUpload($event)" multiple>
+        <button class="file-btn" >
+          <svg [style.view-transition-name]="'pdf-svg'" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="50" x="0" y="0" viewBox="0 0 24 24" style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
+            <g>
+              <g data-name="01 align center">
+                <path d="M17.792 7.212A8 8 0 0 0 2 9a7.9 7.9 0 0 0 .9 3.671A5.49 5.49 0 0 0 5.5 23H12v-2H5.5a3.491 3.491 0 0 1-.872-6.874l1.437-.371-.883-1.193A5.942 5.942 0 0 1 4 9a6 6 0 0 1 11.94-.8l.1.758.757.1A5.99 5.99 0 0 1 18 20.65v2.087a7.989 7.989 0 0 0-.208-15.525Z" fill="#0f98ff" opacity="1" data-original="#000000" class=""></path>
+                <path d="m18.293 17.707 1.414-1.414L16.414 13a2 2 0 0 0-2.828 0l-3.293 3.293 1.414 1.414L14 15.414V24h2v-8.586Z" fill="#0f98ff" opacity="1" data-original="#000000" class=""></path>
+              </g>
+            </g>
+          </svg>
+          <p [style.view-transition-name]="'pdf'">Sube tus archivos</p>
+        </button>
+      </div>
+  
+      <!-- Mostrar input de archivo cuando haya PDFs cargados -->
+      <div class="inputFile2" [style.view-transition-name]="'pdf-container'" *ngIf="pdfList.length > 0">
+        <input type="file" (change)="handleFileUpload($event)" multiple>
+        <button class="file-btn">
+          <svg  xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" x="0" y="0" viewBox="0 0 24 24" style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
+            <g>
+              <g data-name="01 align center">
+                <path d="M17.792 7.212A8 8 0 0 0 2 9a7.9 7.9 0 0 0 .9 3.671A5.49 5.49 0 0 0 5.5 23H12v-2H5.5a3.491 3.491 0 0 1-.872-6.874l1.437-.371-.883-1.193A5.942 5.942 0 0 1 4 9a6 6 0 0 1 11.94-.8l.1.758.757.1A5.99 5.99 0 0 1 18 20.65v2.087a7.989 7.989 0 0 0-.208-15.525Z" fill="#ffffff" opacity="1" data-original="#000000" class=""></path>
+                <path d="m18.293 17.707 1.414-1.414L16.414 13a2 2 0 0 0-2.828 0l-3.293 3.293 1.414 1.414L14 15.414V24h2v-8.586Z" fill="#ffffff" opacity="1" data-original="#000000" class=""></path>
+              </g>
+            </g>
+          </svg>
+        </button>
+      </div>
+  
+      
+      <p class="mensaje-seleccionar" *ngIf="pdfList.length > 0">Seleciona los PDF que deseas utilizar</p>
+     
+      <div class="viewFiles">
+        <div *ngFor="let pdf of pdfList; let i = index" class="pdf-block" [ngClass]="{'justify-flex-star': pdf.pages.length > 1}">
+            <p class="numpdf">PDF {{i + 1}}</p>
+            <div *ngFor="let page of pdf.pages; let j = index"
+            class="page-block"
+            [ngClass]="{'selected-page': page.selected}"
+            (click)="updateSelection(i, j)"
+            [class.disabled]="getCharacterCount() >= maxCharacter && !page.selected">
+            <p class="numPage">Pagina {{j}}</p>
+            <svg *ngIf="page.selected===true" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" x="0" y="0" viewBox="0 0 507.2 507.2" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><circle cx="253.6" cy="253.6" r="253.6" style="" fill="#32ba7c" data-original="#32ba7c" class=""></circle><path d="m188.8 368 130.4 130.4c108-28.8 188-127.2 188-244.8v-7.2L404.8 152l-216 216z" style="" fill="#0aa06e" data-original="#0aa06e" class=""></path><path d="M260 310.4c11.2 11.2 11.2 30.4 0 41.6l-23.2 23.2c-11.2 11.2-30.4 11.2-41.6 0L93.6 272.8c-11.2-11.2-11.2-30.4 0-41.6l23.2-23.2c11.2-11.2 30.4-11.2 41.6 0L260 310.4z" style="" fill="#ffffff" data-original="#ffffff"></path><path d="M348.8 133.6c11.2-11.2 30.4-11.2 41.6 0l23.2 23.2c11.2 11.2 11.2 30.4 0 41.6l-176 175.2c-11.2 11.2-30.4 11.2-41.6 0l-23.2-23.2c-11.2-11.2-11.2-30.4 0-41.6l176-175.2z" style="" fill="#ffffff" data-original="#ffffff"></path></g></svg>
+                <canvas [attr.id]="page.canvasId" class="pdf-canvas"></canvas>
+            </div>
+
+
+        </div>
+      </div>
+
+      <div class="view-num-caracteres" *ngIf="pdfList.length > 0">
+          <div class="view-num-caracteres-content">
+              <p class="mensaje-minimo" *ngIf="numCharacter < minCharacter && pdfList.length > 0">Minimo {{minCharacter}} caracteres</p>
+            <div class="count-min-max">
+                <p>{{formatNumber(numCharacter)}}</p><p>/</p><p>{{formatNumber(maxCharacter)}}</p><p>Caracteres</p>
+            </div>
+          </div>
+        </div>
+    </div>
+  
+    <!-- Botón para generar el texto y mostrar el número de caracteres -->
+    <button (click)="emitCombinedText()" class="btn-generar" [disabled]="numCharacter === 0 || numCharacter < minCharacter">
+      Generar
+      <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
+        <g>
+          <path d="M502.628 278.627 389.25 392.005c-6.249 6.249-14.438 9.373-22.628 9.373s-16.379-3.124-22.628-9.373c-12.496-12.497-12.496-32.758 0-45.255L402.745 288H32c-17.673 0-32-14.327-32-32s14.327-32 32-32h370.745l-58.751-58.75c-12.496-12.497-12.496-32.758 0-45.255 12.498-12.497 32.758-12.497 45.256 0l113.378 113.378c12.496 12.496 12.496 32.758 0 45.254z" fill="#ffffff" opacity="1" data-original="#000000" class=""></path>
+        </g>
+      </svg>
+    </button>
+  </div>
+  

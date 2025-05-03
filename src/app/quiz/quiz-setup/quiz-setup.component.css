@@ -1,0 +1,14 @@
+.quiz-options-modal{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.upload-text-buttons{
+    position: absolute;
+    top: 0px;
+    left: 100px;
+    z-index: 1000000;
+}

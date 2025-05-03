@@ -7,22 +7,177 @@ export class LocalstorageService {
   private storageKey_modeStude = 'modeStudeBumglo';
   private storageKey_quiz = 'quizBumglo';
 
+  private storageKeyMatrials = 'materials'
+
   constructor() {}
+
+
+
+  async setNewMaterial(id: string, data: any, type:string, text:string, titulo:string): Promise<void> {
+    const existingData = await this.getMaterialsData();
+    const newData = [{ id, data, type, text, titulo }, ...existingData];
+    localStorage.setItem(this.storageKeyMatrials, JSON.stringify(newData));
+  }
+
+  async getMaterialsData(): Promise<any>{
+    const storageData = localStorage.getItem(this.storageKeyMatrials);
+    return storageData ? JSON.parse(storageData) : [];
+  }
+
+  async getMaterialDataById(id:string): Promise<any>{
+    const storageData = localStorage.getItem(this.storageKeyMatrials);
+    if(storageData){
+      const parsedData = JSON.parse(storageData);
+      const item = parsedData.find((item: any) => item.id === id);
+      return item || null;
+    }
+    return [];
+  }
+
+  async saveMaterialsData(data:any){
+    localStorage.setItem(this.storageKeyMatrials, JSON.stringify(data));
+  }
+
+  async deleteMaterial(id:string){
+    let dataLocalStorage = await this.getMaterialsData()
+    let res =  dataLocalStorage.filter((item:any)=>{
+      if(item.id !== id){
+        return item
+      }
+    })
+
+    this.saveMaterialsData(res)
+    return await this.getMaterialsData()
+  }
+
+
+
+  //QUIZ
+  async getDataQuizAll(): Promise<any>{
+    const storageData = await this.getMaterialsData();
+    let res =  storageData.filter((item:any)=>{
+      if(item.type === 'quiz'){
+        return item
+      }
+    })
+    return res;
+  }
+
+  async getDataQuizByID(id:string): Promise<any>{
+   const quiz = await this.getDataQuizAll();
+   let res =  quiz.filter((item:any)=>{
+    if(item.id === id){
+      return item
+    }
+  })
+  return res
+  }
+
+
+  //MINDMAP
+  async getDataMindMapAll():Promise<any>{
+    const storageData = await this.getMaterialsData();
+    let res =  storageData.filter((item:any)=>{
+      if(item.type === 'mindmap'){
+        return item
+      }
+    })
+    return res;
+  }
+
+  async getDataMindMapByID(id:string): Promise<any[]>{
+    const quiz = await this.getDataMindMapAll();
+    let res =  quiz.filter((item:any)=>{
+     if(item.id === id){
+       return item
+     }
+   })
+   return res
+  }
+
+  //SUMARIZE
+  async getDataSumarizeAll():Promise<any>{
+    const storageData = await this.getMaterialsData();
+    let res =  storageData.filter((item:any)=>{
+      if(item.type === 'sumarize'){
+        return item
+      }
+    })
+    return res;
+  }
+
+  async getDataSumarizeByID(id:string): Promise<any[]>{
+    const quiz = await this.getDataSumarizeAll();
+    let res =  quiz.filter((item:any)=>{
+     if(item.id === id){
+       return item
+     }
+   })
+   return res
+  }
+
+
+  //MODE STUDIO
+  async getDataModeStudioAll():Promise<any>{
+    const storageData = await this.getMaterialsData();
+    let res =  storageData.filter((item:any)=>{
+      if(item.type === 'mode-studio'){
+        return item
+      }
+    })
+    return res;
+  }
+
+  async getDataModeStudioByID(id:string): Promise<any[]>{
+    const quiz = await this.getDataModeStudioAll();
+    let res =  quiz.filter((item:any)=>{
+     if(item.id === id){
+       return item
+     }
+   })
+   return res
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   async getData(): Promise<any[]> {
     const storageData = localStorage.getItem(this.storageKey_modeStude);
     return storageData ? JSON.parse(storageData) : [];
   }
 
-  saveMaterialsData(data:any){
-    localStorage.setItem(this.storageKey_modeStude, JSON.stringify(data));
-  }
+  // saveMaterialsData(data:any){
+  //   
+  // }
 
-  async setNewMaterial(id: string, data: any): Promise<void> {
-    const existingData = await this.getData();
-    const newData = [{ id, data }, ...existingData];
-    localStorage.setItem(this.storageKey_modeStude, JSON.stringify(newData));
-  }
+
+
 
   async updateMaterial(id:string, newData:any){
     const existingData = await this.getData();
@@ -44,15 +199,7 @@ export class LocalstorageService {
   }
 
 
-  async deleteMaterial(id:string){
-    let dataLocalStorage = await this.getData()
-    let res =  dataLocalStorage.filter((item:any)=>{
-      if(item.id !== id){
-        return item
-      }
-    })
-    return res
-  }
+ 
   
 
 
@@ -60,10 +207,9 @@ export class LocalstorageService {
 
 
   async getDataQuiz(): Promise<any[]> {
-    const storageData = localStorage.getItem(this.storageKey_quiz);
+    const storageData = localStorage.getItem(this.storageKeyMatrials);
     return storageData ? JSON.parse(storageData) : [];
   }
-
 
   async setNewQuiz(id:string, questions:any):Promise<void>{
     // const existingData = await this.deleteQuiz(id) //si hay hubiese un quiz con el mismo id lo elimino
@@ -77,7 +223,7 @@ export class LocalstorageService {
     })
 
     const newData = [{ id, questions }, ...existingData];
-    localStorage.setItem(this.storageKey_quiz, JSON.stringify(newData));
+    localStorage.setItem(this.storageKeyMatrials, JSON.stringify(newData));
   }
 
   async getDataQuizById(id:any){
@@ -88,16 +234,65 @@ export class LocalstorageService {
   }
 
   async saveQuizzesData(data: any[]): Promise<void> {
-    localStorage.setItem(this.storageKey_quiz, JSON.stringify(data));
+    localStorage.setItem(this.storageKeyMatrials, JSON.stringify(data));
   }
 
-  async deleteQuiz(id:string){
-    let dataLocalStorage = await this.getDataQuiz()
-    let res =  dataLocalStorage.filter((item:any)=>{
-      if(item.id !== id){
-        return item
-      }
-    })
-   this.saveQuizzesData(res)
-  }
+  // async deleteQuiz(id:string){
+  //   let dataLocalStorage = await this.getDataQuiz()
+  //   let res =  dataLocalStorage.filter((item:any)=>{
+  //     if(item.id !== id){
+  //       return item
+  //     }
+  //   })
+  //  this.saveQuizzesData(res)
+  // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

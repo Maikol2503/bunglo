@@ -4,11 +4,12 @@
      padding: 20px;
      width: var(--width-sidebar);
      height: 100%;
-     border-radius: 15px;
-     --tw-shadow: 0px 2px 12px 0px rgba(0, 0, 0, .04);
+     /* border-radius: 15px; */
+     /* --tw-shadow: 0px 2px 12px 0px rgba(0, 0, 0, .04);
      --tw-shadow-colored: 0px 2px 12px 0px var(--tw-shadow-color);
-     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow); */
      transition: .3s;
+     border-right: 1px solid rgb(235, 235, 235);
 }
 
 .minimize-sidebar{
@@ -20,7 +21,7 @@
 .sidebar .sidebar-header{
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid rgb(242, 242, 242);
+    /* border-bottom: 1px solid rgb(242, 242, 242); */
     padding-bottom: 20px;
 }
 
@@ -47,14 +48,14 @@
 
 .sidebar .sidebar-header .toggle-sidebar{
     padding: 5px;
-    background-color: rgba(255, 255, 255, 0);
+    background-color: rgb(255, 255, 255);
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 5px;
     position: absolute;
     right: -10px;
-    top: 56px;
+    top: 45px;
     --tw-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.14);
     --tw-shadow-colored: 0px 2px 12px 0px var(--tw-shadow-color);
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
@@ -70,6 +71,39 @@ transform: rotate(-180deg);
 
 }
 
+
+
+.sidebar .create{
+    background-color: var(--primary-5);
+    padding: 15px;
+    border-radius: 12px;
+    margin-top: 20px;
+    
+}
+
+.sidebar .create .create-content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.sidebar .create .create-content .create-title{
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--primary-90);
+}
+
+.sidebar .create .create-content .icon svg{
+    padding: 10px;
+    width: 38px;
+    height: 38px;
+    border-radius: 100px;
+
+    background-color: var(--primary-base);
+}
+
+
 .sidebar .sidebar-menu{
     margin-top: 30px;
     display: flex;
@@ -83,7 +117,7 @@ transform: rotate(-180deg);
 .sidebar .sidebar-menu .menu-item{
     font-size: 16px;
     font-weight: 600;
-    padding:0px 0px 0px 15px;
+    padding:0px 0px 0px 0px;
     border-radius: 7px;
     
 }
@@ -91,7 +125,7 @@ transform: rotate(-180deg);
 .sidebar .sidebar-menu .menu-item .title-wrapper{
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 10px;
     padding: 10px 0px;
 }
 
@@ -122,8 +156,8 @@ transform: rotate(-180deg);
 
 .sidebar .sidebar-menu .menu-item .title-wrapper svg{
     fill: #525252;
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
     display: flex;
     align-items: center;
 }
@@ -150,21 +184,16 @@ transform: rotate(-180deg);
 
 .sidebar .submenu-materials .submenu-item a.selected {
    
-    color: var(--color1) !important;
-    font-weight: 600;
+    color: var(--primary-60) !important;
+    font-weight: 600 !important;
 }
-
-/* .sidebar .sidebar-menu .selected {
-    background-color: #267dbc;
-    color: rgb(255, 255, 255) !important; 
-} */
 
 
 .sidebar .sidebar-menu .selected .menu-title,
-.sidebar .sidebar-menu .selected  svg{
-    color: var(--color1) !important;
+.sidebar .sidebar-menu .selected  svg path{
+    color: var(--primary-base) !important;
     font-weight: 700 !important;
-    fill: var(--color1) !important;
+    fill: var(--primary-base) !important;
 
 }
 

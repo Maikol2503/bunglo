@@ -1,0 +1,25 @@
+<div class="wrapper" >
+    <div class="content-container">
+        <div class="btn-back">
+            <!-- <app-btn-back></app-btn-back> -->
+        </div>
+        <header class="header">
+            <h1 [style.view-transition-name]="'text'">Introduce tu texto</h1>
+        </header>
+        <div class="input-container" >
+            <div class="input-group" >
+                <div class="text-input">
+                    <textarea [(ngModel)]="textInput" placeholder="Inserte su texto aqui..."></textarea>
+                </div>
+                <div class="button-container">
+                    <button (click)="sendDataToParent()">
+                        <svg  xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="18" height="18" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><g data-name="Layer 9"><path d="M115.41 485.87a62.37 62.37 0 1 0-88.2-88.21C9.86 415 3 441.89.85 466.24a218.32 218.32 0 0 0 .24 41.4c.37 3.45 3.69 4.23 4.26 4.33h.17c1.39 0 21.32.45 27.46-19a39.43 39.43 0 0 1 4.81-10.24 6.74 6.74 0 0 1 12.21 4.8 33 33 0 0 0 4.35 21.3 4.13 4.13 0 0 0 4.18 2c20.88-3.2 42.26-10.34 56.88-24.96zM511.51 46.78C510 20.69 491.31 2 465.22.49c-88.62-5.28-187.38 32.3-264.4 109.32l-20.54 20.54q-11.11 11.1-21.1 22.78H94.42c-13.75.53-25.91 8.46-32.79 20.1l-38.07 76.15a39.51 39.51 0 0 0-2.12 8.46A18.74 18.74 0 0 0 40 276.35h48.08c-6.24 21-2.08 41.67 11.27 55l81.29 81.29c13.34 13.35 34 17.51 55 11.27v48.13a18.74 18.74 0 0 0 18.51 18.51 39.51 39.51 0 0 0 8.46-2.12l76.15-38.07c11.64-6.88 19.57-19 20.1-32.79v-64.75q11.65-10 22.78-21.1l20.54-20.54c77.03-77.02 114.61-175.78 109.33-264.4zm-107.9 154.31a65.55 65.55 0 1 1 0-92.7 65.55 65.55 0 0 1 0 92.7zM79.12 102.22a19.06 19.06 0 0 1 0-26.95l49.36-49.36a19.06 19.06 0 0 1 27 27l-49.36 49.36a19.06 19.06 0 0 1-27-.05zM7.57 90.91a19.06 19.06 0 0 1 0-26.91l25.31-25.35A19.06 19.06 0 0 1 59.83 65.6L34.52 90.91a19 19 0 0 1-26.95 0zM408.17 431.26a19 19 0 0 1 0-26.95L457.52 355a19.06 19.06 0 1 1 27 26.95l-49.35 49.36a19.06 19.06 0 0 1-27-.05zM419.47 502.81a19.06 19.06 0 0 1 0-26.95l25.31-25.31a19.06 19.06 0 1 1 27 26.95l-25.31 25.31a19.05 19.05 0 0 1-27 0z" fill="#ffffff" opacity="1" data-original="#000000" class=""></path></g></g></svg>
+                    </button>
+                </div>
+            </div>
+            <div class="option-pdf">
+                <a href=""> O <span>cargar desde su dispositivo</span></a>
+            </div>
+        </div>
+    </div>
+</div>

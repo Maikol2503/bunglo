@@ -1,0 +1,111 @@
+.file-upload-container{
+    margin: 0 auto;
+    padding: 70px;
+    background-color: #ffffff;
+    
+    max-width: 1000px;
+}
+
+.file-upload-container .upload-title{
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 20px;
+}
+
+.file-upload-container .upload-options {
+    margin-top: 40px;
+    border-radius: 15px;
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    display: grid;
+    padding: 70px;
+    grid-template-columns: repeat(2, 1fr); /* Crea una cuadrícula de 4 columnas iguales */
+    gap: 20px; /* Espacio entre las columnas (puedes ajustar el valor) */
+}
+
+
+
+.file-upload-container .upload-options .upload-option{
+    padding: 25px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap:20px;
+    cursor: pointer;
+    transition: .2s;
+    border: 3px solid var(--primary-60)
+}
+
+.file-upload-container .upload-options .upload-option:hover{
+    --tw-shadow: 0px 2px 12px 0px #005a8476;
+     --tw-shadow-colored: 0px 2px 12px 0px var(--tw-shadow-color);
+     box-shadow: var(--tw-ring-offset-shadow, 0 0 #005a8430), var(--tw-ring-shadow, 0 0 #005a8430), var(--tw-shadow);
+}
+
+.file-upload-container .upload-options .upload-option .svg{
+
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.file-upload-container .upload-options .upload-option .svg svg {
+    width: 50px;
+    height: 50px;
+} 
+
+.file-upload-container .upload-options .upload-option .svg svg path{
+    fill: var(--primary-60);
+}
+
+/* .file-upload-container .upload-options .upload-option .svg svg */
+
+.file-upload-container .upload-options .upload-option .upload-text{
+    
+    padding: 0px;
+    width: 100%;
+    border-radius: 10px;
+    color:var(--primary-60);
+    font-size: 14px;
+    /* margin-top: 20px; */
+    font-weight: 600;
+    text-align: center;
+}
+
+.displayNone{
+    opacity: 1;
+}
+
+
+
+
+
+
+@media(max-width:700px){
+    .file-upload-container .upload-options{
+        max-width: 100%;
+        overflow-x: auto;
+    }
+
+    .file-upload-container .upload-options .upload-option{
+        min-height: 240px;
+        width: 180px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        --tw-shadow: 0px 2px 12px 0px rgba(0, 0, 0, .04);
+         --tw-shadow-colored: 0px 2px 12px 0px var(--tw-shadow-color);
+         box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+    }
+
+    .file-upload-container .upload-options .upload-option .upload-text{
+        text-align: center;
+    }
+}
+
+
+
+

@@ -1,0 +1,12 @@
+<div class="body-tools">
+    <div class="tool-card-wrapper">
+        <div class="tool-card" *ngFor="let tool of tools" (click)="toggleModal(); updateSelectedTool(tool.name)" [routerLink]="[tool.url]">
+            <div class="tool-icon-wrapper">
+                <div class="tool-icon" [innerHTML]="tool.safeSvg"></div>
+            </div>
+            <div class="buttom-go">
+                <button class="">{{ tool.title }}</button>
+            </div>
+        </div>
+    </div>
+</div>

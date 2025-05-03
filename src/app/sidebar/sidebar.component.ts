@@ -28,8 +28,9 @@ export class SidebarComponent {
   }
 
   async ngOnInit(): Promise<any>  {
-    this.materialsData = await this.localStorageservices.getData()
-    this.checkIfInModeStude(); 
+    this.materialsData = await this.localStorageservices.getMaterialsData()
+    this.materialsData = this.materialsData
+    this.checkIfInModeStude();
   }
 
    // Función para verificar si estamos en la ruta 'mode-stude'

@@ -5,8 +5,9 @@
 
 .body .body-content .materials .materials-content{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 20px;
+    
 }
 
 .body .body-content .title-content-body{
@@ -14,15 +15,20 @@
 }
 
 .body .body-content .materials .materials-content .material{
-    position: relative;
+    border: 2px solid #ededed;
     background-color: #ffffff;
+    position: relative;
     width: auto;
     min-height: 200px;   
     border-radius: 15px;
     padding: 20px;
-     --tw-shadow: 0px 2px 12px 0px rgba(0, 0, 0, .04);
+
+    &&:hover{
+        border: 2px solid #e0e0e0;
+    }
+     /* --tw-shadow: 0px 2px 12px 0px rgba(0, 61, 62, 0.184);
      --tw-shadow-colored: 0px 2px 12px 0px var(--tw-shadow-color);
-     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+     box-shadow: var(--tw-ring-offset-shadow, 0 0 #00000027), var(--tw-ring-shadow, 0 0 #00000019), var(--tw-shadow); */
 }
 
 .body .body-content .materials .materials-content .material .btn-delete{
@@ -53,6 +59,11 @@
     
 }
 
+
+.body .body-content .materials .materials-content .material .material-content .description{
+    font-size: 14px;
+}
+
 .body .body-content .materials .materials-content .material .material-content .footer{
     width: 100%;
     display: flex;
@@ -61,20 +72,20 @@
 
 .body .body-content .materials .materials-content .material .material-content .footer button{
     border: none;
-    background-color: #dbefff;
+    background-color: var( --teal-10);
     display: flex;
     align-items: flex-end;
     align-items: center;
     padding:  10px 15px;
     border-radius: 13px;
-    color:var(--color1);
+    color:var( --teal-60);
     font-weight: 600;
     gap: 10px;
     cursor: pointer;
 }
 
 .body .body-content .materials .materials-content .material .material-content .footer button svg path{
-    fill: var(--color1);
+    fill: var( --teal-60);
 }
 
 .body .body-content .materials .materials-content .material .material-content .title{

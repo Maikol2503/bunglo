@@ -1,12 +1,67 @@
 /* You can add global styles to this file, and also import other style files */
 /* You can add global styles to this file, and also import other style files */
 :root {
-    --color1: #316fbf;
-    --color13: #f5f6f9;
-    --width-sidebar:230px;
-    --width-sidebar-minimize:90px;
+     /* Escala de grises */
+  --gray-10: #dadada;
+  --gray-20: #c8c8c8;
+  --gray-30: #b6b6b6;
+  --gray-40: #a3a3a3;
+  --gray-base: #919191;
+  --gray-60: #797979;
+  --gray-70: #616161;
+  --gray-80: #494949;
+  --gray-90: #303030;
 
-    
+  /* Escala azul */
+  --blue-10: #c6d5ef;
+  --blue-20: #a9c0e7;
+  --blue-30: #8cabde;
+  --blue-40: #7098d6;
+  --blue-base: #5381ce;
+  --blue-60: #456cac;
+  --blue-70: #375689;
+  --blue-80: #2a4167;
+  --blue-90: #1c2b45;
+
+  /* Escala violeta */
+  --violet-10: #ddd9f8;
+  --violet-20: #ccc8f5;
+  --violet-30: #bbb2f2;
+  --violet-40: #aa9fee;
+  --violet-base: #998ecb;
+  --violet-60: #8075c4;
+  --violet-70: #665b9d;
+  --violet-80: #4d4676;
+  --violet-90: #332f4e;
+
+  /* Escala rosa */
+  --pink-10: #fff0f0;
+  --pink-20: #ffcddf;
+  --pink-30: #ffbcbf;
+  --pink-40: #ffabab;
+  --pink-base: #ff99af;
+  --pink-60: #d58085;
+  --pink-70: #aa678a;
+  --pink-80: #804450;
+  --pink-90: #553335;
+
+/* Escala azul */
+--primary-5: #e9f0ff;
+--primary-10: #d2dcef;
+--primary-20: #9ebfe0;
+--primary-30: #7aa6d6;
+--primary-40: #568dcc;
+--primary-base: #2471dd;
+--primary-60: #00396f;
+--primary-70: #002e59;
+--primary-80: #002244;
+--primary-90: #00162f;
+
+
+  --color1: #316fbf;
+  --color13: #f5f6f9;
+  --width-sidebar:230px;
+  --width-sidebar-minimize:90px;
 }
   
 
@@ -23,8 +78,10 @@
 }
 
 body{
-    
-    background-color: var(--color13);
+  
+    overflow-y: scroll;
+  
+    background-color: white;
 }
 
 .no-scroll {

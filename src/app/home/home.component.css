@@ -16,7 +16,7 @@
     left: 0;
     width: var(--width-sidebar); /* Ajusta el ancho según sea necesario */
     height: 100vh; /* Ocupar toda la altura de la pantalla */
-    padding: 10px 0px 10px 10px;
+  
 }
 
 .home-body .home-container .minimize-sidebar{
@@ -32,7 +32,7 @@
 }
 
 .home-body .home-container .body-content .materials{
-    margin-top: 100px;
+    margin-top: 40px;
 }
 
 
