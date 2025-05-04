@@ -78,12 +78,17 @@
 }
 
 body{
-  
     overflow-y: scroll;
-  
     background-color: white;
 }
 
 .no-scroll {
     overflow: hidden;
   }
+
+
+@media(max-width:600px){
+  body{
+    background-color: #f1f5fa;
+  }
+}

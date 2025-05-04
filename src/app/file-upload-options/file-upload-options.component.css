@@ -1,7 +1,7 @@
 .file-upload-container{
     margin: 0 auto;
     padding: 70px;
-    background-color: #ffffff;
+    background-color: #ffffff00;
     
     max-width: 1000px;
 }
@@ -84,14 +84,26 @@
 
 
 @media(max-width:700px){
+    .file-upload-container{
+        padding: 10px;
+        max-width: 100%;
+    }
+
+    .file-upload-container .upload-title {
+
+        margin-top: 30px;
+    }
     .file-upload-container .upload-options{
         max-width: 100%;
         overflow-x: auto;
+        padding: 20px;
+        box-shadow: none;
+        margin-top: 50px;
     }
 
     .file-upload-container .upload-options .upload-option{
-        min-height: 240px;
-        width: 180px;
+        min-height:auto;
+        width: auto;
         display: flex;
         justify-content: center;
         flex-direction: column;
@@ -105,7 +117,4 @@
         text-align: center;
     }
 }
-
-
-
 

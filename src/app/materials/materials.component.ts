@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { LocalstorageService } from '../../services/localstorage.service';
+import { LocalstorageService } from '../services/localstorage.service';
 import { RouterModule } from '@angular/router';
 
 @Component({
