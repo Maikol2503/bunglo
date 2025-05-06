@@ -9,6 +9,29 @@
     padding: 10px 40px;
 }
 
+.tools{
+    position: relative;
+    margin-top: 60px;
+    padding-top: 40px;
+}
+
+.tools .title p{
+    color: white;
+    text-align: center;
+    margin-top: 0px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.tools .fondo{
+    display: none;
+}
+
+.tools .tools-wrapper{
+    margin-top: 20px;
+}
+
+
 .home-body .home-container .sidebar-container{
     transition: .4s;
     position: fixed;
@@ -33,15 +56,16 @@
 
 .home-body .home-container .body-content .materials{
     margin-top: 40px;
+    padding: 10px;
 }
 
 
 
 @media(max-width:700px){
     .home-body{
-        margin-top: 80px;
+        margin-top: 50px;
         width: 100%;
-        padding: 10px;
+        padding: 0px;
     }
 
     .home-body .home-container .search{
@@ -52,6 +76,19 @@
         max-width: 100%;
         padding: 0px;
     }
+
+    .tools .fondo{
+        display: block;
+        top: 0px;
+        left: 0px;
+        z-index: -1;
+        background-color: rgb(0, 75, 136);
+        position: absolute;
+        min-height: 400px;
+        width: 100%;
+        border-radius: 0px 0px 20px 20px;
+    }
+    
 
     .home-body .home-container .body-content{
         width: 100%;
