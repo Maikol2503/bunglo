@@ -1,5 +1,5 @@
 
-import { QuizOptionsModalComponent } from './quiz-options-modal/quiz-options-modal.component';
+import { QuizOptionsModalComponent } from '../../shared/modals/modal-quiz/quiz-options-modal/quiz-options-modal.component';
 import { CommonModule } from '@angular/common';
 import { AfterContentInit, AfterViewInit, Component, OnInit } from '@angular/core';
 import { Loader1Component } from '../../../../loader1/loader1.component';
@@ -69,10 +69,10 @@ export class QuizSetupComponent implements OnInit{
 
 
   async loadQuizData(id: string) {
-    const quiz = await this.localStorageServices.getDataQuizById(id);
+    const quiz = await this.localStorageServices.getDataQuizByID(id);
     if (quiz) {
-      this.textToGenerateQuiz = quiz.text;  // Usamos el texto almacenado para regenerar el quiz
-      this.titulo = quiz.titulo;
+      this.textToGenerateQuiz = quiz[0].text;  // Usamos el texto almacenado para regenerar el quiz
+      this.titulo = quiz[0].titulo;
       this.modalUploadOptionServices.updateState(false)
       this.showModalPersonaliceQuiz = true;  // Mostrar el modal de personalización
     } else {
@@ -127,7 +127,7 @@ export class QuizSetupComponent implements OnInit{
   
   async deleteQuiz(id:string){
     
-    let dataLocalStorage = await this.localStorageServices.getDataQuiz()
+    let dataLocalStorage = await this.localStorageServices.getMaterialsData()
     let res =  dataLocalStorage.filter((item:any)=>{
       if(item.id !== id){
         return item

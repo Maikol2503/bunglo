@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MindmapComponent } from './mindmap.component';
+import { ModeStudioQuizComponent } from './mode-studio-quiz.component';
 
-describe('MindmapComponent', () => {
-  let component: MindmapComponent;
-  let fixture: ComponentFixture<MindmapComponent>;
+describe('ModeStudioQuizComponent', () => {
+  let component: ModeStudioQuizComponent;
+  let fixture: ComponentFixture<ModeStudioQuizComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MindmapComponent]
+      imports: [ModeStudioQuizComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(MindmapComponent);
+    fixture = TestBed.createComponent(ModeStudioQuizComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

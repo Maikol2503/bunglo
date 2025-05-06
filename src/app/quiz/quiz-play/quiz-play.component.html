@@ -12,7 +12,7 @@
       <div class="quiz-wrapper" *ngIf="showQuiz===true">
         <div class="header">
           <div class="close">
-            <button (click)="back()">X</button>
+            <button [routerLink]="['/home']" routerLinkActive="router-link-active" >X</button>
           </div>
           <div class="progress-bar">
             <div class="progress" [style.width.%]="progress"></div>

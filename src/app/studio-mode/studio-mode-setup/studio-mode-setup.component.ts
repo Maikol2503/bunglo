@@ -52,7 +52,8 @@ export class StudioModeSetupComponent implements OnInit {
     this.dataModeStudio = {
       'mindmap':mindMapData,
       'sumarize':sumarizeData,
-      'flashcard':flashCardData
+      'flashcard':flashCardData,
+      'quiz':[]
     } 
     this.saveDataLocalStorage()
   }

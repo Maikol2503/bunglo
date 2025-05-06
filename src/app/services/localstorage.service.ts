@@ -14,6 +14,7 @@ export class LocalstorageService {
 
 
   async setNewMaterial(id: string, data: any, type:string, text:string, titulo:string): Promise<void> {
+    await this.deleteMaterial(id)
     const existingData = await this.getMaterialsData();
     const newData = [{ id, data, type, text, titulo }, ...existingData];
     localStorage.setItem(this.storageKeyMatrials, JSON.stringify(newData));
@@ -40,14 +41,13 @@ export class LocalstorageService {
 
   async deleteMaterial(id:string){
     let dataLocalStorage = await this.getMaterialsData()
-    let res =  dataLocalStorage.filter((item:any)=>{
+    let res = await dataLocalStorage.filter((item:any)=>{
       if(item.id !== id){
         return item
       }
     })
 
-    this.saveMaterialsData(res)
-    return await this.getMaterialsData()
+    await this.saveMaterialsData(res)
   }
 
 
@@ -139,64 +139,80 @@ export class LocalstorageService {
   }
 
 
+  async deleteQuizOfTheModeStudio(id: string): Promise<void> {
+    const material:any = await this.getDataModeStudioByID(id);
 
+    const updatedMaterial = {
+      ...material[0],
+      data: {
+        ...material[0].data,
+        quiz: []
+      }
+    };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  async getData(): Promise<any[]> {
-    const storageData = localStorage.getItem(this.storageKey_modeStude);
-    return storageData ? JSON.parse(storageData) : [];
+ 
+    await this.setNewMaterial(updatedMaterial.id, updatedMaterial.data, updatedMaterial.type, updatedMaterial.text, updatedMaterial.titulo);
+  
   }
 
-  // saveMaterialsData(data:any){
-  //   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // async getData(): Promise<any[]> {
+  //   const storageData = localStorage.getItem(this.storageKey_modeStude);
+  //   return storageData ? JSON.parse(storageData) : [];
   // }
 
+  // // saveMaterialsData(data:any){
+  // //   
+  // // }
 
 
 
-  async updateMaterial(id:string, newData:any){
-    const existingData = await this.getData();
-    let res =  existingData.filter((item:any)=>{
-      if(item.id !== id){
-        return item
-      }
-    })
+
+  // async updateMaterial(id:string, newData:any){
+  //   const existingData = await this.getData();
+  //   let res =  existingData.filter((item:any)=>{
+  //     if(item.id !== id){
+  //       return item
+  //     }
+  //   })
     
-    const editedMaterialData = [newData, ...res];
-    localStorage.setItem(this.storageKey_modeStude, JSON.stringify(editedMaterialData));
-  }
+  //   const editedMaterialData = [newData, ...res];
+  //   localStorage.setItem(this.storageKey_modeStude, JSON.stringify(editedMaterialData));
+  // }
   
-  async getDataById(id:any){
-    let dataLocalstorage = await this.getData()
-    if (!dataLocalstorage) return null;
-    let result = dataLocalstorage.find((item:any) => item.id === id)
-    return result
-  }
+  // async getDataById(id:any){
+  //   let dataLocalstorage = await this.getData()
+  //   if (!dataLocalstorage) return null;
+  //   let result = dataLocalstorage.find((item:any) => item.id === id)
+  //   return result
+  // }
 
 
  
@@ -206,46 +222,46 @@ export class LocalstorageService {
 
 
 
-  async getDataQuiz(): Promise<any[]> {
-    const storageData = localStorage.getItem(this.storageKeyMatrials);
-    return storageData ? JSON.parse(storageData) : [];
-  }
+  // async getDataQuiz(): Promise<any[]> {
+  //   const storageData = localStorage.getItem(this.storageKeyMatrials);
+  //   return storageData ? JSON.parse(storageData) : [];
+  // }
 
-  async setNewQuiz(id:string, questions:any):Promise<void>{
-    // const existingData = await this.deleteQuiz(id) //si hay hubiese un quiz con el mismo id lo elimino
+  // async setNewQuiz(id:string, questions:any):Promise<void>{
+  //   // const existingData = await this.deleteQuiz(id) //si hay hubiese un quiz con el mismo id lo elimino
 
-    let dataLocalStorage = await this.getDataQuiz()
-    //si hay hubiese un quiz con el mismo id lo elimino
-    let existingData =  dataLocalStorage.filter((item:any)=>{
-      if(item.id !== id){
-        return item
-      }
-    })
-
-    const newData = [{ id, questions }, ...existingData];
-    localStorage.setItem(this.storageKeyMatrials, JSON.stringify(newData));
-  }
-
-  async getDataQuizById(id:any){
-    let dataLocalstorage = await this.getDataQuiz()
-    if (!dataLocalstorage) return null;
-    let result = dataLocalstorage.find((item:any) => item.id === id)
-    return result
-  }
-
-  async saveQuizzesData(data: any[]): Promise<void> {
-    localStorage.setItem(this.storageKeyMatrials, JSON.stringify(data));
-  }
-
-  // async deleteQuiz(id:string){
   //   let dataLocalStorage = await this.getDataQuiz()
-  //   let res =  dataLocalStorage.filter((item:any)=>{
+  //   //si hay hubiese un quiz con el mismo id lo elimino
+  //   let existingData =  dataLocalStorage.filter((item:any)=>{
   //     if(item.id !== id){
   //       return item
   //     }
   //   })
-  //  this.saveQuizzesData(res)
+
+  //   const newData = [{ id, questions }, ...existingData];
+  //   localStorage.setItem(this.storageKeyMatrials, JSON.stringify(newData));
   // }
+
+  // async getDataQuizById(id:any){
+  //   let dataLocalstorage = await this.getDataQuiz()
+  //   if (!dataLocalstorage) return null;
+  //   let result = dataLocalstorage.find((item:any) => item.id === id)
+  //   return result
+  // }
+
+  // async saveQuizzesData(data: any[]): Promise<void> {
+  //   localStorage.setItem(this.storageKeyMatrials, JSON.stringify(data));
+  // }
+
+  // // async deleteQuiz(id:string){
+  // //   let dataLocalStorage = await this.getDataQuiz()
+  // //   let res =  dataLocalStorage.filter((item:any)=>{
+  // //     if(item.id !== id){
+  // //       return item
+  // //     }
+  // //   })
+  // //  this.saveQuizzesData(res)
+  // // }
 
 
 

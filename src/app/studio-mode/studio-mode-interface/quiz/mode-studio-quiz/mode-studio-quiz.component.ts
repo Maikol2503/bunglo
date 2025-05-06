@@ -1,15 +1,14 @@
 import { AfterContentInit, AfterViewInit, Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { LocalstorageService } from '../../services/localstorage.service';
+import { LocalstorageService } from '../../../../services/localstorage.service';
 import { FormsModule } from '@angular/forms';
 import { register } from 'swiper/element/bundle';
 import { CommonModule, Location } from '@angular/common';
 import { ModalResultOfQuestionComponent } from './modal-result-of-question/modal-result-of-question.component';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { SidebarComponent } from '../../sidebar/sidebar.component';
-import { SidebarService } from '../../services-interfas/sidebar.service';
+import { SidebarComponent } from '../../../../sidebar/sidebar.component';
+import { SidebarService } from '../../../../services-interfas/sidebar.service';
 register();
 
-// Modelo para las preguntas
 interface Question {
   question: string;
   answer_correct: string;
@@ -18,20 +17,19 @@ interface Question {
   selected_answer?: string;
   explanation:string;
 }
-
 @Component({
-  selector: 'app-quiz-play',
+  selector: 'app-mode-studio-quiz',
   imports: [CommonModule, FormsModule, ModalResultOfQuestionComponent, RouterModule],
-  templateUrl: './quiz-play.component.html',
-  styleUrl: './quiz-play.component.css',
+  templateUrl: './mode-studio-quiz.component.html',
+  styleUrl: './mode-studio-quiz.component.css',
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class QuizPlayComponent implements OnInit {
+export class ModeStudioQuizComponent implements OnInit {
 
   constructor(private LocalStorageServices:LocalstorageService, private location:Location, private route: ActivatedRoute, private sideBarServices:SidebarService){}
-  // @Input() data!: any[];  
-  data!:any
-  questions:Question[]=[]
+  // deberia hacer la consulta a al materia de modo estudio y sacer el quiz 
+  dataQuiz: any[] = [];
+  questions:any
   id!:any
   progress = 0
   currentStep = 0;
@@ -57,12 +55,10 @@ export class QuizPlayComponent implements OnInit {
 
 
   async getData(){
-    console.log(this.id)
-    this.data = await this.LocalStorageServices.getDataQuizByID(this.id)
-    console.log(this.data)
-    this.data = this.data[0].data
-    console.log(this.data)
-    this.totalSteps = this.questions.length;
+    const materialData = await this.LocalStorageServices.getMaterialDataById(this.id)
+    this.dataQuiz = materialData.data.quiz
+    // this.data = await this.LocalStorageServices.getDataQuizByID(this.id)
+    this.totalSteps = this.dataQuiz.length;
     this.currentStep=1;
     this.updateProgress();
     return 
@@ -131,9 +127,9 @@ export class QuizPlayComponent implements OnInit {
     const allMaterials = await this.LocalStorageServices.getMaterialsData();
     const UpdateData = allMaterials.map((material:any)=>{
       
-      if(material.type === 'quiz' && material.id === this.id){
-        material.data[index].selected_answer = selectedOption;
-        material.data[index].answered = true
+      if(material.type === 'mode-studio' && material.id === this.id){
+        material.data.quiz[index].selected_answer = selectedOption;
+        material.data.quiz[index].answered = true
       }
 
       return material
@@ -164,7 +160,7 @@ export class QuizPlayComponent implements OnInit {
     let correctas = 0;
     let incorrectas = 0;
   
-    this.data.forEach((q: Question) => {
+    this.dataQuiz.forEach((q: Question) => {
       if (q.answered && q.selected_answer) {
         if (q.selected_answer === q.answer_correct) {
           correctas++;
@@ -177,7 +173,7 @@ export class QuizPlayComponent implements OnInit {
     this.dataResultOfQuiz = [
       {
         idQuiz:this.id,
-        numQuestions: this.data.length,
+        numQuestions: this.dataQuiz.length,
         correctas: correctas,
         incorrectas: incorrectas
       }
@@ -192,3 +188,4 @@ export class QuizPlayComponent implements OnInit {
   }
   
 }
+

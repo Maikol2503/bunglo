@@ -34,6 +34,7 @@ export class StudioModeInterfaceComponent implements OnInit, AfterViewInit, OnDe
 
   constructor(
     private route: ActivatedRoute,
+    private router:Router,
     private localStorageServices: LocalstorageService,
     private renderer: Renderer2,
     private sidebarServices:SidebarService,
@@ -54,6 +55,7 @@ export class StudioModeInterfaceComponent implements OnInit, AfterViewInit, OnDe
       this.id = params.get('id'); // Obtener el 'id' de la URL
       await this.loadData();
     });
+    console.log(this.id)
   }
 
 
@@ -68,10 +70,10 @@ export class StudioModeInterfaceComponent implements OnInit, AfterViewInit, OnDe
   }
 
   async updateNameMaterial(newName:string){
-    const materialData = await this.getDataMaterial()
-    this.localStorageServices.updateMaterial(this.id ?? '', materialData)
-    this.title = newName
-    this.showModalUpdateNamematerial=false
+    // const materialData = await this.getDataMaterial()
+    // this.localStorageServices.updateMaterial(this.id ?? '', materialData)
+    // this.title = newName
+    // this.showModalUpdateNamematerial=false
   }
 
   initializeView(): void {
@@ -136,6 +138,10 @@ export class StudioModeInterfaceComponent implements OnInit, AfterViewInit, OnDe
       this.renderer.removeClass(document.body, 'no-scroll');  // Restaurar scroll
     }
   
+  }
+
+  redirectQuiz(id:any){
+    this.router.navigate(['material/mode-studio/quiz-setup/'+id])
   }
 
 }
