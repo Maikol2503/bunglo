@@ -98,8 +98,10 @@
     }
 
     .body-tools .tool-card-wrapper .tool-card{
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
         display: flex;
-        min-height: auto;
+        min-height: 160px;
+        max-height: 160px;
         min-width: auto;
         flex-direction: column;
         justify-content: center;
