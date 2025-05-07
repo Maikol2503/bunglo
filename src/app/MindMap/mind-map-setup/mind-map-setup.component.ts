@@ -27,9 +27,11 @@ export class MindMapSetupComponent implements OnInit{
   textToGenerateMindMap:string = '';
   id:string = '';
   dataMindMap:any;
-  titulo:string = '';
+  description:string = '';
   showModalUlploadOptions!:boolean
   showLoader1:boolean = false;
+  type!:string;
+  name!:string;
 
   ngOnInit(): void {
     this.sideBarServices.Display_None()
@@ -52,8 +54,10 @@ export class MindMapSetupComponent implements OnInit{
 
   async saveDataLocalStorage(){
     this.id = await this.generarIDSeguro()
-    this.titulo = await this.generateData.titulo(this.textToGenerateMindMap, 'mindmap')
-    await this.localStorageServices.setNewMaterial(this.id, this.dataMindMap, 'mindmap', this.textToGenerateMindMap, this.titulo); //Guardo la data del quiz
+    this.type = 'mindmap';
+    this.name = 'Mapa Mental';
+    this.description = await this.generateData.description(this.textToGenerateMindMap, this.type)
+    await this.localStorageServices.setNewMaterial(this.id, this.dataMindMap, this.type, this.textToGenerateMindMap, this.description, this.name); //Guardo la data del quiz
     await this.router.navigate(['/mindmap/',this.id]);
   }
 

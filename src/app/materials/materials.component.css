@@ -31,32 +31,30 @@
      box-shadow: var(--tw-ring-offset-shadow, 0 0 #00000027), var(--tw-ring-shadow, 0 0 #00000019), var(--tw-shadow); */
 }
 
-.body .body-content .materials .materials-content .material .btn-delete{
-    position: absolute;
-    right: 7px;
-    top: 7px;
-    border: none;
-    background-color: #ffffff00;
-    height: 25px;
-    width: 25px;
+
+
+
+
+.body .body-content .materials .materials-content .material .header{
     display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 100%;
-    cursor: pointer;
-    transition: .2s;
+    justify-content: space-between;
 }
 
-.body .body-content .materials .materials-content .material .btn-delete:hover{
-    background-color: #eaeaea;
+
+.body .body-content .materials .materials-content .material .header .img{
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+    background-color: var(--primary-5);
 }
+
 
 .body .body-content .materials .materials-content .material .material-content{
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    
+    gap: 10px;
+    margin-top: 20px;
 }
 
 
@@ -64,31 +62,19 @@
     font-size: 14px;
 }
 
-.body .body-content .materials .materials-content .material .material-content .footer{
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-}
 
-.body .body-content .materials .materials-content .material .material-content .footer button{
-    border: none;
-    background-color: var( --teal-10);
-    display: flex;
-    align-items: flex-end;
-    align-items: center;
-    padding:  10px 15px;
-    border-radius: 13px;
-    color:var( --teal-60);
-    font-weight: 600;
-    gap: 10px;
-    cursor: pointer;
-}
+
+
+
+
+
+
 
 .body .body-content .materials .materials-content .material .material-content .footer button svg path{
     fill: var( --teal-60);
 }
 
-.body .body-content .materials .materials-content .material .material-content .title{
+.body .body-content .materials .materials-content .material .material-content .type{
     font-size: 16px;
     
 }
@@ -120,15 +106,9 @@
 
     .body .body-content .materials .materials-content .material{
         min-height: 100px;
-        border: none;
-     /* --tw-shadow: 0px 2px 12px 0px rgba(0, 61, 62, 0.184);
-     --tw-shadow-colored: 0px 2px 12px 0px var(--tw-shadow-color);
-     box-shadow: var(--tw-ring-offset-shadow, 0 0 #00000027), var(--tw-ring-shadow, 0 0 #00000019), var(--tw-shadow);  */
     }
 
-    .body .body-content .materials .materials-content .material .material-content .description{
-        margin-top: 30px;
-    }
+  
 }
 
 

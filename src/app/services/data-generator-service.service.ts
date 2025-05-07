@@ -203,8 +203,8 @@ export class DataGeneratorServiceService {
   }
 
  
-  // Titulo
-  async titulo(text:string, type:string):Promise<string>{
+  // description
+  async description(text:string, type:string):Promise<string>{
     const prompt = this.prompt.getTitutloPrompt(text, type);
     const response: any = await new Promise((resolve) => {
       this.modelo.getCompletion(prompt).subscribe(resolve);

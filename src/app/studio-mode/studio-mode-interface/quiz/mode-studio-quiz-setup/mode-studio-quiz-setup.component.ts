@@ -107,7 +107,8 @@ export class ModeStudioQuizSetupComponent implements OnInit{
       updatedMaterial.data,
       'mode-studio',
       updatedMaterial.text,
-      updatedMaterial.titulo
+      updatedMaterial.description,
+      updatedMaterial.name
     );
   }
 

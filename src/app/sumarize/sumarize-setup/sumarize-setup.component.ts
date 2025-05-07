@@ -25,10 +25,11 @@ export class SumarizeSetupComponent implements OnInit {
   textToGenerateSumarize:string = '';
   id:string = '';
   dataSumarize:any;
-  titulo:string = '';
+  description:string = '';
   showModalUlploadOptions!:boolean
   showLoader1:boolean = false;
-  
+  type!:string;
+  name!:string;
   
   
   ngOnInit(): void {
@@ -52,8 +53,10 @@ export class SumarizeSetupComponent implements OnInit {
 
   async saveDataLocalStorage(){
     this.id = await this.generarIDSeguro()
-    this.titulo = await this.generateData.titulo(this.textToGenerateSumarize, 'sumarize')
-    await this.localStorageServices.setNewMaterial(this.id, this.dataSumarize, 'sumarize', this.textToGenerateSumarize, this.titulo); //Guardo la data del quiz
+    this.name = 'Resumen';
+    this.type = 'sumarize';
+    this.description = await this.generateData.description(this.textToGenerateSumarize, this.type)
+    await this.localStorageServices.setNewMaterial(this.id, this.dataSumarize, this.type, this.textToGenerateSumarize, this.description, this.name); //Guardo la data del quiz
     await this.router.navigate(['/sumarize/',this.id]);
   }
 

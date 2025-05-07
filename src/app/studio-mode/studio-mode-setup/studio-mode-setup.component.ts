@@ -25,10 +25,11 @@ export class StudioModeSetupComponent implements OnInit {
   textToGenerateModeStudio:string = '';
   id:string = '';
   dataModeStudio:any;
-  titulo:string = '';
+  description:string = '';
   showModalUlploadOptions!:boolean
   showLoader1:boolean = false;
-  
+  type!:string;
+  name!:string;
   
   
   ngOnInit(): void {
@@ -60,8 +61,10 @@ export class StudioModeSetupComponent implements OnInit {
 
   async saveDataLocalStorage(){
     this.id = await this.generarIDSeguro()
-    this.titulo = await this.generateData.titulo(this.textToGenerateModeStudio, 'mode-studio')
-    await this.localStorageServices.setNewMaterial(this.id, this.dataModeStudio, 'mode-studio', this.textToGenerateModeStudio, this.titulo); //Guardo la data del quiz
+    this.type = 'mode-studio';
+    this.name = 'Modo Estudio';
+    this.description = await this.generateData.description(this.textToGenerateModeStudio, this.type)
+    await this.localStorageServices.setNewMaterial(this.id, this.dataModeStudio, this.type, this.textToGenerateModeStudio, this.description, this.name); //Guardo la data del quiz
     await this.router.navigate(['/mode-studio/',this.id]);
   }
 

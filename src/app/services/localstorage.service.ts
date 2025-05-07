@@ -13,10 +13,10 @@ export class LocalstorageService {
 
 
 
-  async setNewMaterial(id: string, data: any, type:string, text:string, titulo:string): Promise<void> {
+  async setNewMaterial(id: string, data: any, type:string, text:string, description:string, name:string): Promise<void> {
     await this.deleteMaterial(id)
     const existingData = await this.getMaterialsData();
-    const newData = [{ id, data, type, text, titulo }, ...existingData];
+    const newData = [{ id, data, type, text, description, name }, ...existingData];
     localStorage.setItem(this.storageKeyMatrials, JSON.stringify(newData));
   }
 
@@ -151,7 +151,7 @@ export class LocalstorageService {
     };
 
  
-    await this.setNewMaterial(updatedMaterial.id, updatedMaterial.data, updatedMaterial.type, updatedMaterial.text, updatedMaterial.titulo);
+    await this.setNewMaterial(updatedMaterial.id, updatedMaterial.data, updatedMaterial.type, updatedMaterial.text, updatedMaterial.description, updatedMaterial.name);
   
   }
 

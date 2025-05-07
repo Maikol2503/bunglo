@@ -41,7 +41,9 @@ export class QuizSetupComponent implements OnInit{
   numQuestions:number=10
   numSelecOption:number = 3
   textToGenerateQuiz:any;
-  titulo:string = '';
+  description:string = '';
+  type!:string;
+  name!:string;
   
   ngOnInit(): void {
     this.sidebarServices.Display_None();
@@ -72,7 +74,7 @@ export class QuizSetupComponent implements OnInit{
     const quiz = await this.localStorageServices.getDataQuizByID(id);
     if (quiz) {
       this.textToGenerateQuiz = quiz[0].text;  // Usamos el texto almacenado para regenerar el quiz
-      this.titulo = quiz[0].titulo;
+      this.description = quiz[0].description;
       this.modalUploadOptionServices.updateState(false)
       this.showModalPersonaliceQuiz = true;  // Mostrar el modal de personalización
     } else {
@@ -98,6 +100,8 @@ export class QuizSetupComponent implements OnInit{
     this.sidebarServices.Display_None();
     this.showModalPersonaliceQuiz=false;
     this.showLoader1=true;
+    this.name = 'Quiz';
+    this.type = 'quiz'
     
     // Si no hay un id generado, generamos uno nuevo
     if (!this.id) {
@@ -106,13 +110,13 @@ export class QuizSetupComponent implements OnInit{
       });
     }
 
-    if(!this.titulo){
-      this.titulo = await this.generatedData.titulo(this.textToGenerateQuiz, 'quiz')
+    if(!this.description){
+      this.description = await this.generatedData.description(this.textToGenerateQuiz, 'quiz')
     }
 
     this.quizData = await this.generatedData.quiz(this.textToGenerateQuiz, this.numQuestions, this.numSelecOption, []);
     // si ya exite un quiz igual se debe eliminar
-    await this.localStorageServices.setNewMaterial(this.id, this.quizData, 'quiz', this.textToGenerateQuiz, this.titulo); //Guardo la data del quiz
+    await this.localStorageServices.setNewMaterial(this.id, this.quizData, 'quiz', this.textToGenerateQuiz, this.description, this.name); //Guardo la data del quiz
     await this.router.navigate(['/quiz/',this.id]);
   }
 
