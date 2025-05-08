@@ -49,10 +49,11 @@
                             <!-- <li class="submenu-item"><a href="#">Ver todos</a></li> -->
                             <li *ngFor="let data of materialsData" class="submenu-item" >
                                 <a (click)="desplegableVisible=false" 
-                                [routerLink]="['/mode-stude/'+data.id]" 
+                                [routerLink]="[data.type+'/'+data.id]" 
                                 routerLinkActive="selected"  
                                 [routerLinkActiveOptions]="{ exact: true }">
-                                    {{data.data?.dataSummarize?.titulo_general}}
+                                    {{data?.name}}:
+                                    {{data?.description}}
                                 </a>
                             </li>
                         </ul>
