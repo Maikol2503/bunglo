@@ -132,8 +132,8 @@
     .body-tools .tool-card-wrapper .tool-card{
         
         display: flex;
-        min-height: 160px;
-        max-height: 160px;
+        min-height: 130px;
+        max-height: 130px;
         min-width: auto;
         flex-direction: column;
         justify-content: center;
@@ -145,10 +145,14 @@
         position: relative;
     }
 
+    .body-tools .tool-card-wrapper .tool-card .tool-icon-wrapper{
+        height: auto;
+    }
+
     .body-tools .tool-card-wrapper .tool-card .tool-icon-wrapper .tool-icon{
         margin-top: 0px;
-        width: 60%;
-    
+        width: 50%;
+        
         /* transform: translateY(100%); */
     }
 
@@ -158,8 +162,6 @@
         font-size: 14px;
         border: none;
         width: 100%;
-        /* height: 50px; */
-
         height: auto;
         border-radius: 15px;
         font-weight: 600;

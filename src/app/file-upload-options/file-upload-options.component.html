@@ -1,7 +1,7 @@
+<div class="btn-close">
+    <app-close></app-close>
+</div>
 <div class="file-upload-container" *ngIf="showUploadOptions===true">
-    <div class="btn-close">
-        <app-close></app-close>
-    </div>
     <p class="upload-title">Transforma tu contenido en conocimiento. 📚 Elige cómo quieres empezar:</p>
     <div class="upload-options" >
         <div class="upload-option" (click)="closeUploadOptions(); openInput('text') ">
