@@ -1,15 +1,29 @@
 
 <div class="body" *ngIf="materialsData.length > 0">
+
     <div class="body-content">
         <p class="title-content-body">Materials</p>
         <div class="materials">
             <div class="materials-content" >
+
+                
+
                 <div *ngFor="let data of materialsData" class="material"  [style.view-transition-name]="'material'+data.id">
+                    
+                    <div class="modal-options-config"  *ngIf="activeModalId === data.id" #modal>
+                        <p class="close" (click)="toggleModal(data.id)">x</p>
+                        <ul class="options">
+                            <li class="option" (click)="updateName(data.id)">Cambiar Nombre</li>
+                            <li class="option" (click)="delete(data.id)" style="color: rgb(255, 142, 142);">Eliminar</li>
+                        </ul>
+                    </div>
+                    
+                    
                     <div class="header">
-                        <div class="img">
-                            <img src="" alt="">
+                        <div class="img" >
+                            
                         </div>
-                        <div class="btn-config">
+                        <div class="btn-config" (click)="toggleModal(data.id)" #configBtn>
                             <p>...</p>
                         </div>
                     </div>

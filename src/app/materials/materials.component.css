@@ -31,6 +31,32 @@
      box-shadow: var(--tw-ring-offset-shadow, 0 0 #00000027), var(--tw-ring-shadow, 0 0 #00000019), var(--tw-shadow); */
 }
 
+.body .body-content .materials .materials-content .material .modal-options-config{
+    background-color: #ffffff;
+    position: absolute;
+    right: 10px;
+    top: 50px;
+    padding: 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    --tw-shadow: 0px 2px 12px 0px rgba(0, 61, 62, 0.184);
+     --tw-shadow-colored: 0px 2px 12px 0px var(--tw-shadow-color);
+     box-shadow: var(--tw-ring-offset-shadow, 0 0 #00000027), var(--tw-ring-shadow, 0 0 #00000019), var(--tw-shadow);
+}
+
+.body .body-content .materials .materials-content .material .modal-options-config .close{
+    font-size: 12px;
+    position: absolute;
+    right: 8px;
+    top: 5px;
+    color: #7c7c7c;
+}
+
+.body .body-content .materials .materials-content .material .modal-options-config .options{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
 
 
 
@@ -38,10 +64,12 @@
 .body .body-content .materials .materials-content .material .header{
     display: flex;
     justify-content: space-between;
+    position: relative;
 }
 
 
 .body .body-content .materials .materials-content .material .header .img{
+
     width: 50px;
     height: 50px;
     border-radius: 100px;

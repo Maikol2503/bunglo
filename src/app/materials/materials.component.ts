@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
 import { LocalstorageService } from '../services/localstorage.service';
 import { RouterModule } from '@angular/router';
 
@@ -10,8 +10,10 @@ import { RouterModule } from '@angular/router';
     styleUrl: './materials.component.css'
 })
 export class MaterialsComponent implements OnInit{
-constructor( private localStorageservices:LocalstorageService){}
+constructor( private localStorageservices:LocalstorageService, private eRef: ElementRef){}
     materialsData:any[]=[]
+    activeModalId: string | null = null;
+    idMaterialSelect!:string;
     async ngOnInit(): Promise<any> {
         this.loadMaterials()
     }
@@ -21,10 +23,30 @@ constructor( private localStorageservices:LocalstorageService){}
         console.log(this.materialsData)
     }
 
+    updateName(id:string){
+
+    }
+
+    // Detectar clic fuera
+    @HostListener('document:click', ['$event'])
+    handleClickOutside(event: Event) {
+        const target = event.target as HTMLElement;
+        const clickedInside = this.eRef.nativeElement.contains(target);
+        if (!clickedInside) {
+            this.activeModalId = null;
+        }
+    }
+
+    toggleModal(id: string): void {
+        this.idMaterialSelect=id;
+        this.activeModalId = this.activeModalId === id ? null : id;
+    }
+
     async delete(id:string){
         if(confirm('¿Seguro que desea eliminar este material?')){
             await this.localStorageservices.deleteMaterial(id);
             await this.loadMaterials()
         }
+        this.activeModalId = null;
     }
 }
