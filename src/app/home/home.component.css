@@ -55,7 +55,7 @@
     .home-body{
         margin-top: 50px;
         width: 100%;
-        padding: 0px;
+        padding: 5px;
     }
 
     .home-body .home-container .search{
@@ -69,8 +69,7 @@
 
     .tools{
         position: relative;
-        margin-top: 60px;
-        padding-top: 40px;
+        margin-top: 10px;
     }
 
     .tools .title{
@@ -115,6 +114,7 @@
 
     .home-body .home-container .body-content .main-content .file-upload-options{
         padding-top: 0px;
+        
     }
 
 }

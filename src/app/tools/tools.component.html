@@ -1,4 +1,6 @@
 <div class="body-tools">
+    <div class="fondo"></div>
+    <h2 class="title">Aprende Con Herramientas inteligfentes</h2 >
     <div class="tool-card-wrapper">
         <div class="tool-card" *ngFor="let tool of tools" (click)="toggleModal(); updateSelectedTool(tool.name)" [routerLink]="[tool.url]">
             <div class="tool-icon-wrapper">
