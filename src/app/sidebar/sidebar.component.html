@@ -59,12 +59,11 @@
                 </div>
                 <a class="menu-title-container" (click)="toggleMaterials()"  *ngIf="!minimize_sidebar_active"  [ngClass]="{'svg-rotate':view_materials_is_active===true}">
                     <p class="menu-title">Materials</p>
-                    
                 </a>
             </div>
             <ul class="submenu-materials" *ngIf="view_materials_is_active && !minimize_sidebar_active" >
                 <!-- <li class="submenu-item"><a href="#">Ver todos</a></li> -->
-                <li *ngFor="let data of materialsData" class="submenu-item"><a [routerLink]="[data.type+'/'+data.id]" routerLinkActive="selected"  [routerLinkActiveOptions]="{ exact: true }">{{data.titulo}}</a></li>
+                <li *ngFor="let data of materialsData" class="submenu-item"><a [routerLink]="[data.type+'/'+data.id]" routerLinkActive="selected"  [routerLinkActiveOptions]="{ exact: true }">{{data.description}}</a></li>
             </ul>
         </li>
         

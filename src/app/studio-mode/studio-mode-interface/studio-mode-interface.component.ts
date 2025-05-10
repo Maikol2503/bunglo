@@ -7,13 +7,12 @@ import { FlashCardComponent } from './flash-card/flash-card.component';
 import { LocalstorageService } from '../../services/localstorage.service';
 import { Subscription } from 'rxjs';
 import { SidebarService } from '../../services-interfas/sidebar.service';
-import { ModalUpdateNameMaterialComponent } from './modal-update-name-material/modal-update-name-material.component';
 import { CloseComponent } from '../../shared/buttoms/close/close.component';
 
 @Component({
   selector: 'app-studio-mode-interface',
   standalone: true, // Agregar si es necesario
-  imports: [CommonModule, CloseComponent, MindmapComponent, SumarizeComponent, FlashCardComponent, RouterModule, ModalUpdateNameMaterialComponent],
+  imports: [CommonModule, CloseComponent, MindmapComponent, SumarizeComponent, FlashCardComponent, RouterModule],
   templateUrl: './studio-mode-interface.component.html',
   styleUrls: ['./studio-mode-interface.component.css'],
 })

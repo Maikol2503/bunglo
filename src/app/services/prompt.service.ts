@@ -35,7 +35,7 @@ getQuizPrompt(texto: string, num_preguntas:number, num_options:number, preguntas
   - Debe generarse exactamente **${num_preguntas}** preguntas.
   - Cada pregunta debe incluir una única respuesta correcta.
   - Cada pregunta debe incluir exactamente **${num_options - 1}**  respuestas incorrectas.
-  - Una explicación detallada.
+  - Una explicación detallada del porque es correcta.
   - El objeto JSON debe seguir exactamente esta estructura:
 
   [

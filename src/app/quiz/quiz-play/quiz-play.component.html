@@ -47,6 +47,7 @@
         </swiper-container>
   
         <div class="nav-buttons">
+          <div class="chuleta"  *ngIf="currentIndex < data.length" (click)="toggleModalChuleta()"><button>Chuleta</button></div>
           <button 
                 class="back"
                 (click)="goToPrevious()"
@@ -78,6 +79,11 @@
           </button>
         </div>
       </div>
+    </div>
+
+    <div class="modal-chuleta" *ngIf="showModalChuleta===true">
+      <p class="close" (click)="toggleModalChuleta()">close</p>
+      <app-modal-chuleta [data]="explanation"></app-modal-chuleta>
     </div>
   </div>
   

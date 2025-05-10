@@ -13,16 +13,22 @@ export class LocalstorageService {
 
 
 
-  async setNewMaterial(id: string, data: any, type:string, text:string, description:string, name:string): Promise<void> {
-    await this.deleteMaterial(id)
+  async setNewMaterial(id: string, data: any, type: string, text: string, description: string, name: string): Promise<void> {
     const existingData = await this.getMaterialsData();
-    const newData = [{ id, data, type, text, description, name }, ...existingData];
-    localStorage.setItem(this.storageKeyMatrials, JSON.stringify(newData));
+    const index = existingData.findIndex((item: any) => item.id === id);
+    if (index !== -1) {
+      existingData[index] = { id, data, type, text, description, name };
+    } else {
+      // Si no existe, lo agregamos
+      existingData.push({ id, data, type, text, description, name });
+    }
+    localStorage.setItem(this.storageKeyMatrials, JSON.stringify(existingData));
   }
-
-  async getMaterialsData(): Promise<any>{
+  
+  async getMaterialsData(): Promise<any> {
     const storageData = localStorage.getItem(this.storageKeyMatrials);
-    return storageData ? JSON.parse(storageData) : [];
+    const data = storageData ? JSON.parse(storageData) : [];
+    return data.reverse(); // <- esto invierte el orden
   }
 
   async getMaterialDataById(id:string): Promise<any>{

@@ -2,6 +2,23 @@
     margin-top: 20px;
 }
 
+.body .modalUpdateName{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    background-color: #000000a6;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.body .modalUpdateName .close{
+    position: absolute;
+    right: 30px;
+    top: 10px;
+}
 
 .body .body-content .materials .materials-content{
     display: grid;
@@ -32,11 +49,12 @@
 }
 
 .body .body-content .materials .materials-content .material .modal-options-config{
+    z-index: 1;
     background-color: #ffffff;
     position: absolute;
     right: 10px;
     top: 50px;
-    padding: 20px;
+    padding: 20px 10px;
     border-radius: 10px;
     font-weight: 600;
     --tw-shadow: 0px 2px 12px 0px rgba(0, 61, 62, 0.184);
@@ -45,6 +63,7 @@
 }
 
 .body .body-content .materials .materials-content .material .modal-options-config .close{
+    cursor: pointer;
     font-size: 12px;
     position: absolute;
     right: 8px;
@@ -55,10 +74,18 @@
 .body .body-content .materials .materials-content .material .modal-options-config .options{
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 0px;
 }
 
-
+.body .body-content .materials .materials-content .material .modal-options-config .options .option{
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    &&:hover{
+        background-color: #f3f3f3;
+    }
+}
 
 
 .body .body-content .materials .materials-content .material .header{

@@ -7,6 +7,7 @@ import { ModalResultOfQuestionComponent } from './modal-result-of-question/modal
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { SidebarComponent } from '../../sidebar/sidebar.component';
 import { SidebarService } from '../../services-interfas/sidebar.service';
+import { ModalChuletaComponent } from './modal-chuleta/modal-chuleta.component';
 register();
 
 // Modelo para las preguntas
@@ -21,7 +22,7 @@ interface Question {
 
 @Component({
   selector: 'app-quiz-play',
-  imports: [CommonModule, FormsModule, ModalResultOfQuestionComponent, RouterModule],
+  imports: [CommonModule, FormsModule, ModalResultOfQuestionComponent, RouterModule, ModalChuletaComponent],
   templateUrl: './quiz-play.component.html',
   styleUrl: './quiz-play.component.css',
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
@@ -39,7 +40,9 @@ export class QuizPlayComponent implements OnInit {
   currentIndex: number = 0;
   showModalResultOfQuiz:boolean=false
   showQuiz:boolean=true
-  dataResultOfQuiz:any[] = []
+  dataResultOfQuiz:any[] = [];
+  explanation:any;
+  showModalChuleta:boolean=false;
   @ViewChild('swiperRef', { static: false }) swiperRef!: ElementRef;
 
   ngOnInit() {
@@ -57,14 +60,13 @@ export class QuizPlayComponent implements OnInit {
 
 
   async getData(){
-    console.log(this.id)
     this.data = await this.LocalStorageServices.getDataQuizByID(this.id)
-    console.log(this.data)
     this.data = this.data[0].data
-    console.log(this.data)
     this.totalSteps = this.questions.length;
     this.currentStep=1;
     this.updateProgress();
+    this.explanation = this.data[this.currentIndex].explanation
+    console.log(this.explanation)
     return 
   }
 
@@ -74,6 +76,8 @@ export class QuizPlayComponent implements OnInit {
     if (this.swiperRef?.nativeElement?.swiper) {
       
       this.currentIndex = this.swiperRef?.nativeElement?.swiper.activeIndex + 1
+      this.explanation = this.data[this.currentIndex].explanation
+      console.log(this.explanation)
       this.swiperRef.nativeElement.swiper.slideNext();
      
     }
@@ -85,9 +89,10 @@ export class QuizPlayComponent implements OnInit {
     this.currentIndex = this.swiperRef?.nativeElement?.swiper.activeIndex === 0 ? 1 : this.swiperRef?.nativeElement?.swiper.activeIndex - 1
     
     if (this.swiperRef?.nativeElement?.swiper) {
+      this.explanation = this.data[this.currentIndex].explanation
+      console.log(this.explanation)
       this.swiperRef.nativeElement.swiper.slidePrev();
     }
-
     this.currentStep--;
     this.updateProgress()
 
@@ -146,7 +151,9 @@ export class QuizPlayComponent implements OnInit {
 
 
 
-
+  toggleModalChuleta(){
+    this.showModalChuleta = !this.showModalChuleta;
+  }
 
 
 
