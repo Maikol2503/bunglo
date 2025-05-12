@@ -6,13 +6,14 @@ import { QuizSetupComponent } from '../../../../quiz/quiz-setup/quiz-setup.compo
 import { Loader1Component } from '../../../../../../loader1/loader1.component';
 import { SidebarService } from '../../../../services-interfas/sidebar.service';
 import { LocalstorageService } from '../../../../services/localstorage.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ModalUploadContentService } from '../../../../services-interfas/modal-upload-content.service';
 import { DataGeneratorServiceService } from '../../../../services/data-generator-service.service';
+import { CloseComponent } from '../../../../shared/buttoms/close/close.component';
 
 @Component({
   selector: 'app-mode-studio-quiz-setup',
-  imports: [QuizOptionsModalComponent, CommonModule, Loader1Component, QuizSetupComponent, FileUploadOptionsComponent],
+  imports: [QuizOptionsModalComponent, RouterModule, CommonModule, Loader1Component, QuizSetupComponent, FileUploadOptionsComponent, CloseComponent],
   templateUrl: './mode-studio-quiz-setup.component.html',
   styleUrl: './mode-studio-quiz-setup.component.css'
 })

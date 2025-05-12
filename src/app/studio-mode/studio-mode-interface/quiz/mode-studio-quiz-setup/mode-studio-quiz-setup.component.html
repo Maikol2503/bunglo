@@ -1,8 +1,12 @@
-
+<div class="btn-close">
+     <button class="btn" [routerLink]="['/mode-studio/'+id]">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"  x="0" y="0" viewBox="0 0 24 24" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><path d="m13.93 12 7.736-9.557A1.499 1.499 0 1 0 19.334.557L12 9.617 4.666.557C3.425-.962 1.106.914 2.334 2.444l7.736 9.557-7.736 9.556a1.499 1.499 0 1 0 2.332 1.886L12 14.383l7.334 9.06a1.5 1.5 0 1 0 2.332-1.886L13.93 12Z" fill="#000000" opacity="1" data-original="#000000"></path></g></svg>
+    </button>
+</div>
 <div class="body">
-
+    
     <div class="body-content">
-
+        
         <div class="quiz-options-modal" *ngIf=" showModalPersonaliceQuiz === true">
             <app-quiz-options-modal (dataPersonaliceQuestions)="recivedDataPerzonaliceQuestions($event)"></app-quiz-options-modal>
         </div>

@@ -7,6 +7,7 @@ import { ModalResultOfQuestionComponent } from './modal-result-of-question/modal
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { SidebarComponent } from '../../../../sidebar/sidebar.component';
 import { SidebarService } from '../../../../services-interfas/sidebar.service';
+import { ModalChuletaComponent } from './modal-chuleta/modal-chuleta.component';
 register();
 
 interface Question {
@@ -19,7 +20,7 @@ interface Question {
 }
 @Component({
   selector: 'app-mode-studio-quiz',
-  imports: [CommonModule, FormsModule, ModalResultOfQuestionComponent, RouterModule],
+  imports: [CommonModule, FormsModule, ModalResultOfQuestionComponent, RouterModule, ModalChuletaComponent],
   templateUrl: './mode-studio-quiz.component.html',
   styleUrl: './mode-studio-quiz.component.css',
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
@@ -38,6 +39,8 @@ export class ModeStudioQuizComponent implements OnInit {
   showModalResultOfQuiz:boolean=false
   showQuiz:boolean=true
   dataResultOfQuiz:any[] = []
+  explanation:any;
+   showModalChuleta:boolean=false;
   @ViewChild('swiperRef', { static: false }) swiperRef!: ElementRef;
 
   ngOnInit() {
@@ -61,6 +64,7 @@ export class ModeStudioQuizComponent implements OnInit {
     this.totalSteps = this.dataQuiz.length;
     this.currentStep=1;
     this.updateProgress();
+    this.explanation = this.dataQuiz[this.currentIndex].explanation
     return 
   }
 
@@ -71,7 +75,7 @@ export class ModeStudioQuizComponent implements OnInit {
       
       this.currentIndex = this.swiperRef?.nativeElement?.swiper.activeIndex + 1
       this.swiperRef.nativeElement.swiper.slideNext();
-     
+      this.explanation = this.dataQuiz[this.currentIndex].explanation
     }
     this.currentStep++;
     this.updateProgress()
@@ -82,6 +86,7 @@ export class ModeStudioQuizComponent implements OnInit {
     
     if (this.swiperRef?.nativeElement?.swiper) {
       this.swiperRef.nativeElement.swiper.slidePrev();
+      this.explanation = this.dataQuiz[this.currentIndex].explanation
     }
 
     this.currentStep--;
@@ -148,7 +153,9 @@ export class ModeStudioQuizComponent implements OnInit {
 
 
 
-
+ toggleModalChuleta(){
+    this.showModalChuleta = !this.showModalChuleta;
+  }
 
 
 

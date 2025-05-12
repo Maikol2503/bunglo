@@ -24,38 +24,51 @@ getTitutloPrompt(text: string, type: string): string {
 
 
 
-getQuizPrompt(texto: string, num_preguntas:number, num_options:number, preguntas_generadas:any): string {
-  console.log(num_options)
-  let text_preguntas_generadas = `- no vuelvas a hacer estas preguntas ${preguntas_generadas} `
+getQuizPrompt(
+  texto: string,
+  num_preguntas: number,
+  num_options: number,
+  preguntas_generadas: any
+): string {
+  const bloqueNoRepetir = preguntas_generadas.length > 0
+    ? `- No repitas estas preguntas ya generadas: ${JSON.stringify(preguntas_generadas)}`
+    : '';
+
+  // Calcula cuántas de cada tipo (al menos la mitad interrogativas y la mitad con puntos)
+  const minInterrogativas = Math.floor(num_preguntas / 2);
+  const minPuntos = num_preguntas - minInterrogativas;
+
   return `
-  Genera ${num_preguntas} preguntas basadas en el siguiente texto, cumpliendo estrictamente estas instrucciones:
-  ${preguntas_generadas.length > 0 ? text_preguntas_generadas : ''}
-  - La pregunta debe estar basada exclusivamente en el texto proporcionado.
-  - Devuelve únicamente un objeto JSON válido, sin ningún texto adicional.
-  - Debe generarse exactamente **${num_preguntas}** preguntas.
-  - Cada pregunta debe incluir una única respuesta correcta.
-  - Cada pregunta debe incluir exactamente **${num_options - 1}**  respuestas incorrectas.
-  - Una explicación de la respuesta correcta.
-  - El objeto JSON debe seguir exactamente esta estructura:
+Genera exactamente ${num_preguntas} preguntas de opción múltiple basadas exclusivamente en el siguiente texto:
 
-  [
-    {
-      "pregunta": "Pregunta",
-      "respuesta_correcta": "Respuesta correcta",
-      "respuestas_incorrectas": ["Incorrecta 1", "Incorrecta 2", "Incorrecta 3"],
-      "explicacion": "Una explicación de la respuesta correcta con argumento."
-    },
-    ...
-  ]
+${bloqueNoRepetir}
 
-  Asegúrate de que:
-  - Se utilicen correctamente las comillas y comas propias del JSON.
-  - Se generen exactamente **dos preguntas**.
-  - No se incluya texto adicional fuera del JSON.
+Instrucciones generales:
+- Cubre siempre aspectos distintos del texto (nada todo en el mismo tema).
+- **No** uses expresiones como “según el texto”, “de acuerdo con el texto” ni similares.
+- Devuelve **solo** un JSON válido con esta estructura:
 
-  Texto base: ${texto} 
-  `;
+[
+  {
+    "pregunta": "Texto de la pregunta",
+    "respuesta_correcta": "Texto de la respuesta correcta",
+    "respuestas_incorrectas": ["Incorrecta 1", "Incorrecta 2", "Incorrecta 3"],
+    "explicacion": "Explicación breve y argumentada de la respuesta correcta."
+  },
+  
+]
+
+Formato y estilos:
+- Al menos ${minInterrogativas} preguntas deben ser **interrogativas** (empezando por ¿…?).
+- Al menos ${minPuntos} preguntas deben ser **oraciones incompletas** que terminen en puntos suspensivos…
+- Cada pregunta debe tener 1 respuesta correcta y ${num_options - 1} incorrectas.
+- Incluye exactamente ${num_preguntas} preguntas, sin texto adicional fuera del JSON.
+
+Texto base:
+${texto}
+  `.trim();
 }
+
 
 getSumarizePrompt(text: string): string {
   return `Tu tarea es hacer un *resumen* del siguiente texto.

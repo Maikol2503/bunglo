@@ -26,7 +26,7 @@ export class ModalResultOfQuestionComponent implements OnInit {
   }
 
   back(){
-    this.location.back()
+    this.router.navigate(['material/mode-studio/'+this.data[0].idQuiz])
   }
 
   async deleteQuizFromTheMaterialModeStudio(id:string){

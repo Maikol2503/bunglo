@@ -1,5 +1,29 @@
 .body{
     width: 100%;
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+
+.body .modal-chuleta{
+    position: fixed;
+    left: 50%;
+    bottom: 0px;
+    transform: translateX(-49%);
+    width: 510px;
+    max-width: 100%;
+    height: auto;
+    z-index: 1000;
+    background-color: white;
+    border-radius: 20px 20px 0px 0px;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+    overflow: hidden;
+}
+
+.body .modal-chuleta .modalChuleta-content .btn-close{
+ position:absolute;
+ right: 10px;
+ top: 10px;
+ cursor: pointer;
 }
 
 .body .content-wrapper{
@@ -23,7 +47,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 15px;
-    margin-top: 40px;
+    margin-top: 0px;
 }
 
 .body .content-wrapper .header .close button{
@@ -55,8 +79,8 @@
     border-radius: 10px;
     overflow: hidden;
     width: 60%;
-    border: 1px solid rgb(232, 232, 232);
     background-color: #ffffff;
+    border: 1px solid rgb(230, 230, 230);
 }
 .body .content-wrapper .header .progress-bar .progress   {
     height: 20px;
@@ -67,7 +91,8 @@
 
 .body .content-wrapper .quiz-wrapper{
     max-width: 500px;
-    
+    min-height: 100vh;
+    position: relative;
 }
 
 .body .content-wrapper .quiz-wrapper .swiper-container-custom{
@@ -90,7 +115,7 @@
 
 
 .body .content-wrapper .quiz-wrapper .swiper-container-custom .slide .title-question h1{
- font-size: 22px;
+ font-size: 20px;
 }
 
 .body .content-wrapper .quiz-wrapper .swiper-container-custom .slide .options-question p{
@@ -102,52 +127,92 @@ font-size: 14px;
 }
 
 .body .content-wrapper .quiz-wrapper .nav-buttons{
-    width: 100%;
+    background-color: white;
+    padding-top: 10px;
+    width: 500px;
+    max-width: 100%;
+    gap: 20px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    z-index: 1000;
+    position: fixed;
+    bottom: 0px;
+    padding: 0px 0px 20px 0px;
+}
+
+.body .content-wrapper .quiz-wrapper .nav-buttons .chuleta{
+    position: absolute;
+    right: 0px;
+    top: -20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
     z-index: 1;
+    background-color: rgb(247, 247, 247);
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+.body .content-wrapper .quiz-wrapper .nav-buttons .chuleta button{
+    border: none;
+    background-color: transparent;
+    font-size: 600;
 }
 
 .body .content-wrapper .quiz-wrapper .nav-buttons .back{
     border: none;
-    background-color: #ffffff00;
-    color: #4083e1;
+    color: var(--primary-base);
+    background-color: transparent;
     font-size: 16px;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     gap: 10px;
     margin-top: 25px;
     font-weight: 700;
     cursor: pointer;
+    padding: 10px;
+    border-radius: 15px;
+    border: 2px solid var(--primary-base);
 }
 
 .body .content-wrapper .quiz-wrapper .nav-buttons .next{
     border: none;
-    background-color: #ffffff00;
-    color: #4083e1;
+    color: #ffffff;
+    background-color: var(--primary-base);
     font-size: 16px;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
     gap: 10px;
     margin-top: 25px;
     font-weight: 700;
     cursor: pointer;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.body .content-wrapper .quiz-wrapper .nav-buttons .next svg path,
+.body .content-wrapper .quiz-wrapper .nav-buttons  .btn-finalizar-quiz svg path{
+    fill: white;
 }
 
 .body .content-wrapper .quiz-wrapper .nav-buttons  .btn-finalizar-quiz{
-    border: none;
-    background-color: #ffffff00;
-    color: #4083e1;
+   border: none;
+    color: #ffffff;
+    background-color: var(--primary-base);
     font-size: 16px;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
     gap: 10px;
     margin-top: 25px;
     font-weight: 700;
     cursor: pointer;
+    padding: 10px;
+    border-radius: 15px;
 }
 
 .color-green{
@@ -173,7 +238,22 @@ font-size: 14px;
 @media(max-width:550px){
     .body{
         background-color: #ffffff;
-        margin-top: 20px;
+    }
+
+    .body .modal-chuleta{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        position: fixed;
+        left: 50%;
+        bottom: 0px;
+        transform: translateX(-50%);
+        width: 100%;
+        height: auto;
+        z-index: 1000;
+    }
+    .body .modal-chuleta .close{
+        margin-right: 20px;
     }
     .body .content-wrapper .header {
         margin-top: 50px;
@@ -202,6 +282,15 @@ font-size: 14px;
         left: 0px;
         bottom: 0px;
         
+    }
+
+    .body .content-wrapper .quiz-wrapper .nav-buttons .chuleta{
+        top: -40px;
+        right: 10px;
+    }
+
+    .body .content-wrapper .quiz-wrapper .nav-buttons .chuleta button{
+        padding: 5px;
     }
 
 
