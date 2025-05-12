@@ -13,11 +13,28 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
-.body .modalUpdateName .close{
-    position: absolute;
-    right: 30px;
-    top: 10px;
+
+.body .modalUpdateName .modalUpdateName-content{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.body .modalUpdateName .btn-close{
+   width: 100%;
+   display: flex;
+   justify-content: flex-end;
+}
+
+.body .modalUpdateName .btn-close button{
+    cursor: pointer;
+    border: none;
+    background-color: white;
+    width: 25px;
+    height: 25px;
+    border-radius: 50px;
 }
 
 .body .body-content .materials .materials-content{
@@ -91,9 +108,13 @@
 .body .body-content .materials .materials-content .material .header{
     display: flex;
     justify-content: space-between;
+    align-items: center;
     position: relative;
 }
 
+.body .body-content .materials .materials-content .material .header .btn-config{
+    cursor: pointer;
+}
 
 .body .body-content .materials .materials-content .material .header .img{
 

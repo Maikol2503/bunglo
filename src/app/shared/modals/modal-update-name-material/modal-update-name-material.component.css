@@ -1,0 +1,31 @@
+.body .form{
+    background-color: rgb(255, 255, 255);
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.body .form textarea{
+    border: none;
+    resize: none;
+    width: 300px;
+    height: 150px;
+    font-size: 16px;
+    &&:focus{
+        outline: none;
+    }
+}
+
+.body .form .buttom{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.body .form .buttom button{
+    border: none;
+    background-color: var(--primary-base);
+    padding: 10px;
+    border-radius: 10px;
+    color: var(--primary-5);
+}
+
