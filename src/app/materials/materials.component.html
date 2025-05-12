@@ -14,7 +14,8 @@
         <p class="title-content-body">Materials</p>
         <div class="materials">
             <div class="materials-content" >
-                <div *ngFor="let data of materialsData" class="material"  [style.view-transition-name]="'material'+data.id">
+                <!-- [style.view-transition-name]="'material'+data.id" -->
+                <div *ngFor="let data of materialsData" class="material"  >
                     <div class="modal-options-config"  *ngIf="activeModalId === data.id" #modal>
                         <p class="close" (click)="toggleModal(data.id)">x</p>
                         <ul class="options">

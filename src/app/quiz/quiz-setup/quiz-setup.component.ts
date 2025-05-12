@@ -117,7 +117,7 @@ export class QuizSetupComponent implements OnInit{
     this.quizData = await this.generatedData.quiz(this.textToGenerateQuiz, this.numQuestions, this.numSelecOption, []);
     // si ya exite un quiz igual se debe eliminar
     await this.localStorageServices.setNewMaterial(this.id, this.quizData, 'quiz', this.textToGenerateQuiz, this.description, this.name); //Guardo la data del quiz
-    await this.router.navigate(['/quiz/',this.id]);
+    await this.router.navigate(['/material/quiz/',this.id]);
   }
 
   async generarIDSeguro(): Promise<string> {
