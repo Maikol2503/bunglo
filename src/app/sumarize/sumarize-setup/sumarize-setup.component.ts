@@ -57,7 +57,7 @@ export class SumarizeSetupComponent implements OnInit {
     this.type = 'sumarize';
     this.description = await this.generateData.description(this.textToGenerateSumarize, this.type)
     await this.localStorageServices.setNewMaterial(this.id, this.dataSumarize, this.type, this.textToGenerateSumarize, this.description, this.name); //Guardo la data del quiz
-    await this.router.navigate(['/sumarize/',this.id]);
+    await this.router.navigate(['/material/sumarize/',this.id]);
   }
 
 

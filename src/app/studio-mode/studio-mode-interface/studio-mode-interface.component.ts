@@ -53,6 +53,7 @@ export class StudioModeInterfaceComponent implements OnInit, AfterViewInit, OnDe
     this.routeSub = this.route.paramMap.subscribe(async params => {
       this.id = params.get('id'); // Obtener el 'id' de la URL
       await this.loadData();
+
     });
     console.log(this.id)
   }
@@ -112,6 +113,7 @@ export class StudioModeInterfaceComponent implements OnInit, AfterViewInit, OnDe
   private async loadData(): Promise<void> {
    
     const foundData = await this.getDataMaterial()
+    this.title = foundData.description
     if (foundData?.data) {
       const { mindmap, sumarize, flashcard } = foundData.data;
       this.mindMapData = mindmap || null;

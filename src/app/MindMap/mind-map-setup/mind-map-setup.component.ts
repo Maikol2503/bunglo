@@ -58,7 +58,7 @@ export class MindMapSetupComponent implements OnInit{
     this.name = 'Mapa Mental';
     this.description = await this.generateData.description(this.textToGenerateMindMap, this.type)
     await this.localStorageServices.setNewMaterial(this.id, this.dataMindMap, this.type, this.textToGenerateMindMap, this.description, this.name); //Guardo la data del quiz
-    await this.router.navigate(['/mindmap/',this.id]);
+    await this.router.navigate(['/material/mindmap/',this.id]);
   }
 
 
