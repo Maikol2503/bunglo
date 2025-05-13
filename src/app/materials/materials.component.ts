@@ -74,7 +74,6 @@ this.svg = SVG.map(svg => ({
 
     getSvgByType(type: string): string {
         const svgMatch:any = this.svg.find(s => s.type === type);
-        console.log(svgMatch)
         return svgMatch ? svgMatch.safeSvg : '';
     }
 

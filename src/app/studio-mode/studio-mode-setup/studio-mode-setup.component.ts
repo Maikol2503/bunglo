@@ -47,9 +47,14 @@ export class StudioModeSetupComponent implements OnInit {
 
   async generateModeStudio(){
     this.showLoader1=true;
+    const sumarizeData:any = await this.generateData.sumarize(this.textToGenerateModeStudio);
+    const sumarize = sumarizeData.resumenes.map((item: any) => 
+        `• ${item.titulo}: ${item.descripcion}`
+    ).join('\n\n');
+    console.log(sumarize);
+
     const mindMapData = await this.generateData.MindMap(this.textToGenerateModeStudio);
-    const sumarizeData = await this.generateData.sumarize(this.textToGenerateModeStudio);
-    const flashCardData = await this.generateData.flashCard(this.textToGenerateModeStudio);
+    const flashCardData = await this.generateData.flashCard(sumarize);
     this.dataModeStudio = {
       'mindmap':mindMapData,
       'sumarize':sumarizeData,
