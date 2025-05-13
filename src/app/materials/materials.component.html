@@ -17,7 +17,10 @@
                 <!-- [style.view-transition-name]="'material'+data.id" -->
                 <div *ngFor="let data of materialsData" class="material"  >
                     <div class="modal-options-config"  *ngIf="activeModalId === data.id" #modal>
-                        <p class="close" (click)="toggleModal(data.id)">x</p>
+                        
+                        <button class="close" (click)="toggleModal(data.id)">
+                            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="10px" height="10px" x="0" y="0" viewBox="0 0 24 24" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><path d="m13.93 12 7.736-9.557A1.499 1.499 0 1 0 19.334.557L12 9.617 4.666.557C3.425-.962 1.106.914 2.334 2.444l7.736 9.557-7.736 9.556a1.499 1.499 0 1 0 2.332 1.886L12 14.383l7.334 9.06a1.5 1.5 0 1 0 2.332-1.886L13.93 12Z" fill="#000000" opacity="1" data-original="#000000" class=""></path></g></svg>
+                        </button>
                         <ul class="options">
                             <li class="option" (click)="openModalUpdateName(data.id)">Cambiar Nombre</li>
                             <li class="option" (click)="delete(data.id)" style="color: rgb(255, 142, 142);">Eliminar</li>
