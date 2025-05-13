@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { SidebarService } from '../services-interfas/sidebar.service';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { LocalstorageService } from '../services/localstorage.service';
+import { ModalGenerateNewMaterialService } from '../services-interfas/modal-generate-new-material.service';
 
 @Component({
     selector: 'app-sidebar',
@@ -21,7 +22,9 @@ export class SidebarComponent {
     private sidebar_services:SidebarService, 
     private route: ActivatedRoute, 
     private router: Router,
-    private localStorageservices:LocalstorageService){
+    private localStorageservices:LocalstorageService,
+    private modalGanerateNewMaterialServices:ModalGenerateNewMaterialService
+  ){
     this.sidebar_services.get_SideBar_State_Minimize().subscribe((state: boolean) => {
       this.minimize_sidebar_active = state;
     });
@@ -42,6 +45,10 @@ export class SidebarComponent {
         this.isModeStude = false;
       }
     });
+  }
+
+  showModalGenerateNewMaterial(){
+    this.modalGanerateNewMaterialServices.updateState(true)
   }
 
   toggleMinimizeSidebar(){

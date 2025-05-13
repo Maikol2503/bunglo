@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TOOLS, Tool } from './tools.data';
+import { TOOLS, Tool } from '../shared/tools.data';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';

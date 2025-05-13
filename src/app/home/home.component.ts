@@ -11,7 +11,7 @@ import { ToolsComponent } from '../tools/tools.component';
     standalone: true,
     templateUrl: './home.component.html',
     styleUrl: './home.component.css',
-    imports:[CommonModule, SidebarComponent, MaterialsComponent, SearchComponent, ToolsComponent]
+    imports:[CommonModule, SidebarComponent, MaterialsComponent, SearchComponent, ToolsComponent, ]
 })
 export class HomeComponent  {
  

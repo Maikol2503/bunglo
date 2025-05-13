@@ -1,9 +1,7 @@
 <div class="body" [ngClass]="{'paddin-letf':minimize_sidebar_active === true, 'no-padding-letf':displayNone_sidebar_active===true}">
-    <!-- <div class="modal-upload" *ngIf="showModalUploadContent===true">
-        <div class="content-modal-upload">
-            <app-file-upload-options></app-file-upload-options>
-        </div>
-    </div> -->
+    <div class="modal-generate-new-material" *ngIf="showModalGenerateNewMaterial===true">
+        <app-generate-new-material></app-generate-new-material>
+    </div>
     <div class="nav-mobile">
         <app-nav-mobile></app-nav-mobile>
     </div>
