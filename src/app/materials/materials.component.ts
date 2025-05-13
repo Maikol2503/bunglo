@@ -3,6 +3,8 @@ import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
 import { LocalstorageService } from '../services/localstorage.service';
 import { RouterModule } from '@angular/router';
 import { ModalUpdateNameMaterialComponent } from '../shared/modals/modal-update-name-material/modal-update-name-material.component';
+import { SVG, SvgMaterial } from './svg/svg';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-materials',
@@ -11,7 +13,17 @@ import { ModalUpdateNameMaterialComponent } from '../shared/modals/modal-update-
     styleUrl: './materials.component.css'
 })
 export class MaterialsComponent implements OnInit{
-constructor( private localStorageservices:LocalstorageService, private eRef: ElementRef){}
+
+svg: (SvgMaterial  & { safeSvg: SafeHtml })[]; 
+
+constructor( private localStorageservices:LocalstorageService, private eRef: ElementRef, private sanitizer: DomSanitizer,){
+this.svg = SVG.map(svg => ({
+      ...svg,
+      safeSvg: this.sanitizer.bypassSecurityTrustHtml(svg.svg)
+    }));
+}
+
+
     materialsData:any[]=[]
     activeModalId: string | null = null;
     idMaterialSelect!:string;
@@ -58,6 +70,12 @@ constructor( private localStorageservices:LocalstorageService, private eRef: Ele
 
     toggleModal(id: string): void {
         this.activeModalId = this.activeModalId === id ? null : id;
+    }
+
+    getSvgByType(type: string): string {
+        const svgMatch:any = this.svg.find(s => s.type === type);
+        console.log(svgMatch)
+        return svgMatch ? svgMatch.safeSvg : '';
     }
 
     async delete(id:string){
