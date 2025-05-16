@@ -33,7 +33,7 @@
                     </div>
                     <div class="header">
                         <div class="img">
-                            <div class="icon" [innerHTML]="getSvgByType(data.type)"></div>
+                            <div class="icon" [innerHTML]="getSvgByType(data.type)" [routerLink]="['/material/'+data.type, data.id]"></div>
                         </div>
                         <div class="btn-config" (click)="toggleModal(data.id)" #configBtn>
                             <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="15" height="15" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><circle cx="458.667" cy="256" r="53.333" fill="#000000" opacity="1" data-original="#000000"></circle><circle cx="256" cy="256" r="53.333" fill="#000000" opacity="1" data-original="#000000"></circle><circle cx="53.333" cy="256" r="53.333" fill="#000000" opacity="1" data-original="#000000"></circle></g></svg>

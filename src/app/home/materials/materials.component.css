@@ -66,7 +66,7 @@
 
 .body .body-content .materials .materials-content .material{
     border: 2px solid #ededed;
-    background-color: #ffffff;
+    background-color: #f9f9fc;
     position: relative;
     width: auto;
     min-height: 200px;   
@@ -137,6 +137,7 @@
 .body .body-content .materials .materials-content .material .header .img{
     width: 30px;
     height: 30px;
+    cursor: pointer;
 }
 
 
@@ -149,10 +150,12 @@
     flex-direction: column;
     gap: 10px;
     margin-top: 20px;
+    cursor: pointer;
 }
 
 
 .body .body-content .materials .materials-content .material .material-content .description{
+    cursor: pointer;
     font-size: 14px;
     color: #686868;
     display: -webkit-box;
