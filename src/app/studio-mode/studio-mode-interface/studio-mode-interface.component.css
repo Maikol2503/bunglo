@@ -240,6 +240,11 @@ cursor: pointer;
   .body .content-body .mind-map .content-mind-map{
     height: 300px;
   }
+
+  .body .content-body .mind-map .enlargeMap {
+    height: 100vh;
+  }
+
   .body .content-body .section-quiz .content-section-quiz{
     gap: 15px;
   }
