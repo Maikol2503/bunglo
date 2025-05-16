@@ -49,6 +49,7 @@ export class SidebarComponent {
 
   showModalGenerateNewMaterial(){
     this.modalGanerateNewMaterialServices.updateState(true)
+    console.log()
   }
 
   toggleMinimizeSidebar(){

@@ -1,7 +1,7 @@
 .btn-close{
   position: sticky;
   margin-left:  10px;
-  top: 70px;
+  top: 20px;
   z-index: 1000;
 }
 
@@ -87,6 +87,10 @@ cursor: pointer;
 
 
 @media(max-width:650px){
+  .btn-close{
+
+  top: 70px;
+}
   .sumarize{
     padding: 30px;
     margin-top:80px ;

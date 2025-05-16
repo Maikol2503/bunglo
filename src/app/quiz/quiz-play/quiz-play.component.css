@@ -102,7 +102,7 @@
     padding: 40px;
     border-radius: 20px;
     margin-top: 20px;
-    border: 1px solid rgb(221, 221, 221);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 
 
@@ -278,6 +278,7 @@ font-size: 14px;
         border-radius: 20px;
         margin-top: 120px;
         border: none;
+        box-shadow: none;
     }
 
 
