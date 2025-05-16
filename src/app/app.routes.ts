@@ -10,9 +10,11 @@ import { SumarizeSetupComponent } from './sumarize/sumarize-setup/sumarize-setup
 import { StudioModeSetupComponent } from './studio-mode/studio-mode-setup/studio-mode-setup.component';
 import { ModeStudioQuizSetupComponent } from './studio-mode/studio-mode-interface/quiz/mode-studio-quiz-setup/mode-studio-quiz-setup.component';
 import { ModeStudioQuizComponent } from './studio-mode/studio-mode-interface/quiz/mode-studio-quiz/mode-studio-quiz.component';
+import { MaterialsComponent } from './materials/materials.component';
 
 export const routes: Routes = [
     { path: 'home', component: HomeComponent },
+    { path: 'materials', component: MaterialsComponent },
     { path: 'mode-stude/:id', component: StudioModeInterfaceComponent },
     { path: 'material/quiz/:id', component: QuizPlayComponent},
     { path: 'quiz-setup', component: QuizSetupComponent },

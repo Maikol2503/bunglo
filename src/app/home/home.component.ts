@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { SidebarService } from '../services-interfas/sidebar.service';
 import { CommonModule } from '@angular/common';
 import { SidebarComponent } from '../sidebar/sidebar.component';
-import { MaterialsComponent } from '../materials/materials.component';
+import { MaterialsComponent } from './materials/materials.component';
 import { SearchComponent } from './search/search.component';
 import { ToolsComponent } from '../tools/tools.component';
 

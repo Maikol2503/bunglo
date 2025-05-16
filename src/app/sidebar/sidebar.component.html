@@ -62,7 +62,7 @@
                 </a>
             </div>
             <ul class="submenu-materials" *ngIf="view_materials_is_active && !minimize_sidebar_active" >
-                <!-- <li class="submenu-item"><a href="#">Ver todos</a></li> -->
+                <li class="submenu-item" [routerLink]="['/materials']">Ver todos</li>
                 <li *ngFor="let data of materialsData" class="submenu-item"><a [routerLink]="['/material/'+data.type+'/'+data.id]" routerLinkActive="selected"  [routerLinkActiveOptions]="{ exact: true }">{{data.description}}</a></li>
             </ul>
         </li>

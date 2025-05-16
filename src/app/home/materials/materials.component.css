@@ -1,45 +1,3 @@
-
-
-
-.body{
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-
-
-.body .body-content{
-    padding: 20px;
-}
-
-
-.body .body-content .btn-close-materials{
-    position: sticky;
-    top: 0px;
-    margin-left: 0px;
-}
-
-.body .body-content .btn-close-materials  button{
-    background-color: rgb(255, 255, 255);
-    width: 50px;
-    height: 50px;
-    border-radius: 10px;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    &&:hover{
-        background-color: rgb(237, 237, 237);
-    }
-}
-
-.body .body-content .btn-close-materials button svg{
-    width: 15px;
-    height: 15px;
-}
-
 .body .body-content .materials{
     margin-top: 20px;
 }
@@ -86,9 +44,24 @@
     
 }
 
-.body .body-content .title-content-body{
+.body .body-content .header-material {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.body .body-content .header-material .ver-todos{
+    font-size: 12px;
+    cursor: pointer;
+    padding: 6px 10px;
+    border-radius: 15px;
     font-weight: 600;
-    margin-top: 30px;
+    color: var(--primary-60);
+    border: 1px solid var(--primary-60);
+}
+
+.body .body-content .header-material .title-content-body{
+    font-weight: 600;
 }
 
 .body .body-content .materials .materials-content .material{
@@ -197,7 +170,6 @@
 
 
 @media(max-width:1300px){
-
     .body .body-content .materials .materials-content{
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -224,22 +196,7 @@
     }
 }
 
-@media(max-width:700px){
-    .btn-close-materials{
-        position: fixed;
-        top: 70px;
-        left: 10px;
-    }
 
-    .body .body-content{
-        padding: 10px;
-    }
-
-    .body{
-        margin-top: 60px;
-        
-    }
-}
 
 @media(max-width:450px){
     .body .body-content .materials .materials-content{
