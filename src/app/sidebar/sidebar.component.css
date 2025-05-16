@@ -119,6 +119,7 @@ transform: rotate(-180deg);
     font-weight: 600;
     padding:0px 0px 0px 0px;
     border-radius: 7px;
+    cursor:pointer ;
     
 }
 
@@ -127,6 +128,7 @@ transform: rotate(-180deg);
     align-items: center;
     gap: 10px;
     padding: 10px 0px;
+   
 }
 
 .sidebar .sidebar-menu .menu-item  .title-bar-is-minimize{
@@ -182,6 +184,9 @@ transform: rotate(-180deg);
     color: rgb(63, 63, 63);
     font-size: 13px;
     font-weight: 400;
+     &&:hover{
+        color: black;
+    }
 }
 
 .sidebar .submenu-materials .submenu-item a.selected {
