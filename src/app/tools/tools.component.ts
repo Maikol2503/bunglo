@@ -32,7 +32,7 @@ export class ToolsComponent {
     this.toolServices.updateSelectedTool(selected)
   }
 
-  toggleModal() {
-    this.modalService.toggle();
-  }
+  // toggleModal() {
+  //   this.modalService.toggle();
+  // }
 }
