@@ -32,6 +32,7 @@ export class SumarizeComponent implements OnInit{
   async getData(){
     this.data = await this.LocalStorageServices.getDataSumarizeByID(this.id);
     this.data = this.data[0].data;
+    console.log(this.data)
   }
 
 

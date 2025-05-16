@@ -82,6 +82,7 @@ export class StudioModeInterfaceComponent implements OnInit, AfterViewInit, OnDe
     const width = element.offsetWidth;
     const height = element.offsetHeight;
     this.view = [width, height];
+    console.log(this.view)
   }
 
   async getDataMaterial(): Promise<any> {

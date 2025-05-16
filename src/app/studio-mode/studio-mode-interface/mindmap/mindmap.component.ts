@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, Input, OnChanges, SimpleChanges, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { AfterViewInit, Component, Input, OnChanges, SimpleChanges, ViewChild, ChangeDetectorRef, HostListener } from '@angular/core';
 import { NgxGraphModule } from '@swimlane/ngx-graph';
 import { provideAnimations } from '@angular/platform-browser/animations';
 
@@ -16,16 +16,31 @@ export class MindmapComponent implements AfterViewInit, OnChanges {
   @Input() size?: any;
   @ViewChild('graph') graph!: any;
 
-  zoomLevel: number = 1;
+  zoomLevel: number = 2;
 
   constructor(private cdr: ChangeDetectorRef) {}
+  
+ @HostListener('touchmove', ['$event'])
+  onTouchMove(event: TouchEvent) {
+    event.preventDefault(); // Impide que se haga scroll en la página
+  }
+
+  // @HostListener('touchstart', ['$event'])
+  //   @HostListener('touchmove', ['$event'])
+  //   onTouch(event: Event) {
+  //     event.preventDefault();
+  //     event.stopPropagation();
+  //   }
+
+
 
   ngAfterViewInit(): void {
-    setTimeout(() => {
-      if (this.graph) {
-        this.resetGraph();  // Llama a resetGraph para reiniciar la vista
-      }
-    });
+     this.applyZoom();
+    // setTimeout(() => {
+    //   if (this.graph) {
+    //     this.resetGraph();  // Llama a resetGraph para reiniciar la vista
+    //   }
+    // });
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -93,7 +108,7 @@ export class MindmapComponent implements AfterViewInit, OnChanges {
 
   zoomToFit() {
     if (this.graph) {
-      this.graph.zoomToFit();  // Ajusta el zoom para que el gráfico se ajuste a la vista
+      this.graph.zoomToFit(this.zoomLevel);  // Ajusta el zoom para que el gráfico se ajuste a la vista
     }
   }
 

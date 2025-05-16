@@ -22,8 +22,6 @@ getTitutloPrompt(text: string, type: string): string {
   `;
 }
 
-
-
 getQuizPrompt(
   texto: string,
   num_preguntas: number,
@@ -69,7 +67,6 @@ ${texto}
   `.trim();
 }
 
-
 getSumarizePrompt(text: string): string {
   return `Tu tarea es hacer un *resumen* del siguiente texto.
 
@@ -77,8 +74,10 @@ Un resumen consiste en identificar y expresar de forma breve y clara las ideas p
 
 Realiza lo siguiente:
 
-1. Genera un único título general que represente el contenido completo del texto.
-2. Extrae los puntos clave del texto y devuélvelos en un array de diccionarios JSON, cada uno con un título breve y una descripción del punto clave.
+1. Genera un único **título general** que represente el contenido completo del texto.
+2. Extrae los **puntos clave** del texto y devuélvelos en un array de diccionarios JSON, cada uno con:
+   - **titulo**: un título breve del punto clave  
+   - **descripcion**: descripción del punto clave
 
 Devuelve el resultado en un objeto JSON con el siguiente formato:
 

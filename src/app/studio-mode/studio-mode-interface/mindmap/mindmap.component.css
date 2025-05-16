@@ -1,5 +1,5 @@
 .chart-container{
-    z-index: 10000;
+    z-index: 1000;
     width: 100%;
     height: 100%;
     background-color: rgb(255, 255, 255);
@@ -15,6 +15,7 @@
   }
 
   .chart-container {
+  
     width: 100%;
     height: 100%;
     /* Asegúrate que no tenga min-width/min-height forzados */
