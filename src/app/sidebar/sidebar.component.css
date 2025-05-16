@@ -163,11 +163,13 @@ transform: rotate(-180deg);
 }
 
 .sidebar .sidebar-menu .menu-item .menu-title-container .menu-title{
+    cursor: pointer;
     color: #3d3d3d;
     font-weight: 500;
 }
 
 .sidebar .sidebar-menu .menu-item  .submenu-materials{
+    
     padding-left: 0px;
     display: flex;
     flex-direction: column;
