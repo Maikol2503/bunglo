@@ -6,19 +6,18 @@
 }
 
 .sumarize {
-max-width: 900px ;
-margin: 50px auto;
-background-color: rgb(241, 243, 246);
-padding: 50px;
-border-radius: 15px;
+  max-width: 900px ;
+  margin: 50px auto;
 }
 
 .sumarize .content-sumarize {
-margin-top: 20px;
-display: flex;
-flex-direction: column;
-gap: 10px;
-
+  border-radius: 15px;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: rgb(241, 243, 246);
+  padding: 50px;
 }
 
 .sumarize .content-sumarize .item {
@@ -82,6 +81,9 @@ cursor: pointer;
     color: #072446;
 }
 
+.sumarize .content-sumarize  .descripcion  .video-container{
+  margin-top: 20px;
+}
 
 
 

@@ -78,6 +78,7 @@ Realiza lo siguiente:
 2. Extrae los **puntos clave** del texto y devuélvelos en un array de diccionarios JSON, cada uno con:
    - **titulo**: un título breve del punto clave  
    - **descripcion**: descripción del punto clave
+   - **busqueda_youtube**: frase breve (máximo 5 palabras) que sirva para buscar videos relacionados en YouTube
 
 Devuelve el resultado en un objeto JSON con el siguiente formato:
 
@@ -86,7 +87,9 @@ Devuelve el resultado en un objeto JSON con el siguiente formato:
   "resumenes": [
     {
       "titulo": "título breve del punto clave",
-      "descripcion": "descripción del punto clave"
+      "descripcion": "descripción del punto clave",
+      "busqueda_youtube": "frase corta para buscar en YouTube"
+      
     },
     ...
   ]

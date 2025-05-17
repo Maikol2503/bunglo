@@ -7,6 +7,7 @@ import { ModalUploadContentService } from '../../services-interfas/modal-upload-
 import { LocalstorageService } from '../../services/localstorage.service';
 import { Router } from '@angular/router';
 import { SidebarService } from '../../services-interfas/sidebar.service';
+import { ApiYoutubeService } from '../../services/api-youtube.service';
 
 @Component({
   selector: 'app-sumarize-setup',
@@ -20,6 +21,7 @@ export class SumarizeSetupComponent implements OnInit {
     private generateData:DataGeneratorServiceService, 
     private modalUploadOptionServices:ModalUploadContentService, 
     private localStorageServices:LocalstorageService, 
+    private youTubeService:ApiYoutubeService,
     private router: Router){}
   
   textToGenerateSumarize:string = '';
@@ -48,7 +50,33 @@ export class SumarizeSetupComponent implements OnInit {
   async generateSumarize(){
     this.showLoader1=true;
     this.dataSumarize = await this.generateData.sumarize(this.textToGenerateSumarize);
-    this.saveDataLocalStorage()
+    await this.agregarLinksYoutube()
+    await this.saveDataLocalStorage()
+    console.log(this.dataSumarize)
+  }
+
+
+
+
+  async agregarLinksYoutube() {
+    const resumenes = this.dataSumarize.resumenes;
+
+    for (let resumen of resumenes) {
+      try {
+        const response = await this.youTubeService.buscarVideos(resumen.busqueda_youtube).toPromise();
+        const items = response.items;
+
+        if (items && items.length > 0) {
+          const videoId = items[0].id.videoId;
+          resumen.video_url = `https://www.youtube.com/watch?v=${videoId}`;
+        } else {
+          resumen.video_url = null;
+        }
+      } catch (error) {
+        console.error('Error al buscar video de YouTube:', error);
+        resumen.video_url = null;
+      }
+    }
   }
 
   async saveDataLocalStorage(){
