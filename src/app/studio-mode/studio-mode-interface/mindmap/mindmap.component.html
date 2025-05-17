@@ -10,8 +10,7 @@
   [panOnZoom]="true"
   [zoomSpeed]="0.1"
   [draggingEnabled]="false"
-  (touchstart)="onTouchStart($event)"
-  (touchmove)="onTouchMove($event)"
+  
   
 >
   <ng-template #defsTemplate>
@@ -68,5 +67,7 @@
   </ng-template>
 </ngx-graph>
 
-<!-- <button (click)="zoomIn()">+</button>
-<button (click)="zoomOut()">-</button> -->
+<div class="buttom-zoom">
+  <button (click)="zoomIn()">+</button>
+  <button (click)="zoomOut()">-</button>
+</div>

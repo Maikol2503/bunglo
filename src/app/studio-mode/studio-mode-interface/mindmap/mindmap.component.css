@@ -7,6 +7,7 @@
     max-width: 100%;
     max-height: 100%;
     touch-action: none;
+    position: relative;
 }
 
 .node-content {
@@ -19,4 +20,9 @@
   }
 
 
-  
+.buttom-zoom{
+  position: fixed;
+  right:20px;
+  top: 40px;
+  z-index:100000 ;
+}
