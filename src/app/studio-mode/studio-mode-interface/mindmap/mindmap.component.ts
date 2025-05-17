@@ -24,7 +24,7 @@ export class MindmapComponent implements AfterViewInit, OnChanges {
   @Input() size?: any;
   @ViewChild('graph') graph!: any;
 
-  zoomLevel: number = 2;
+  zoomLevel: number = 0.5;
 
   constructor(private cdr: ChangeDetectorRef) {}
 
@@ -51,28 +51,29 @@ export class MindmapComponent implements AfterViewInit, OnChanges {
 
   private applyZoom(): void {
     if (this.graph) {
-      this.graph.zoomToFit();
+      this.graph.zoomTo(this.zoomLevel);
     }
   }
 
   private adjustGraphLayout(): void {
     if (this.graph) {
-      this.graph.layout = 'dagreCluster';
+      this.graph.layout = 'dagre';
       this.graph.update();
     }
   }
 
   zoomIn() {
-    this.zoomLevel += 0.1;
     if (this.graph) {
-      this.graph.zoom(this.zoomLevel);
+      this.zoomLevel *= 1.1;
+      this.graph.zoomTo(this.zoomLevel); // usa zoomTo si está disponible
     }
   }
 
   zoomOut() {
-    this.zoomLevel = Math.max(0.1, this.zoomLevel - 0.1);
     if (this.graph) {
-      this.graph.zoom(this.zoomLevel);
+      this.zoomLevel *= 0.9;
+      this.zoomLevel = Math.max(0.1, this.zoomLevel);
+      this.graph.zoomTo(this.zoomLevel); // usa zoomTo si está disponible
     }
   }
 

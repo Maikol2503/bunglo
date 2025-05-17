@@ -1,3 +1,7 @@
+.body{
+  position: relative;
+}
+
 .chart-container{
     z-index: 1000;
     width: 100%;
@@ -6,8 +10,6 @@
     overflow: hidden;
     max-width: 100%;
     max-height: 100%;
-    touch-action: none;
-    position: relative;
 }
 
 .node-content {
@@ -21,8 +23,37 @@
 
 
 .buttom-zoom{
-  position: fixed;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: absolute;
   right:20px;
-  top: 60px;
-  z-index:100000 ;
+  top: 150px;
+}
+
+
+.buttom-zoom button{
+  cursor: pointer;
+  right: 20px;
+  top: 20px;
+  width: 45px;
+  height: 45px;
+  border: none;
+  background-color: #008cff;
+  border-radius: 10px;
+  z-index: 1;
+  font-size: 20px;
+  color: white;
+}
+
+
+@media(max-width:700px){
+  .buttom-zoom{
+    gap: 10px;
+    right: 10px;
+  } 
+  .buttom-zoom button{
+    width: 35px;
+    height: 35px;
+  }
 }

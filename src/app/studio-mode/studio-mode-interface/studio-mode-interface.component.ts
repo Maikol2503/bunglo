@@ -134,7 +134,7 @@ export class StudioModeInterfaceComponent implements OnInit, AfterViewInit, OnDe
     this.enlargeMap = !this.enlargeMap;
 
     if (this.enlargeMap) {
-      this.view = [1000, 1000]
+      this.view = [2000, 2000]
       this.renderer.addClass(document.body, 'no-scroll');  // Bloquear scroll
     } else {
       this.renderer.removeClass(document.body, 'no-scroll');  // Restaurar scroll

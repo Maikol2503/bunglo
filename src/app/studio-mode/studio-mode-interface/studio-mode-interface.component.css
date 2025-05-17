@@ -137,7 +137,9 @@ overscroll-behavior: contain;
   border: none;
   background-color: #008cff;
   border-radius: 10px;
+  z-index: 1;
 }
+
 
 
 .body .content-body .mind-map .content-mind-map .btn-rotate{
