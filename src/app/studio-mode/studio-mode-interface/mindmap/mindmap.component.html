@@ -9,7 +9,9 @@
   [enableZoom]="true"
   [panOnZoom]="true"
   [zoomSpeed]="0.1"
-  [draggingEnabled]="true"
+  [draggingEnabled]="false"
+  (touchstart)="onTouchStart($event)"
+  (touchmove)="onTouchMove($event)"
   
 >
   <ng-template #defsTemplate>

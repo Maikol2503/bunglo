@@ -1,114 +1,125 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, Input, OnChanges, SimpleChanges, ViewChild, ChangeDetectorRef, HostListener } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  Input,
+  OnChanges,
+  SimpleChanges,
+  ViewChild,
+  ChangeDetectorRef
+} from '@angular/core';
 import { NgxGraphModule } from '@swimlane/ngx-graph';
 import { provideAnimations } from '@angular/platform-browser/animations';
 
 @Component({
   selector: 'app-mindmap',
+  standalone: true,
   imports: [NgxGraphModule, CommonModule],
   templateUrl: './mindmap.component.html',
   styleUrls: ['./mindmap.component.css'],
   providers: [provideAnimations()]
 })
 export class MindmapComponent implements AfterViewInit, OnChanges {
-
   @Input() data?: any;
   @Input() size?: any;
   @ViewChild('graph') graph!: any;
 
   zoomLevel: number = 2;
+  private initialTouchDistance: number | null = null;
 
   constructor(private cdr: ChangeDetectorRef) {}
-  
-//  @HostListener('touchmove', ['$event'])
-//   onTouchMove(event: TouchEvent) {
-//     event.preventDefault(); // Impide que se haga scroll en la página
-//   }
 
-  // @HostListener('touchstart', ['$event'])
-  //   @HostListener('touchmove', ['$event'])
-  //   onTouch(event: Event) {
-  //     event.preventDefault();
-  //     event.stopPropagation();
-  //   }
+  // Calcula la distancia entre dos dedos
+  private getTouchDistance(touches: TouchList): number {
+    const [touch1, touch2] = [touches[0], touches[1]];
+    const dx = touch1.clientX - touch2.clientX;
+    const dy = touch1.clientY - touch2.clientY;
+    return Math.sqrt(dx * dx + dy * dy);
+  }
 
+  onTouchStart(event: TouchEvent) {
+    if (event.touches.length === 2) {
+      this.initialTouchDistance = this.getTouchDistance(event.touches);
+    }
+  }
 
+  onTouchMove(event: TouchEvent) {
+    if (event.touches.length === 2 && this.initialTouchDistance) {
+      const newDistance = this.getTouchDistance(event.touches);
+      const delta = newDistance - this.initialTouchDistance;
+
+      if (Math.abs(delta) > 5) { // Umbral para evitar saltos pequeños
+        const zoomFactor = delta > 0 ? 1.05 : 0.95;
+        this.zoomLevel *= zoomFactor;
+        this.zoomLevel = Math.max(0.1, Math.min(this.zoomLevel, 10)); // Límite de zoom
+
+        if (this.graph) {
+          this.graph.zoom(this.zoomLevel);
+        }
+
+        this.initialTouchDistance = newDistance;
+      }
+
+      event.preventDefault(); // Previene el scroll
+    }
+  }
 
   ngAfterViewInit(): void {
-     this.applyZoom();
-    // setTimeout(() => {
-    //   if (this.graph) {
-    //     this.resetGraph();  // Llama a resetGraph para reiniciar la vista
-    //   }
-    // });
+    this.applyZoom();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['data']) {
-      // Si los datos cambian, reinicia el gráfico y aplica el zoom
       this.resetGraph();
     }
     if (changes['size']) {
-      // Si el tamaño cambia, ajusta el zoom y la posición si es necesario
       this.applyZoom();
     }
   }
 
   private resetGraph(): void {
-    // Asegúrate de que los datos sean nuevos
     if (this.graph) {
-
-      // // Restablece el zoom y centra el gráfico
-      // this.zoomLevel = 1;
-      // this.graph.zoom(this.zoomLevel);
-
-      // this.graph.center();  // Centra el gráfico para una vista predeterminada
-
-      // // Reorganiza y ajusta el layout
       this.adjustGraphLayout();
-
-      // Fuerza la actualización del gráfico para reflejar los nuevos datos
       this.graph.update();
     }
   }
 
   private applyZoom(): void {
     if (this.graph) {
-      this.graph.zoomToFit();  // Ajusta el zoom para que el gráfico se ajuste a la vista
+      this.graph.zoomToFit();
     }
   }
 
   private adjustGraphLayout(): void {
     if (this.graph) {
-      // Puedes cambiar el layout si es necesario
-      this.graph.layout = 'dagreCluster';  // Cambia esto según tus necesidades de diseño
-      this.graph.update();  // Fuerza el gráfico a actualizarse
+      this.graph.layout = 'dagreCluster';
+      this.graph.update();
     }
   }
 
   zoomIn() {
     this.zoomLevel += 0.1;
     if (this.graph) {
-      this.graph.zoom(this.zoomLevel);  // Aplica el zoom en el gráfico
+      this.graph.zoom(this.zoomLevel);
     }
   }
 
   zoomOut() {
     this.zoomLevel = Math.max(0.1, this.zoomLevel - 0.1);
     if (this.graph) {
-      this.graph.zoom(this.zoomLevel);  // Aplica el zoom en el gráfico
+      this.graph.zoom(this.zoomLevel);
     }
   }
 
   center() {
     if (this.graph) {
-      this.graph.center();  // Centra el gráfico
+      this.graph.center();
     }
   }
 
   zoomToFit() {
     if (this.graph) {
-      this.graph.zoomToFit(this.zoomLevel);  // Ajusta el zoom para que el gráfico se ajuste a la vista
+      this.graph.zoomToFit(this.zoomLevel);
     }
   }
 
