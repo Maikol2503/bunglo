@@ -50,7 +50,7 @@ export class SumarizeSetupComponent implements OnInit {
   async generateSumarize(){
     this.showLoader1=true;
     this.dataSumarize = await this.generateData.sumarize(this.textToGenerateSumarize);
-    await this.agregarLinksYoutube()
+    // await this.agregarLinksYoutube()
     await this.saveDataLocalStorage()
     console.log(this.dataSumarize)
   }

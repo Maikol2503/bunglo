@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-sumarize',
@@ -8,8 +9,13 @@ import { Component, Input } from '@angular/core';
   templateUrl: './sumarize.component.html',
   styleUrls: ['./sumarize.component.css']
 })
-export class SumarizeComponent {
+export class SumarizeComponent implements OnInit{
+
+  constructor(private sanitizer: DomSanitizer){}
   @Input() data?: any;
+  ngOnInit(): void {
+    console.log(this.data)
+  }
 
   expandedItems: number[] = []; // Guarda los índices abiertos
 
@@ -21,6 +27,16 @@ export class SumarizeComponent {
       // Si no está abierto, lo agregamos
       this.expandedItems.push(index);
     }
+  }
+
+     getSafeYoutubeUrl(videoUrl: string): SafeResourceUrl {
+    const videoId = this.getVideoId(videoUrl);
+    return this.sanitizer.bypassSecurityTrustResourceUrl(`https://www.youtube.com/embed/${videoId}`);
+  }
+
+  getVideoId(url: string): string {
+    const match = url.match(/v=([a-zA-Z0-9_-]+)/);
+    return match ? match[1] : '';
   }
 
   isExpanded(index: number): boolean {

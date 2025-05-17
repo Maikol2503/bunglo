@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApiModelo } from './api-modelo1.service';
 import { PromptService } from './prompt.service';
+import { ApiYoutubeService } from './api-youtube.service';
 
 interface Question {
   id: string;
@@ -34,7 +35,7 @@ export interface MindMap {
   providedIn: 'root'
 })
 export class DataGeneratorServiceService {
-  constructor(private prompt: PromptService, private modelo: ApiModelo) {}
+  constructor(private prompt: PromptService, private modelo: ApiModelo, private youTubeService:ApiYoutubeService) {}
 
   async generateDataModeStudio(type: 'mindMap' | 'summarize' | 'flashCard', trimmedText: string): Promise<any | null> {
 
@@ -152,29 +153,47 @@ export class DataGeneratorServiceService {
 
 
   // resumen
-  async sumarize(text:string){
-    const prompt = this.prompt.getSumarizePrompt(text);
-    return new Promise((resolve, reject) => {
-      this.modelo.getCompletion(prompt).subscribe(
-        (response: any) => {
-          try {
-            // console.log(`Response ${type}:`, response);
-            let rawData = this.extraerJSON(response.choices[0].message.content.trim());
-            let parsedData = typeof rawData === 'string' ? JSON.parse(rawData) : rawData;
-            // console.log(`Parsed Data ${type}:`, parsedData);
-            resolve(parsedData);
-          } catch (error) {
-            console.error(`Error parsing JSON for Sumariz:`, error);
-            reject(null);
-          }
-        },
-        (error) => {
-          console.error(`API Error for Sumariz:`, error);
+async sumarize(text: string) {
+  const prompt = this.prompt.getSumarizePrompt(text);
+
+  return new Promise((resolve, reject) => {
+    this.modelo.getCompletion(prompt).subscribe(
+      async (response: any) => {
+        try {
+          let rawData = this.extraerJSON(response.choices[0].message.content.trim());
+          let parsedData = typeof rawData === 'string' ? JSON.parse(rawData) : rawData;
+
+          // 🔽 Agregar links de YouTube
+          await Promise.all(parsedData.resumenes.map(async (resumen: any) => {
+            try {
+              const result = await this.youTubeService.buscarVideos(resumen.busqueda_youtube).toPromise();
+              const items = result?.items;
+              if (items && items.length > 0) {
+                const videoId = items[0].id.videoId;
+                resumen.video_url = `https://www.youtube.com/watch?v=${videoId}`;
+              } else {
+                resumen.video_url = null;
+              }
+            } catch (err) {
+              console.error('Error al buscar video de YouTube:', err);
+              resumen.video_url = null;
+            }
+          }));
+
+          resolve(parsedData);
+        } catch (error) {
+          console.error(`Error parsing JSON for Sumariz:`, error);
           reject(null);
         }
-      );
-    });
-  }
+      },
+      (error) => {
+        console.error(`API Error for Sumariz:`, error);
+        reject(null);
+      }
+    );
+  });
+}
+
 
 
   // Flas Cards

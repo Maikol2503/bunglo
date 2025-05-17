@@ -120,6 +120,7 @@ export class StudioModeInterfaceComponent implements OnInit, AfterViewInit, OnDe
       this.mindMapData = mindmap || null;
       this.sumarizeData = sumarize || null;
       this.flashCardData = flashcard || null;
+      console.log(this.sumarizeData)
     } else {
       console.warn("No se encontró el dato con este ID.");
     }
