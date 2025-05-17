@@ -101,9 +101,15 @@ cursor: pointer;
     background-color: #ffffff00;
   }
 
+  .sumarize .header .title{
+    padding: 20px 10px;
+  }
+
     
   .sumarize .content-sumarize {
     margin-top: 0px;
+    background-color: rgba(241, 243, 246, 0);
+    padding: 10px;
     
     }
   .sumarize .content-sumarize  .titulo h3{
@@ -121,11 +127,12 @@ cursor: pointer;
 
 @media(max-width:450px){
   .sumarize{
-    padding: 20px;
+    padding: 0px;
   }
 
   .sumarize .content-sumarize {
     margin-top: 0px;
+
     
     }
   .sumarize .content-sumarize  .titulo h3{
