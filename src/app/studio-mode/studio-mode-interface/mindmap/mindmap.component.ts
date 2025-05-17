@@ -20,10 +20,10 @@ export class MindmapComponent implements AfterViewInit, OnChanges {
 
   constructor(private cdr: ChangeDetectorRef) {}
   
- @HostListener('touchmove', ['$event'])
-  onTouchMove(event: TouchEvent) {
-    event.preventDefault(); // Impide que se haga scroll en la página
-  }
+//  @HostListener('touchmove', ['$event'])
+//   onTouchMove(event: TouchEvent) {
+//     event.preventDefault(); // Impide que se haga scroll en la página
+//   }
 
   // @HostListener('touchstart', ['$event'])
   //   @HostListener('touchmove', ['$event'])
