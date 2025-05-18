@@ -22,7 +22,6 @@ export class NavMobileComponent {
 
   async ngOnInit(): Promise<any>  {
     this.materialsData = await this.localStorageservices.getMaterialsData()
-    console.log(this.materialsData)
   }
 
   toggleMaterials() {

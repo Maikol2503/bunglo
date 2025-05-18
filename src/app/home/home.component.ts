@@ -25,31 +25,31 @@ export class HomeComponent  {
     this.sidebarService.show_SideBar()
     // Asegúrate de que el sidebar esté desplegado cuando entras en Home
     this.sidebarService.set_SideBar_State_Minimize(false);
-    this.buscar()
+    // this.buscar()
   }
 
 
    consulta = 'corpúsculo renal anatomía diagrama';
    imagenes: any[] = [];
 
-    buscar() {
-        const consultaLimpia = this.consulta.trim();
-        if (!consultaLimpia) { 
-        console.warn("La búsqueda está va cía.");
-          return;
-        }
+    // buscar() {
+    //     const consultaLimpia = this.consulta.trim();
+    //     if (!consultaLimpia) { 
+    //     console.warn("La búsqueda está va cía.");
+    //       return;
+    //     }
 
 
-        this.imageService.buscarImagenes(consultaLimpia).subscribe(
-          data => {
-            this.imagenes = data.items || [];
-            console.log(data.items)
-          },
-          error => {
-            console.error("Error al buscar imágenes:", error);
-          }
-        );
-    }
+    //     this.imageService.buscarImagenes(consultaLimpia).subscribe(
+    //       data => {
+    //         this.imagenes = data.items || [];
+    //         console.log(data.items)
+    //       },
+    //       error => {
+    //         console.error("Error al buscar imágenes:", error);
+    //       }
+    //     );
+    // }
 
 
    

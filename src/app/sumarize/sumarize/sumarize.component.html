@@ -26,11 +26,11 @@
           <div class="descripcion" >
           <p>{{ item.descripcion }}</p>
 
-          <div class="image">
+          <div class="image" *ngIf="item.image_url">
             <img [src]="item.image_url" alt="">
           </div>
 
-          <div class="btn-youtube">
+          <div class="btn-youtube" *ngIf="item.video_url">
             <a [href]="getSafeYoutubeUrl(item.video_url)" target="_blank">
               <button>
                 <p>Ver Video</p>
