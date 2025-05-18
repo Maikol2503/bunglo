@@ -68,37 +68,40 @@ ${texto}
 }
 
 getSumarizePrompt(text: string): string {
-  return `Tu tarea es hacer un *resumen* del siguiente texto.
+    return `Tu tarea es hacer un *resumen* del siguiente texto.
 
-Un resumen consiste en identificar y expresar de forma breve y clara las ideas principales del contenido, sin repetirlo palabra por palabra ni incluir detalles innecesarios. No debes agregar opiniones ni comentarios personales, solo condensar la información esencial.
+            Un resumen consiste en identificar y expresar de forma breve y clara las ideas principales del contenido, sin repetirlo palabra por palabra ni incluir detalles innecesarios. No debes agregar opiniones ni comentarios personales, solo condensar la información esencial.
 
-Realiza lo siguiente:
+            Realiza lo siguiente:
 
-1. Genera un único **título general** que represente el contenido completo del texto.
-2. Extrae los **puntos clave** del texto y devuélvelos en un array de diccionarios JSON, cada uno con:
-   - **titulo**: un título breve del punto clave  
-   - **descripcion**: descripción del punto clave
-   - **busqueda_youtube**: frase breve (máximo 5 palabras) que sirva para buscar videos relacionados en YouTube
+            1. Genera un único **título general** que represente el contenido completo del texto.
+            2. Extrae los **puntos clave** del texto y devuélvelos en un array de diccionarios JSON, cada uno con:
+              - **titulo**: un título breve del punto clave  
+              - **descripcion**: descripción del punto clave
+              - **busqueda_youtube**: frase breve (máximo 5 palabras) que sirva para buscar videos relacionados en YouTube
+              - **busqueda_imagenes**: frase breve (máximo 5 palabras) que describa el punto para buscar imágenes relacionadas
 
-Devuelve el resultado en un objeto JSON con el siguiente formato:
+            Devuelve el resultado en un objeto JSON con el siguiente formato:
 
-{
-  "titulo_general": "título que resume el texto completo",
-  "resumenes": [
-    {
-      "titulo": "título breve del punto clave",
-      "descripcion": "descripción del punto clave",
-      "busqueda_youtube": "frase corta para buscar en YouTube"
-      
-    },
-    ...
-  ]
-}
 
-No agregues información adicional ni comentarios. Solo responde en *formato JSON válido*.
+            {
+              "titulo_general": "título que resume el texto completo",
+              "resumenes": [
+                {
+                  "titulo": "título breve del punto clave",
+                  "descripcion": "descripción del punto clave",
+                  "busqueda_youtube": "frase corta para buscar en YouTube",
+                  "busqueda_imagenes": "frase corta para buscar imágenes"
+                },
+                ...
+              ]
+            }
 
-Aquí está el texto: ${text}`
-}
+
+            No agregues información adicional ni comentarios. Solo responde en *formato JSON válido*.
+
+            Aquí está el texto: ${text}`;
+  }
 
 getConceptMap(text: string): string {
   return `

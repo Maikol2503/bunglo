@@ -27,6 +27,7 @@ export class SumarizeComponent implements OnInit{
   data:any;
   expandedItems: number[] = []; // Guarda los índices abiertos
   videos: any[] = [];
+  
 
   ngOnInit(): void {
     this.sideBarServices.sidebar_apply_minimize(true)

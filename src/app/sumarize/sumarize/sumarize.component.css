@@ -22,9 +22,11 @@
 
 .sumarize .content-sumarize .item {
   padding: 20px 0px;
-  border-bottom: 2px solid rgb(218, 218, 218);
+  /* border-bottom: 2px solid rgb(218, 218, 218); */
   cursor: pointer;
   transition: .5s;
+  height: 100%;
+
 }
 
 
@@ -63,29 +65,63 @@ cursor: pointer;
 }
 
 .descripcion {
-    max-height: 0;
-    overflow: hidden;
+    /* overflow: hidden; */
     transition: max-height 0.3s ease, padding 0.3s ease;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 20px;
   }
 
 
 
   .descripcion.mostrar {
-    max-height: 500px; /* Un valor suficientemente grande */
     padding: 15px 0;
+    max-height: 100%;
   }
 
 .sumarize .content-sumarize  .descripcion p{
     margin-top: 0px;
     padding: 0px 0px;
     font-size: 16px;
+    line-height: 30px;
     color: #072446;
 }
-
-.sumarize .content-sumarize  .descripcion  .video-container{
+.sumarize .content-sumarize  .descripcion .image{
   margin-top: 20px;
+  border-radius: 20px;
+  overflow: hidden;
+  
 }
+.sumarize .content-sumarize  .descripcion .image img{
+  object-fit:contain;
+  width: 100%;
+  max-height: 500px;
+  
+}
+
+.sumarize .content-sumarize  .descripcion .btn-youtube button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 10px;
+  border-radius: 10px;
+  margin-top: 10px;
+  background-color: #ffefef;
+  border: 2px solid rgb(255, 149, 149);
+  cursor: pointer;  
+}
+
+.sumarize .content-sumarize  .descripcion .btn-youtube  button p{
+  color: rgb(209, 84, 84);
+  font-size: 14px;
+}
+
+/* .sumarize .content-sumarize  .descripcion  .video-container{
+  margin-top: 20px;
+} */
 
 
 

@@ -13,19 +13,33 @@
         <div class="titulo" (click)="toggleDescription(i)">
           
           <h3><span>{{i + 1}}</span>{{ item.titulo }}</h3>
-          <button *ngIf="isExpanded(i) === true">
+          <!-- <button *ngIf="isExpanded(i) === true">
             <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="15" height="15" x="0" y="0" viewBox="0 0 292.362 292.362" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g transform="matrix(-1,3.67394039744206e-16,-3.67394039744206e-16,-1,292.3619995117188,292.3629837036133)"><path d="M286.935 69.377c-3.614-3.617-7.898-5.424-12.848-5.424H18.274c-4.952 0-9.233 1.807-12.85 5.424C1.807 72.998 0 77.279 0 82.228c0 4.948 1.807 9.229 5.424 12.847l127.907 127.907c3.621 3.617 7.902 5.428 12.85 5.428s9.233-1.811 12.847-5.428L286.935 95.074c3.613-3.617 5.427-7.898 5.427-12.847 0-4.948-1.814-9.229-5.427-12.85z" fill="#003c80" opacity="1" data-original="#000000" class=""></path></g></svg>
           </button>
           <button *ngIf="!isExpanded(i)">
             <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="15" height="15" x="0" y="0" viewBox="0 0 292.362 292.362" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g transform="matrix(1,-2.4492935982947064e-16,2.4492935982947064e-16,1,-5.684341886080802e-14,5.684341886080802e-14)"><path d="M286.935 69.377c-3.614-3.617-7.898-5.424-12.848-5.424H18.274c-4.952 0-9.233 1.807-12.85 5.424C1.807 72.998 0 77.279 0 82.228c0 4.948 1.807 9.229 5.424 12.847l127.907 127.907c3.621 3.617 7.902 5.428 12.85 5.428s9.233-1.811 12.847-5.428L286.935 95.074c3.613-3.617 5.427-7.898 5.427-12.847 0-4.948-1.814-9.229-5.427-12.85z" fill="#003c80" opacity="1" data-original="#000000" class=""></path></g></svg>
-          </button>
+          </button> -->
         </div>
   
         <!-- Descripción con animación -->
-        <div class="descripcion" [ngClass]="{ 'mostrar': isExpanded(i) }">
+        <!-- <div class="descripcion" [ngClass]="{ 'mostrar': isExpanded(i) }"> -->
+          <div class="descripcion" >
           <p>{{ item.descripcion }}</p>
 
-          <div *ngIf="item.video_url" class="video-container">
+          <div class="image">
+            <img [src]="item.image_url" alt="">
+          </div>
+
+          <div class="btn-youtube">
+            <a [href]="getSafeYoutubeUrl(item.video_url)" target="_blank">
+              <button>
+                <p>Ver Video</p>
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" x="0" y="0" viewBox="0 0 24 24" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.546 12 3.546 12 3.546s-7.505 0-9.377.504A3.015 3.015 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.504 9.376.504 9.376.504s7.505 0 9.377-.504a3.018 3.018 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.546 15.569V8.431L15.818 12l-6.272 3.569z" fill="#e43636" opacity="1" data-original="#000000" class=""></path></g></svg>
+              </button>
+            </a>
+          </div>
+
+          <!-- <div *ngIf="item.video_url" class="video-container">
             <iframe
                     width="100%"
                     height="315"
@@ -34,7 +48,7 @@
                     frameborder="0"
                     allowfullscreen>
             </iframe>
-          </div>
+          </div> -->
         
         
       </div>

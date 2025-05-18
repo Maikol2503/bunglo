@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ApiModelo } from './api-modelo1.service';
 import { PromptService } from './prompt.service';
 import { ApiYoutubeService } from './api-youtube.service';
+import { GoogleSearchService } from './google-search.service';
 
 interface Question {
   id: string;
@@ -35,7 +36,11 @@ export interface MindMap {
   providedIn: 'root'
 })
 export class DataGeneratorServiceService {
-  constructor(private prompt: PromptService, private modelo: ApiModelo, private youTubeService:ApiYoutubeService) {}
+  constructor(
+    private prompt: PromptService, 
+    private modelo: ApiModelo, 
+    private youTubeService:ApiYoutubeService,
+    private googleSearchService: GoogleSearchService ) {}
 
   async generateDataModeStudio(type: 'mindMap' | 'summarize' | 'flashCard', trimmedText: string): Promise<any | null> {
 
@@ -153,6 +158,7 @@ export class DataGeneratorServiceService {
 
 
   // resumen
+// resumen
 async sumarize(text: string) {
   const prompt = this.prompt.getSumarizePrompt(text);
 
@@ -163,20 +169,25 @@ async sumarize(text: string) {
           let rawData = this.extraerJSON(response.choices[0].message.content.trim());
           let parsedData = typeof rawData === 'string' ? JSON.parse(rawData) : rawData;
 
-          // 🔽 Agregar links de YouTube
+          // 🔽 Agregar links de YouTube y de imágenes
           await Promise.all(parsedData.resumenes.map(async (resumen: any) => {
+            // YouTube
             try {
               const result = await this.youTubeService.buscarVideos(resumen.busqueda_youtube).toPromise();
               const items = result?.items;
-              if (items && items.length > 0) {
-                const videoId = items[0].id.videoId;
-                resumen.video_url = `https://www.youtube.com/watch?v=${videoId}`;
-              } else {
-                resumen.video_url = null;
-              }
+              resumen.video_url = items && items.length > 0 ? `https://www.youtube.com/watch?v=${items[0].id.videoId}` : null;
             } catch (err) {
               console.error('Error al buscar video de YouTube:', err);
               resumen.video_url = null;
+            }
+
+            // Imagen
+            try {
+              const imagenUrl = await this.googleSearchService.buscarImagenes(resumen.busqueda_youtube).toPromise();
+              resumen.image_url = imagenUrl;
+            } catch (err) {
+              console.error('Error al buscar imagen:', err);
+              resumen.image_url = null;
             }
           }));
 
@@ -193,6 +204,7 @@ async sumarize(text: string) {
     );
   });
 }
+
 
 
 
