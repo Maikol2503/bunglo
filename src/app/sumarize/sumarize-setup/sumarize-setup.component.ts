@@ -55,9 +55,6 @@ export class SumarizeSetupComponent implements OnInit {
     console.log(this.dataSumarize)
   }
 
-
-
-
   async agregarLinksYoutube() {
     const resumenes = this.dataSumarize.resumenes;
 
@@ -87,7 +84,6 @@ export class SumarizeSetupComponent implements OnInit {
     await this.localStorageServices.setNewMaterial(this.id, this.dataSumarize, this.type, this.textToGenerateSumarize, this.description, this.name); //Guardo la data del quiz
     await this.router.navigate(['/material/sumarize/',this.id]);
   }
-
 
   async generarIDSeguro(): Promise<string> {
     const aleatorio = crypto.getRandomValues(new Uint8Array(16));

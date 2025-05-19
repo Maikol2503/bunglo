@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, Input, OnInit } from '@angular/core';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, Input, OnChanges, OnInit, SimpleChanges, ViewEncapsulation } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl, SafeHtml  } from '@angular/platform-browser';
+import { marked } from 'marked';
 
 @Component({
   selector: 'app-sumarize',
@@ -9,14 +10,39 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
   templateUrl: './sumarize.component.html',
   styleUrls: ['./sumarize.component.css'],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  encapsulation: ViewEncapsulation.None
 })
-export class SumarizeComponent implements OnInit{
+export class SumarizeComponent implements OnChanges{
 
   constructor(private sanitizer: DomSanitizer){}
+  
+ 
   @Input() data?: any;
-  ngOnInit(): void {
-    console.log(this.data)
+
+
+  async ngOnChanges(changes: SimpleChanges) {
+    if (changes['data'] && this.data && this.data.resumenes) {
+      console.log('Data recibida:', this.data);
+
+      const transformed = await Promise.all(
+        this.data.resumenes.map(async (item: any) => {
+          const html = await marked.parse(item.descripcion || '');
+          return {
+            ...item,
+            descripcion: this.sanitizer.bypassSecurityTrustHtml(html)
+          };
+        })
+      );
+
+      this.data = {
+        ...this.data,
+        resumenes: transformed
+      };
+
+      console.log('Data procesada:', this.data);
+    }
   }
+
 
   expandedItems: number[] = []; // Guarda los índices abiertos
 
