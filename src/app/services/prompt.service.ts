@@ -68,40 +68,40 @@ ${texto}
 }
 
 getSumarizePrompt(text: string): string {
-    return `Tu tarea es hacer un *resumen* del siguiente texto.
+  return `Tu tarea es generar un *resumen visual y estructurado* del siguiente texto usando **Markdown** únicamente en las descripciones.
 
-            Un resumen consiste en identificar y expresar de forma breve y clara las ideas principales del contenido, sin repetirlo palabra por palabra ni incluir detalles innecesarios. No debes agregar opiniones ni comentarios personales, solo condensar la información esencial.
+El formato de salida debe ser estrictamente un objeto JSON válido con esta estructura:
+ - en resumenes el titulo debe tener un icono identificativo
+ - en resumenes la descripcion debe ser en formato markdown
+{
+  "titulo_general": "📘 Título que resume el texto completo",
+  "resumenes": [
+    {
+      "titulo": "Título breve del punto clave",
+      "descripcion": "aquí va el resumen visual con recursos como:\\n- **Negritas** para conceptos clave \\n- ✅ Listas con viñetas\\n- 🔢 Pasos numerados\\n- 📊 Tablas en formato Markdown:\\n  | Concepto | Descripción |\\n  |----------|-------------|\\n  | Ejemplo  | Explicación |",
+      "busqueda_youtube": "Frase breve para buscar video"
+    },
+    ...
+  ],
+  "frases_busqueda_imagenes_resumen": [
+    "Frase 1 para buscar imagen",
+    "Frase 2 para buscar imagen",
+    ...
+  ]
+}
 
-            Realiza lo siguiente:
+⚠️ IMPORTANTE:
+- Asegúrate de escapar correctamente todos los saltos de línea como \\n, las comillas dobles como \\", y cualquier otro carácter especial dentro de las cadenas para que el JSON sea válido.
+- No agregues explicaciones fuera del JSON.
+- Responde solo en *formato JSON válido*.
 
-            1. Genera un único **título general** que represente el contenido completo del texto.
-            2. Extrae los **puntos clave** del texto y devuélvelos en un array de diccionarios JSON, cada uno con:
-              - **titulo**: un título breve del punto clave  
-              - **descripcion**: descripción del punto clave
-              - **busqueda_youtube**: frase breve (máximo 5 palabras) que sirva para buscar videos relacionados en YouTube
-              - **busqueda_imagenes**: frase breve (máximo 5 palabras) que describa el punto para buscar imágenes relacionadas
-
-            Devuelve el resultado en un objeto JSON con el siguiente formato:
+Aquí está el texto a resumir:
+${text}`;
+}
 
 
-            {
-              "titulo_general": "título que resume el texto completo",
-              "resumenes": [
-                {
-                  "titulo": "título breve del punto clave",
-                  "descripcion": "descripción del punto clave",
-                  "busqueda_youtube": "frase corta para buscar en YouTube",
-                  "busqueda_imagenes": "frase corta para buscar imágenes"
-                },
-                ...
-              ]
-            }
 
-
-            No agregues información adicional ni comentarios. Solo responde en *formato JSON válido*.
-
-            Aquí está el texto: ${text}`;
-  }
+  
 
 getConceptMap(text: string): string {
   return `

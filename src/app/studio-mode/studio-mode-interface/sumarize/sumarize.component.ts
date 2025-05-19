@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, Input, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
@@ -7,7 +7,8 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './sumarize.component.html',
-  styleUrls: ['./sumarize.component.css']
+  styleUrls: ['./sumarize.component.css'],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class SumarizeComponent implements OnInit{
 

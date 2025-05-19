@@ -10,14 +10,40 @@
   margin: 50px auto;
 }
 
+.sumarize .carrousel{
+  
+  height: 100%;
+  margin-top: 30px;
+}
+
+.sumarize .carrousel .carrousel-container{
+  overflow: hidden;
+  border: 3px solid var(--primary-60);
+  margin-top: 10px;
+  height: 100%;
+  border-radius: 20px;
+}
+
+.sumarize .carrousel .carrousel-container .slide{
+height: 500px;
+display: flex;
+justify-content: center;
+}
+
+.sumarize .carrousel .carrousel-container img{
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
 .sumarize .content-sumarize {
   border-radius: 15px;
   margin-top: 50px;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  background-color: rgb(241, 243, 246);
-  padding: 50px;
+
+  
 }
 
 .sumarize .content-sumarize .item {
@@ -64,59 +90,85 @@ font-size: 18px;
 cursor: pointer;
 }
 
-.descripcion {
+.sumarize .content-sumarize .item .descripcion {
     /* overflow: hidden; */
     transition: max-height 0.3s ease, padding 0.3s ease;
     padding: 0;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-top: 20px;
+    margin-top: 0px;
   }
 
 
 
-  .descripcion.mostrar {
+.sumarize .content-sumarize .item  .descripcion.mostrar {
     padding: 15px 0;
     max-height: 100%;
   }
 
-.sumarize .content-sumarize  .descripcion p{
+.sumarize .content-sumarize .item  .descripcion p{
     margin-top: 0px;
     padding: 0px 0px;
     font-size: 16px;
     line-height: 30px;
     color: #072446;
 }
-.sumarize .content-sumarize  .descripcion .image{
+
+.sumarize .content-sumarize .item  .descripcion .markdown-content p{
+  margin-top: 15px;
+}
+
+
+ .sumarize .content-sumarize .item  .descripcion .markdown-content ul li,
+ .sumarize .content-sumarize .item  .descripcion .markdown-content ol li{
+  padding: 10px 0px;
+  list-style:circle;
+}
+
+.sumarize .content-sumarize .item  .descripcion .markdown-content table{
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.sumarize .content-sumarize .item  .descripcion .markdown-content table td,
+.sumarize .content-sumarize .item  .descripcion .markdown-content table th{
+  border: 1px solid #ccc;
+    padding: 0.5em;
+    text-align: left;
+}
+
+
+.sumarize .content-sumarize .item   .descripcion .image{
   margin-top: 20px;
   border-radius: 20px;
   overflow: hidden;
   
 }
-.sumarize .content-sumarize  .descripcion .image img{
+.sumarize .content-sumarize  .item  .descripcion .image img{
   object-fit:contain;
   width: 100%;
   max-height: 500px;
   
 }
 
-.sumarize .content-sumarize  .descripcion .btn-youtube button{
+.sumarize .content-sumarize .item  .descripcion .btn-youtube button{
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 5px;
-  padding: 2px 10px;
+  padding: 0px 10px;
   border-radius: 10px;
-  margin-top: 10px;
+  margin-top: 20px;
   background-color: #ffefef;
   border: 2px solid rgb(255, 149, 149);
   cursor: pointer;  
 }
 
-.sumarize .content-sumarize  .descripcion .btn-youtube  button p{
+.sumarize .content-sumarize .item  .descripcion .btn-youtube  button p{
   color: rgb(209, 84, 84);
-  font-size: 14px;
+  font-size: 10px;
 }
 
 /* .sumarize .content-sumarize  .descripcion  .video-container{
@@ -126,9 +178,8 @@ cursor: pointer;
 
 
 
-@media(max-width:650px){
+@media(max-width:700px){
   .btn-close{
-
   top: 70px;
 }
   .sumarize{
@@ -137,6 +188,9 @@ cursor: pointer;
     background-color: #ffffff00;
   }
 
+  .sumarize .carrousel{
+    padding: 10px;
+  }
   .sumarize .header .title{
     padding: 20px 10px;
   }

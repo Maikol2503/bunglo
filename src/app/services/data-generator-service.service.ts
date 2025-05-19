@@ -158,7 +158,6 @@ export class DataGeneratorServiceService {
 
 
   // resumen
-// resumen
 async sumarize(text: string) {
   const prompt = this.prompt.getSumarizePrompt(text);
 
@@ -166,10 +165,11 @@ async sumarize(text: string) {
     this.modelo.getCompletion(prompt).subscribe(
       async (response: any) => {
         try {
+          console.log(response)
           let rawData = this.extraerJSON(response.choices[0].message.content.trim());
           let parsedData = typeof rawData === 'string' ? JSON.parse(rawData) : rawData;
 
-          // 🔽 Agregar links de YouTube y de imágenes
+          // 🔽 Agregar links de YouTube y de imágenes a cada punto clave
           await Promise.all(parsedData.resumenes.map(async (resumen: any) => {
             // YouTube
             try {
@@ -181,15 +181,31 @@ async sumarize(text: string) {
               resumen.video_url = null;
             }
 
-            // Imagen
-            try {
-              const imagenUrl = await this.googleSearchService.buscarImagenes(resumen.busqueda_youtube).toPromise();
-              resumen.image_url = imagenUrl;
-            } catch (err) {
-              console.error('Error al buscar imagen:', err);
-              resumen.image_url = null;
-            }
+            // Imagen individual por punto
+            // try {
+            //   const imagenUrl = await this.googleSearchService.buscarImagenes(resumen.busqueda_imagenes).toPromise();
+            //   resumen.image_url = imagenUrl;
+            // } catch (err) {
+            //   console.error('Error al buscar imagen individual:', err);
+            //   resumen.image_url = null;
+            // }
           }));
+
+          // 🔼 Buscar imágenes para el carrusel general
+          parsedData.imagenes_carrusel = [];
+
+          if (Array.isArray(parsedData.frases_busqueda_imagenes_resumen)) {
+            await Promise.all(parsedData.frases_busqueda_imagenes_resumen.map(async (frase: string) => {
+              try {
+                const imagenUrl = await this.googleSearchService.buscarImagenes(frase).toPromise();
+                if (imagenUrl) {
+                  parsedData.imagenes_carrusel.push(imagenUrl);
+                }
+              } catch (err) {
+                console.error('Error al buscar imagen para carrusel:', err);
+              }
+            }));
+          }
 
           resolve(parsedData);
         } catch (error) {

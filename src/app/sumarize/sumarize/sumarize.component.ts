@@ -1,17 +1,20 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { SidebarService } from '../../services-interfas/sidebar.service';
 import { ActivatedRoute } from '@angular/router';
 import { LocalstorageService } from '../../services/localstorage.service';
 import { CloseComponent } from '../../shared/buttoms/close/close.component';
 import { ApiYoutubeService } from '../../services/api-youtube.service';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { DomSanitizer, SafeResourceUrl, SafeHtml  } from '@angular/platform-browser';
+import { marked } from 'marked';
 
 @Component({
   selector: 'app-sumarize',
   imports: [CommonModule, CloseComponent],
   templateUrl: './sumarize.component.html',
-  styleUrls: ['./sumarize.component.css']
+  styleUrls: ['./sumarize.component.css'],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  encapsulation: ViewEncapsulation.None
 })
 export class SumarizeComponent implements OnInit{
 
@@ -35,14 +38,27 @@ export class SumarizeComponent implements OnInit{
       this.id = params.get('id');
     });
     this.getData();
+    
   }
 
-  async getData(){
-    this.data = await this.LocalStorageServices.getDataSumarizeByID(this.id);
-    this.data = this.data[0].data;
-    console.log(this.data)
-  
-  }
+async getData() {
+  const rawData = await this.LocalStorageServices.getDataSumarizeByID(this.id);
+  const parsed = rawData[0].data;
+
+  parsed.resumenes = await Promise.all(
+    parsed.resumenes.map(async (item: any) => {
+      const html = await marked.parse(item.descripcion || '');
+      return {
+        ...item,
+        descripcion: this.sanitizer.bypassSecurityTrustHtml(html)
+      };
+    })
+  );
+
+  this.data = parsed;
+  console.log(this.data);
+}
+
 
 
    getSafeYoutubeUrl(videoUrl: string): SafeResourceUrl {
