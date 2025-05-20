@@ -7,6 +7,13 @@
         </div>
     </div>
 
+    <div class="modal-estilo-resumen" *ngIf="showModalSummaryStyle === true">
+        <div class="modal-estilo-resumen-container">
+            <p class="title">Elige el estilo del resumen</p>
+            <app-modal-summary-style (sendDataEvent)="recivedDataToModalSummarizeStyle($event)"></app-modal-summary-style>
+        </div>
+    </div>
+
     <div class="loader"*ngIf="showLoader1===true">
         <app-loader1 ></app-loader1>
     </div>

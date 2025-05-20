@@ -67,37 +67,59 @@ ${texto}
   `.trim();
 }
 
-getSumarizePrompt(text: string): string {
-  return `Tu tarea es generar un *resumen visual y estructurado* del siguiente texto usando **Markdown** únicamente en las descripciones.
+getSumarizePrompt(text: string, modo: string = ''): string {
+const divertido = `
+                    ✨ Estilo de resumen: **Divertido con equilibrio** (atractivo pero no exagerado)
+                    😄 Usa un tono cercano, con un toque de humor moderado (nada que parezca forzado o ridículo).
+                    🧠 Incluye ejemplos fáciles de entender o cotidianos que ayuden a comprender el tema (como comparar un algoritmo con una receta de cocina 🍳).
+                    🎯 Usa emojis con sentido, solo si aportan claridad o mejoran la comprensión (por ejemplo: ✅ para listas, 💡 para ideas clave, 📊 para datos).
+                    🚫 Evita exageraciones como gifs de texto o expresiones demasiado emocionadas (“OMG!”, “¡increíbleee!”).
+                    📚 El objetivo es enseñar de forma entretenida, sin perder el foco en lo que importa.
+                    `;
 
-El formato de salida debe ser estrictamente un objeto JSON válido con esta estructura:
- - en resumenes el titulo debe tener un icono identificativo
- - en resumenes la descripcion debe ser en formato markdown
-{
-  "titulo_general": "📘 Título que resume el texto completo",
-  "resumenes": [
-    {
-      "titulo": "Título breve del punto clave",
-      "descripcion": "aquí va el resumen visual con recursos como:\\n- **Negritas** para conceptos clave \\n- ✅ Listas con viñetas\\n- 🔢 Pasos numerados\\n- 📊 Tablas en formato Markdown:\\n  | Concepto | Descripción |\\n  |----------|-------------|\\n  | Ejemplo  | Explicación |",
-      "busqueda_youtube": "Frase breve para buscar video"
-    },
-    ...
-  ],
-  "frases_busqueda_imagenes_resumen": [
-    "Frase 1 para buscar imagen",
-    "Frase 2 para buscar imagen",
-    ...
-  ]
+  const promptBase = `Tu tarea es generar un *resumen visual y estructurado* del siguiente texto usando **Markdown** únicamente en las descripciones.
+                    El formato de salida debe ser estrictamente un objeto JSON válido con esta estructura:
+                    - En "resumenes", el título debe tener un icono identificativo.
+                    - En "resumenes", la descripción debe estar en formato Markdown:
+                    {
+                      "titulo_general": "📘 Título que resume el texto completo",
+                      "resumenes": [
+                        {
+                          "titulo": "Título breve del punto clave",
+                          "descripcion": "Aquí va el resumen visual con recursos como:\\n- **Negritas** para conceptos clave \\n- ✅ Listas con viñetas\\n- 🔢 Pasos numerados\\n- 📊 Tablas en formato Markdown:\\n  | Concepto | Descripción |\\n  |----------|-------------|\\n  | Ejemplo  | Explicación |",
+                          "busqueda_youtube": "Frase breve para buscar video"
+                        },
+                        ...
+                      ],
+                      "frases_busqueda_imagenes_resumen": [
+                        "Frase 1 para buscar imagen",
+                        "Frase 2 para buscar imagen",
+                        "Frase 3 para buscar imagen",
+                        "Frase 4 para buscar imagen",
+                        "Frase 5 para buscar imagen"
+                      ]
+                    }`;
+
+  const advertenciaFinal = `
+                          ⚠️ IMPORTANTE:
+                          - Asegúrate de escapar correctamente todos los saltos de línea como \\n, las comillas dobles como \\", y cualquier otro carácter especial dentro de las cadenas para que el JSON sea válido.
+                          - No agregues explicaciones fuera del JSON.
+                          - Responde solo en *formato JSON válido*.
+
+                          Aquí está el texto a resumir:
+                          ${text}`;
+
+  const finalPrompt = modo === 'divertido'
+    ? promptBase + '\n\n' + '⚡️ Estilo de resumen: **DIVERTIDO y emocionante**' + divertido + '\n' + advertenciaFinal
+    : promptBase + '\n' + advertenciaFinal;
+
+  return finalPrompt;
 }
 
-⚠️ IMPORTANTE:
-- Asegúrate de escapar correctamente todos los saltos de línea como \\n, las comillas dobles como \\", y cualquier otro carácter especial dentro de las cadenas para que el JSON sea válido.
-- No agregues explicaciones fuera del JSON.
-- Responde solo en *formato JSON válido*.
 
-Aquí está el texto a resumir:
-${text}`;
-}
+
+
+
 
 
 

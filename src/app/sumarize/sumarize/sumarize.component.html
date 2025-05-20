@@ -26,9 +26,9 @@
         </div>
           <div class="descripcion" >
           <div [innerHTML]="item.descripcion" class="markdown-content"></div>
-          <div class="image" *ngIf="item.image_url">
+          <!-- <div class="image" *ngIf="item.image_url">
             <img [src]="item.image_url" alt="">
-          </div>
+          </div> -->
           <div class="btn-youtube" *ngIf="item.video_url">
             <a [href]="getSafeYoutubeUrl(item.video_url)" target="_blank">
               <button>

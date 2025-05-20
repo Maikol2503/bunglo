@@ -1,0 +1,80 @@
+.modal-container {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.custom-select {
+  position: relative;
+  width: 100%;
+  user-select: none;
+  margin-bottom: 1.5rem;
+}
+
+.selected-option {
+  padding: 0.6rem 1rem;
+  background-color: #f1f1f1;
+  border-radius: 0.5rem;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.arrow {
+  transition: transform 0.3s;
+}
+
+.arrow.open {
+  transform: rotate(180deg);
+}
+
+.options {
+  list-style: none;
+  padding: 0;
+  margin: 0.3rem 0 0 0;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  width: 100%;
+  z-index: 10;
+}
+
+.options li {
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.options li:hover {
+  background-color: #eee;
+}
+
+button {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  background-color: #4a90e2;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover:not(:disabled) {
+  background-color: #357ABD;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}

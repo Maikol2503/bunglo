@@ -8,10 +8,11 @@ import { LocalstorageService } from '../../services/localstorage.service';
 import { Router } from '@angular/router';
 import { SidebarService } from '../../services-interfas/sidebar.service';
 import { ApiYoutubeService } from '../../services/api-youtube.service';
+import { ModalSummaryStyleComponent } from '../../shared/modals/modal-summary-style/modal-summary-style.component';
 
 @Component({
   selector: 'app-sumarize-setup',
-  imports: [CommonModule, FileUploadOptionsComponent, Loader1Component],
+  imports: [CommonModule, FileUploadOptionsComponent, Loader1Component, ModalSummaryStyleComponent],
   templateUrl: './sumarize-setup.component.html',
   styleUrl: './sumarize-setup.component.css'
 })
@@ -22,14 +23,17 @@ export class SumarizeSetupComponent implements OnInit {
     private modalUploadOptionServices:ModalUploadContentService, 
     private localStorageServices:LocalstorageService, 
     private youTubeService:ApiYoutubeService,
-    private router: Router){}
+    private router: Router,
+  ){}
   
   textToGenerateSumarize:string = '';
   id:string = '';
   dataSumarize:any;
   description:string = '';
-  showModalUlploadOptions!:boolean
+  showModalUlploadOptions!:boolean;
+  styleSummarize:string = 'clasico';
   showLoader1:boolean = false;
+  showModalSummaryStyle:boolean=false;
   type!:string;
   name!:string;
   
@@ -44,15 +48,19 @@ export class SumarizeSetupComponent implements OnInit {
 
   async recivedTextToGenerateSumarize(data:any){
     this.textToGenerateSumarize = await data;
-    this.generateSumarize();
+    this.showModalSummaryStyle = true;
   }
+
+async recivedDataToModalSummarizeStyle(style:any){
+  this.styleSummarize = await style;
+  this.showModalSummaryStyle = false;
+  this.generateSumarize();
+}
 
   async generateSumarize(){
     this.showLoader1=true;
-    this.dataSumarize = await this.generateData.sumarize(this.textToGenerateSumarize);
-    // await this.agregarLinksYoutube()
+    this.dataSumarize = await this.generateData.sumarize(this.textToGenerateSumarize, this.styleSummarize);
     await this.saveDataLocalStorage()
-    console.log(this.dataSumarize)
   }
 
   async agregarLinksYoutube() {

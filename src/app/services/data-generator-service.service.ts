@@ -158,8 +158,8 @@ export class DataGeneratorServiceService {
 
 
   // resumen
-async sumarize(text: string) {
-  const prompt = this.prompt.getSumarizePrompt(text);
+async sumarize(text: string, style='clasico') {
+  const prompt = this.prompt.getSumarizePrompt(text, style);
 
   return new Promise((resolve, reject) => {
     this.modelo.getCompletion(prompt).subscribe(

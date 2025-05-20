@@ -1,0 +1,15 @@
+.body .modal-estilo-resumen{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    
+
+}
+
+.body .modal-estilo-resumen .modal-estilo-resumen-container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}

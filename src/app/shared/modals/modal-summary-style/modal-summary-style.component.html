@@ -1,0 +1,19 @@
+<div class="modal-container">
+  
+
+  <div class="custom-select" (click)="toggleDropdown()" tabindex="0">
+    <div class="selected-option">
+      {{ selectedLabel || 'Selecciona un estilo...' }}
+      <span class="arrow" [class.open]="isOpen">▼</span>
+    </div>
+
+    <ul class="options" *ngIf="isOpen===true">
+      <li (click)="selectOption('divertido', '🎉 Divertido', $event)">🎉 Divertido</li>
+      <li (click)="selectOption('clasico', '📘 Clásico', $event)">📘 Clásico</li>
+    </ul>
+  </div>
+
+  <button (click)="handleSendData()" [disabled]="!selected">
+    Generar Resumen
+  </button>
+</div>
