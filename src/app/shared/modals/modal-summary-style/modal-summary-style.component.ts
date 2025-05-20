@@ -13,8 +13,8 @@ export class ModalSummaryStyleComponent {
 
   constructor(private eRef: ElementRef){}
 
-  selected: string = '';
-  selectedLabel: string = 'clasico';
+  selected: string = 'clasico';
+  selectedLabel: string = 'Formal Academico';
   isOpen: boolean = false;
 
   toggleDropdown() {

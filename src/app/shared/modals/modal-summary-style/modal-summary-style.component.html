@@ -8,8 +8,8 @@
     </div>
 
     <ul class="options" *ngIf="isOpen===true">
+        <li (click)="selectOption('clasico', '📘 Formal Academico ', $event)">📘 Formal Academico</li>
       <li (click)="selectOption('divertido', '🎉 Divertido', $event)">🎉 Divertido</li>
-      <li (click)="selectOption('clasico', '📘 Clásico', $event)">📘 Clásico</li>
     </ul>
   </div>
 
