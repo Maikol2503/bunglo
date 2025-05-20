@@ -48,7 +48,6 @@ export class ModeStudioQuizSetupComponent implements OnInit{
     this.id = this.getIdOfTheUrl() || '';
     this.quizData= await this.getQuizData();
     this.materialData = await this.getMaterialData(this.id)
-
     if(!this.quizData || this.quizData.length === 0){
       this.showModalPersonaliceQuiz = true
     }
@@ -89,8 +88,12 @@ export class ModeStudioQuizSetupComponent implements OnInit{
   }
 
   async generateDataQuiz(){
-    const text = this.materialData.text;
+    const textList = this.materialData.data.sumarize.resumenes;
+    const text = textList.map((item: any) => 
+        `• ${item.titulo}: ${item.descripcion}`
+    ).join('\n\n');
     this.textToGenerateQuiz = text;
+    console.log(this.textToGenerateQuiz)
     this.quizData = await this.generatedData.quiz(this.textToGenerateQuiz, this.numQuestions, this.numSelecOption, [])
   }
 

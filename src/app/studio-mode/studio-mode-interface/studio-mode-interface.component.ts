@@ -114,6 +114,7 @@ export class StudioModeInterfaceComponent implements OnInit, AfterViewInit, OnDe
   private async loadData(): Promise<void> {
    
     const foundData = await this.getDataMaterial()
+    console.log(foundData.data.sumarize.resumenes)
     this.title = foundData.description
     if (foundData?.data) {
       const { mindmap, sumarize, flashcard } = foundData.data;

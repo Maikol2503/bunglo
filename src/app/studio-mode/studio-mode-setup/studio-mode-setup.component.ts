@@ -51,7 +51,7 @@ export class StudioModeSetupComponent implements OnInit {
     const sumarize = sumarizeData.resumenes.map((item: any) => 
         `• ${item.titulo}: ${item.descripcion}`
     ).join('\n\n');
-    console.log(sumarize);
+  
 
     const mindMapData = await this.generateData.MindMap(this.textToGenerateModeStudio);
     const flashCardData = await this.generateData.flashCard(sumarize);
