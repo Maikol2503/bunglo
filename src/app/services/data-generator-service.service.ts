@@ -181,14 +181,6 @@ async sumarize(text: string, style='clasico') {
               resumen.video_url = null;
             }
 
-            // Imagen individual por punto
-            // try {
-            //   const imagenUrl = await this.googleSearchService.buscarImagenes(resumen.busqueda_imagenes).toPromise();
-            //   resumen.image_url = imagenUrl;
-            // } catch (err) {
-            //   console.error('Error al buscar imagen individual:', err);
-            //   resumen.image_url = null;
-            // }
           }));
 
           // 🔼 Buscar imágenes para el carrusel general
