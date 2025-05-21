@@ -7,8 +7,10 @@ import { Observable } from 'rxjs';
 })
 export class GoogleSearchService {
 
- private apiKey = 'AIzaSyDpp4Eh1D1RsZIxDqeMEF9-8F-KStUIY8M'; // ⚠️ Reemplaza con tu clave real
-  private cx = '3599f32b9a848469a';         // ⚠️ Reemplaza con tu ID de búsqueda personalizado
+ private apiKey = 'AIzaSyDpp4Eh1D1RsZIxDqeMEF9-8F-KStUIY8M';
+   //  AIzaSyDetOqX5UvDvSdbc7ZPao1gTqDJQQWz2d8 -> mgarrido2503
+  // AIzaSyDpp4Eh1D1RsZIxDqeMEF9-8F-KStUIY8M -> bungloeducacion
+  private cx = '3599f32b9a848469a';   
   private baseUrl = 'https://www.googleapis.com/customsearch/v1';
 
   constructor(private http: HttpClient) {}

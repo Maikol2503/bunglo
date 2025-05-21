@@ -8,6 +8,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 export class ApiYoutubeService {
 
   private apiKey = 'AIzaSyDpp4Eh1D1RsZIxDqeMEF9-8F-KStUIY8M';
+  //  AIzaSyDetOqX5UvDvSdbc7ZPao1gTqDJQQWz2d8 -> bungloeducacion
   private apiUrl = 'https://www.googleapis.com/youtube/v3/search';
 
   constructor(private http: HttpClient) {}

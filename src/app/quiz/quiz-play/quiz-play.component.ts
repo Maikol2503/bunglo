@@ -62,7 +62,7 @@ export class QuizPlayComponent implements OnInit {
   async getData(){
     this.data = await this.LocalStorageServices.getDataQuizByID(this.id)
     this.data = this.data[0].data
-    this.totalSteps = this.questions.length;
+    this.totalSteps = this.data.length;
     this.currentStep=1;
     this.updateProgress();
     this.explanation = this.data[this.currentIndex].explanation
@@ -118,7 +118,7 @@ export class QuizPlayComponent implements OnInit {
 
   updateProgress = () => {
     this.progress = (this.currentStep / this.totalSteps) * 100;
-      
+    console.log(this.progress)
   };
 
 
