@@ -13,14 +13,14 @@ export class LocalstorageService {
 
 
 
-  async setNewMaterial(id: string, data: any, type: string, text: string, description: string, name: string): Promise<void> {
+  async setNewMaterial(id: string, data: any, type: string, text: string, description: string, name: string, url:string): Promise<void> {
     const existingData = await this.getMaterialsData();
     const index = existingData.findIndex((item: any) => item.id === id);
     if (index !== -1) {
-      existingData[index] = { id, data, type, text, description, name };
+      existingData[index] = { id, data, type, text, description, name, url };
     } else {
       // Si no existe, lo agregamos
-      existingData.push({ id, data, type, text, description, name });
+      existingData.push({ id, data, type, text, description, name, url });
     }
     localStorage.setItem(this.storageKeyMatrials, JSON.stringify(existingData));
   }
@@ -61,8 +61,9 @@ export class LocalstorageService {
   //QUIZ
   async getDataQuizAll(): Promise<any>{
     const storageData = await this.getMaterialsData();
+    console.log(storageData)
     let res =  storageData.filter((item:any)=>{
-      if(item.type === 'quiz'){
+      if(item.type === 'quiz' || item.type === 'quiz-from-the-summary'){
         return item
       }
     })
@@ -71,6 +72,7 @@ export class LocalstorageService {
 
   async getDataQuizByID(id:string): Promise<any>{
    const quiz = await this.getDataQuizAll();
+   
    let res =  quiz.filter((item:any)=>{
     if(item.id === id){
       return item
@@ -157,7 +159,7 @@ export class LocalstorageService {
     };
 
  
-    await this.setNewMaterial(updatedMaterial.id, updatedMaterial.data, updatedMaterial.type, updatedMaterial.text, updatedMaterial.description, updatedMaterial.name);
+    await this.setNewMaterial(updatedMaterial.id, updatedMaterial.data, updatedMaterial.type, updatedMaterial.text, updatedMaterial.description, updatedMaterial.name, updatedMaterial.url);
   
   }
 

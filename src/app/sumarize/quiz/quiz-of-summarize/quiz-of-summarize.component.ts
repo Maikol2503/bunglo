@@ -1,13 +1,14 @@
 import { AfterContentInit, AfterViewInit, Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { LocalstorageService } from '../../services/localstorage.service';
-import { FormsModule } from '@angular/forms';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { LocalstorageService } from '../../../services/localstorage.service';
+import { SidebarService } from '../../../services-interfas/sidebar.service';
+import { ModalUploadContentService } from '../../../services-interfas/modal-upload-content.service';
+import { DataGeneratorServiceService } from '../../../services/data-generator-service.service';
 import { register } from 'swiper/element/bundle';
-import { CommonModule, Location } from '@angular/common';
-import { ModalResultOfQuestionComponent } from './modal-result-of-question/modal-result-of-question.component';
-import { ActivatedRoute, RouterModule } from '@angular/router';
-import { SidebarComponent } from '../../sidebar/sidebar.component';
-import { SidebarService } from '../../services-interfas/sidebar.service';
 import { ModalChuletaComponent } from './modal-chuleta/modal-chuleta.component';
+import { ModalResultOfQuestionComponent } from './modal-result-of-question/modal-result-of-question.component';
+import { FormsModule } from '@angular/forms';
+import { CommonModule, Location } from '@angular/common';
 register();
 
 // Modelo para las preguntas
@@ -20,23 +21,29 @@ interface Question {
   explanation:string;
 }
 
+
+
+
 @Component({
-  selector: 'app-quiz-play',
+  selector: 'app-quiz-of-summarize',
   imports: [CommonModule, FormsModule, ModalResultOfQuestionComponent, RouterModule, ModalChuletaComponent],
-  templateUrl: './quiz-play.component.html',
-  styleUrl: './quiz-play.component.css',
+  templateUrl: './quiz-of-summarize.component.html',
+  styleUrl: './quiz-of-summarize.component.css',
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class QuizPlayComponent implements OnInit {
-
-  constructor(
-    private LocalStorageServices:LocalstorageService, 
-    private location:Location, 
-    private route: ActivatedRoute, 
-    private sideBarServices:SidebarService
-  ){}
+export class QuizOfSummarizeComponent { 
   
-  // @Input() data!: any[];  
+      constructor(
+                    private route: ActivatedRoute,
+                    private localStorageServices:LocalstorageService,
+                    private sidebarServices:SidebarService ,
+                    private modalUploadOptionServices:ModalUploadContentService, 
+                    private generatedData:DataGeneratorServiceService,
+                    private router: Router,
+                    private location:Location
+      ){}
+
+      // @Input() data!: any[];  
   data!:any
   questions:Question[]=[]
   id!:any
@@ -52,23 +59,24 @@ export class QuizPlayComponent implements OnInit {
   @ViewChild('swiperRef', { static: false }) swiperRef!: ElementRef;
 
   ngOnInit() {
-    this.sideBarServices.Display_None()
+    this.sidebarServices.Display_None()
     this.route.paramMap.subscribe(params => {
       this.id = params.get('id');
     });
+
+
    
     this.getData()
   }
 
   async getData(){
-    this.data = await this.LocalStorageServices.getDataQuizByID(this.id)
+    this.data = await this.localStorageServices.getDataQuizByID(this.id)
     this.data = this.data[0].data
     this.totalSteps = this.data.length;
     this.currentStep=1;
     this.updateProgress();
     this.explanation = this.data[this.currentIndex].explanation
-    console.log(this.explanation)
-    return 
+    return this.data
   }
 
 
@@ -78,7 +86,6 @@ export class QuizPlayComponent implements OnInit {
       
       this.currentIndex = this.swiperRef?.nativeElement?.swiper.activeIndex + 1
       this.explanation = this.data[this.currentIndex].explanation
-      console.log(this.explanation)
       this.swiperRef.nativeElement.swiper.slideNext();
      
     }
@@ -134,10 +141,10 @@ export class QuizPlayComponent implements OnInit {
 
   
   private async actualizarQuizRespondido(index: number, selectedOption: string): Promise<void> {
-    const allMaterials = await this.LocalStorageServices.getMaterialsData();
+    const allMaterials = await this.localStorageServices.getMaterialsData();
     const UpdateData = allMaterials.map((material:any)=>{
       
-      if(material.type === 'quiz' && material.id === this.id){
+      if(material.type === 'quiz-from-the-summary' && material.id === this.id){
         material.data[index].selected_answer = selectedOption;
         material.data[index].answered = true
       }
@@ -145,7 +152,7 @@ export class QuizPlayComponent implements OnInit {
       return material
     })
 
-    await this.LocalStorageServices.saveMaterialsData(UpdateData);
+    await this.localStorageServices.saveMaterialsData(UpdateData);
   }
   
   

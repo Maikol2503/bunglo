@@ -88,9 +88,10 @@ async recivedDataToModalSummarizeStyle(style:any){
     this.id = await this.generarIDSeguro()
     this.name = 'Resumen';
     this.type = 'sumarize';
-    this.description = await this.generateData.description(this.textToGenerateSumarize, this.type)
-    await this.localStorageServices.setNewMaterial(this.id, this.dataSumarize, this.type, this.textToGenerateSumarize, this.description, this.name); //Guardo la data del quiz
-    await this.router.navigate(['/material/sumarize/',this.id]);
+    this.description = await this.generateData.description(this.textToGenerateSumarize, this.type);
+    const url = '/material/summarize/'+this.id
+    await this.localStorageServices.setNewMaterial(this.id, this.dataSumarize, this.type, this.textToGenerateSumarize, this.description, this.name, url); //Guardo la data del quiz
+    await this.router.navigate([url]);
   }
 
   async generarIDSeguro(): Promise<string> {

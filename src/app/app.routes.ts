@@ -11,6 +11,8 @@ import { StudioModeSetupComponent } from './studio-mode/studio-mode-setup/studio
 import { ModeStudioQuizSetupComponent } from './studio-mode/studio-mode-interface/quiz/mode-studio-quiz-setup/mode-studio-quiz-setup.component';
 import { ModeStudioQuizComponent } from './studio-mode/studio-mode-interface/quiz/mode-studio-quiz/mode-studio-quiz.component';
 import { MaterialsComponent } from './materials/materials.component';
+import { QuizSetupOfSummarizeComponent } from './sumarize/quiz/quiz-setup-of-summarize/quiz-setup-of-summarize.component';
+import { QuizOfSummarizeComponent } from './sumarize/quiz/quiz-of-summarize/quiz-of-summarize.component';
 
 export const routes: Routes = [
     { path: 'home', component: HomeComponent },
@@ -21,8 +23,10 @@ export const routes: Routes = [
     { path: 'quiz-setup/:id', component: QuizSetupComponent },
     { path: 'mindmap-setup', component: MindMapSetupComponent },
     { path: 'material/mindmap/:id', component: MindmapComponent },
+    { path: 'material/summarize/:idsummarize/quiz-from-the-summary/:id', component:QuizOfSummarizeComponent},
+    { path: 'material/summarize/:idsummarize/quiz-setup/:indexsummarize', component:QuizSetupOfSummarizeComponent},
     { path: 'sumarize-setup', component:SumarizeSetupComponent },
-    { path: 'material/sumarize/:id', component:SumarizeComponent },
+    { path: 'material/summarize/:id', component:SumarizeComponent},
     { path: 'material/mode-studio/:id', component:StudioModeInterfaceComponent},
     { path: 'mode-studio-setup', component:StudioModeSetupComponent },
     { path: 'material/mode-studio/quiz-play/:id', component:ModeStudioQuizComponent },

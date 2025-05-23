@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { SidebarService } from '../../services-interfas/sidebar.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route, Router, RouterModule } from '@angular/router';
 import { LocalstorageService } from '../../services/localstorage.service';
 import { CloseComponent } from '../../shared/buttoms/close/close.component';
 import { ApiYoutubeService } from '../../services/api-youtube.service';
@@ -10,7 +10,7 @@ import { marked } from 'marked';
 
 @Component({
   selector: 'app-sumarize',
-  imports: [CommonModule, CloseComponent],
+  imports: [CommonModule, CloseComponent, RouterModule],
   templateUrl: './sumarize.component.html',
   styleUrls: ['./sumarize.component.css'],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -20,7 +20,8 @@ export class SumarizeComponent implements OnInit{
 
   constructor(
     private LocalStorageServices:LocalstorageService, 
-    private route: ActivatedRoute, 
+    private route: ActivatedRoute,
+    private router:Router,
     private sideBarServices:SidebarService,
     private youTubeService:ApiYoutubeService,
     private sanitizer: DomSanitizer
@@ -84,5 +85,9 @@ async getData() {
 
   isExpanded(index: number): boolean {
     return this.expandedItems.includes(index);
+  }
+
+  redirectToQuiz(idSummarize:any, indexOfSumarize:any){
+    this.router.navigate(['/material/summarize/' + idSummarize + '/quiz-setup/' + indexOfSumarize])
   }
 }

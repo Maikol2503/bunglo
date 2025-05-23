@@ -1,0 +1,158 @@
+.modal-quiz-result .modal-quiz-result-content .modal-header .modal-title{
+    font-size: 20px;
+    text-align: center;
+   width: 100%;
+    /* margin-bottom: 80px; */
+}
+
+.modal-quiz-result .modal-quiz-result-content {
+    width: 100%;
+}
+
+.modal-quiz-result .modal-quiz-result-content .modal-body .result-summary{
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(212, 212, 212);
+    border-radius: 20px;
+    min-width: 400px;
+    margin-top: 80px;
+}
+
+.modal-quiz-result .modal-quiz-result-content .modal-body .result-summary .congrats-section .congrats-icon{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.modal-quiz-result .modal-quiz-result-content .modal-body .result-summary .congrats-section .congrats-icon svg{
+    width: 90px;
+    height: 90px;
+    margin-top: -20px;
+}
+
+.modal-quiz-result .modal-quiz-result-content .modal-body .result-summary .congrats-section .congrats-message .message-desempeno{
+    font-size: 25px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.modal-quiz-result .modal-quiz-result-content .modal-body .result-summary .congrats-section .congrats-message .message-porcentaje{
+    font-size: 18px;
+    text-align: center;
+    margin-top: 10px;
+    color: #b6b6b6;
+}
+
+.modal-quiz-result .modal-quiz-result-content .modal-body .result-summary .congrats-section .congrats-message .message-porcentaje .excelente{
+    color: rgb(6, 127, 70);
+    font-weight: 600;
+}
+
+.modal-quiz-result .modal-quiz-result-content .modal-body .result-summary .congrats-section .congrats-message .message-porcentaje .bien{
+    color: rgb(6, 87, 127);
+    font-weight: 600;
+}
+
+.modal-quiz-result .modal-quiz-result-content .modal-body .result-summary .congrats-section .congrats-message .message-porcentaje .mal{
+    color: rgb(255, 123, 123);
+    font-weight: 600;
+}
+
+
+.modal-quiz-result .modal-quiz-result-content .modal-body .result-summary .score-breakdown{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.modal-quiz-result .modal-quiz-result-content .modal-body .result-summary .score-breakdown .score-item{
+    padding: 20px;
+}
+
+.modal-quiz-result .modal-quiz-result-content .modal-body .result-summary .score-breakdown .score-item .score-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.modal-quiz-result .modal-quiz-result-content .modal-body .result-summary .score-breakdown .score-item .score-card .score-value{
+ display: flex;
+ align-items: center;
+ font-weight: 600;
+ gap: 5px;
+}
+
+.modal-quiz-result .modal-quiz-result-content .modal-body .result-summary .score-breakdown .score-item .score-card .score-label{
+    color: #c2c2c2;
+    margin-top: 5px;
+}
+
+
+.modal-quiz-result .modal-quiz-result-content .modal-body .result-summary .result-actions{
+    margin-top: 10px;
+    border-top: 1px solid #ececec;
+}
+
+.modal-quiz-result .modal-quiz-result-content .modal-body .result-summary .result-actions .button-group{
+    display: flex;
+    justify-content: space-between;
+}
+.modal-quiz-result .modal-quiz-result-content .modal-body .result-summary .result-actions .button-group .button-wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.modal-quiz-result .modal-quiz-result-content .modal-body .result-summary .result-actions .button-group .button-wrapper button{
+    padding:  20px;
+    background-color: transparent;
+    border: none;
+    display: flex;
+    justify-content: center;
+    font-size: 16px;
+}
+
+.modal-quiz-result .modal-quiz-result-content .modal-body .result-summary .result-actions .button-group .divider{
+    border-left: 1px solid #ececec;
+}
+
+
+
+
+
+@media(max-width:550px){
+
+    .modal-quiz-result{
+        padding: 10px;
+        width: 100vw;
+    }
+
+    .modal-quiz-result .modal-quiz-result-content .modal-header .modal-title{
+        font-size: 18px;
+    }
+
+    .modal-quiz-result .modal-quiz-result-content .modal-body .result-summary{
+        min-width: 100%;
+    }
+
+    .modal-quiz-result .modal-quiz-result-content .modal-body .result-summary .score-breakdown .score-item{
+        padding: 10px;
+    }
+
+    .modal-quiz-result .modal-quiz-result-content .modal-body .result-summary .score-breakdown .score-item .score-card p{
+        font-size: 14px;
+    }
+
+    .modal-quiz-result .modal-quiz-result-content .modal-body .result-summary .congrats-section .congrats-message .message-porcentaje{
+        font-size: 16px;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .modal-quiz-result .modal-quiz-result-content .modal-body .result-summary .result-actions .button-group .button-wrapper button{
+        font-size: 13px;
+        font-weight: 600;
+    }
+}

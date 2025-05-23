@@ -21,10 +21,11 @@ import { DataGeneratorServiceService } from '../../services/data-generator-servi
 })
 export class QuizSetupComponent implements OnInit{
 
-  constructor(private sidebarServices:SidebarService ,
+  constructor(
               private localStorageServices:LocalstorageService, 
               private route: ActivatedRoute,
               private router: Router,
+              private sidebarServices:SidebarService ,
               private modalUploadOptionServices:ModalUploadContentService, 
               private generatedData:DataGeneratorServiceService
             ){}
@@ -113,10 +114,11 @@ export class QuizSetupComponent implements OnInit{
     if(!this.description){
       this.description = await this.generatedData.description(this.textToGenerateQuiz, 'quiz')
     }
-
+    
     this.quizData = await this.generatedData.quiz(this.textToGenerateQuiz, this.numQuestions, this.numSelecOption, []);
     // si ya exite un quiz igual se debe eliminar
-    await this.localStorageServices.setNewMaterial(this.id, this.quizData, 'quiz', this.textToGenerateQuiz, this.description, this.name); //Guardo la data del quiz
+    const url = '/material/quiz/'+this.id
+    await this.localStorageServices.setNewMaterial(this.id, this.quizData, 'quiz', this.textToGenerateQuiz, this.description, this.name, url); //Guardo la data del quiz
     await this.router.navigate(['/material/quiz/',this.id]);
   }
 

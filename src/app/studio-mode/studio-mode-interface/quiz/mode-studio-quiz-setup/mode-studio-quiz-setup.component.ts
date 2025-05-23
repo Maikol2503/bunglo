@@ -93,7 +93,6 @@ export class ModeStudioQuizSetupComponent implements OnInit{
         `• ${item.titulo}: ${item.descripcion}`
     ).join('\n\n');
     this.textToGenerateQuiz = text;
-    console.log(this.textToGenerateQuiz)
     this.quizData = await this.generatedData.quiz(this.textToGenerateQuiz, this.numQuestions, this.numSelecOption, [])
   }
 
@@ -112,7 +111,8 @@ export class ModeStudioQuizSetupComponent implements OnInit{
       'mode-studio',
       updatedMaterial.text,
       updatedMaterial.description,
-      updatedMaterial.name
+      updatedMaterial.name,
+      updatedMaterial.url
     );
   }
 

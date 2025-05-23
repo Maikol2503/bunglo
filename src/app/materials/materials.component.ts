@@ -91,5 +91,9 @@ constructor( private router:Router, private localStorageservices:LocalstorageSer
     close(){
       this.router.navigate(['/home'])
     }
+
+    redirectToMaterial(ruta:any){
+        this.router.navigate([ruta])
+    }
 }
 

@@ -39,7 +39,9 @@ export class ModalUpdateNameMaterialComponent implements OnInit{
       updateData.type, 
       updateData.text, 
       updateData.description, 
-      updateData.name);
+      updateData.name,
+      updateData.url
+    );
 
       this.returDataMaterial(updateData)
   }

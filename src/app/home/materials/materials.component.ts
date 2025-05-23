@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
 import { LocalstorageService } from '../../services/localstorage.service';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { ModalUpdateNameMaterialComponent } from '../../shared/modals/modal-update-name-material/modal-update-name-material.component';
 import { SVG, SvgMaterial } from '../../shared/svg';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
@@ -16,7 +16,7 @@ export class MaterialsComponent implements OnInit{
 
 svg: (SvgMaterial  & { safeSvg: SafeHtml })[]; 
 
-constructor( private localStorageservices:LocalstorageService, private eRef: ElementRef, private sanitizer: DomSanitizer,){
+constructor( private localStorageservices:LocalstorageService, private eRef: ElementRef, private sanitizer: DomSanitizer,  private router:Router){
 this.svg = SVG.map(svg => ({
       ...svg,
       safeSvg: this.sanitizer.bypassSecurityTrustHtml(svg.svg)
@@ -36,7 +36,8 @@ this.svg = SVG.map(svg => ({
 
     
     async loadMaterials(){
-        this.materialsData = await this.localStorageservices.getMaterialsData()
+        this.materialsData = await this.localStorageservices.getMaterialsData();
+        this.materialsData.reverse();
     }
 
     openModalUpdateName(id:string){
@@ -84,5 +85,11 @@ this.svg = SVG.map(svg => ({
             await this.loadMaterials()
         }
         this.activeModalId = null;
+    }
+
+    redirectToMaterial(ruta:any){
+        this.router.navigate([ruta])
+
+        console.log(ruta)
     }
 }

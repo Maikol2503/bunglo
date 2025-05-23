@@ -1,0 +1,95 @@
+<div class="modal-quiz-result">
+    <div class="modal-quiz-result-content" *ngFor="let data of data">
+      <header class="modal-header">
+        <p class="modal-title">Resumen Del Quiz</p>
+      </header>
+      <div class="modal-body">
+        <div class="result-summary">
+  
+          <div class="congrats-section">
+            <div class="congrats-icon" *ngIf="getPorcentage(data.numQuestions, data.correctas) >= 100">
+              <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="50" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><path fill="#ffd15b" d="M464.268 28.564h-70.059c-9.847 0-18.21 8.058-18.025 17.903.179 9.548 7.974 17.233 17.565 17.233h92.585V50.63c0-12.187-9.879-22.066-22.066-22.066z" opacity="1" data-original="#ffd15b" class=""></path><path fill="#feb237" d="M494.435 28.568h-35.139c9.704 0 17.565 7.86 17.565 17.565v73.648h.004c0 42.101-34.252 76.352-76.352 76.352h-6.763c-9.702 0-17.568 7.866-17.568 17.568s7.866 17.568 17.568 17.568h6.763C461.986 231.268 512 181.255 512 119.78V46.132c0-9.704-7.871-17.564-17.565-17.564z" opacity="1" data-original="#feb237" class=""></path><path fill="#ffd15b" d="m73.58 186.031 18.8 22.6-18.83 15.99C30.69 209.071 0 167.941 0 119.781v-73.65c0-9.7 7.87-17.57 17.57-17.57h55.98l18.83 22.39-18.83 12.75H35.14v56.08c0 28.31 15.49 53.07 38.44 66.25z" opacity="1" data-original="#ffd15b" class=""></path><g fill="#feb237"><path d="M73.552 63.7h44.699c9.702 0 17.568-7.866 17.568-17.568s-7.866-17.568-17.568-17.568H73.552zM118.251 196.132h-6.763a75.857 75.857 0 0 1-37.936-10.134v38.62c11.847 4.3 24.622 6.65 37.936 6.65h6.763c9.702 0 17.568-7.866 17.568-17.568s-7.866-17.568-17.568-17.568z" fill="#feb237" opacity="1" data-original="#feb237" class=""></path></g><path fill="#ffd15b" d="M347.15 256.001c-46.37 49.79-93.67 74.83-95.31 212.25h-21.22v-56.28c0-53.12-25.7-102.59-68.23-134.41-32.26-24.15-53.14-62.66-53.14-106.06V20.691c0-5.69 4.61-10.31 10.3-10.31l68.19 28.04 12.53-28.04h139.57l36.34 48.27s18.17 146.67-29.03 197.35z" opacity="1" data-original="#ffd15b" class=""></path><path fill="#feb237" d="M392.45 10.385H320.75l-14.887 28.103h-3.877a10.3 10.3 0 0 0-9.162 5.592l-32.311 62.853L228.2 44.08a10.303 10.303 0 0 0-9.162-5.592H206.14l-14.887-28.103h-71.701l73.739 138.743c-16.778 16.51-27.068 39.593-26.69 65.079.715 48.218 40.207 87.534 88.427 88.046a89.728 89.728 0 0 0 21.403-2.341c2.868-.67 4.958 2.715 3.065 4.971-24.982 29.772-39.32 67.405-39.32 107.087v56.289h41.207V411.97c0-53.126 25.693-102.585 68.229-134.418 32.255-24.137 53.137-62.656 53.137-106.047V20.687c0-5.686-4.603-10.301-10.299-10.302zm-41.601 213.312c-1.389 3.234-6.29 1.996-5.926-1.505.319-3.07.483-6.187.483-9.342 0-24.946-10.221-47.501-26.698-63.719l37.014-69.643c1.511-2.843 5.82-1.769 5.82 1.45v90.566c0 18.535-3.812 36.179-10.693 52.193z" opacity="1" data-original="#feb237" class=""></path><path fill="#feb237" d="M310.547 427.971H164.134c-8.122 0-14.707 6.585-14.707 14.707v25.577l179.904 14.69v-36.19c0-10.374-8.41-18.784-18.784-18.784z" opacity="1" data-original="#feb237" class=""></path><path fill="#fe9901" d="M362.572 442.68v25.579l-41.207 9.629V442.68c0-8.128-6.583-14.711-14.711-14.711h41.207c8.128 0 14.711 6.583 14.711 14.711z" opacity="1" data-original="#fe9901"></path><path fill="#ffd15b" d="M347.104 468.255H130.85c-10.922 0-20.224 8.493-20.612 19.408-.407 11.459 8.761 20.877 20.129 20.877h216.738c10.439 0 18.902-8.463 18.902-18.902v-2.48c0-10.44-8.463-18.903-18.903-18.903z" opacity="1" data-original="#ffd15b" class=""></path><path fill="#feb237" d="M401.771 488.399a20.117 20.117 0 0 1-20.14 20.14h-41.207a20.117 20.117 0 0 0 20.14-20.14c0-11.126-9.014-20.14-20.14-20.14h41.207c11.126 0 20.14 9.014 20.14 20.14z" opacity="1" data-original="#feb237" class=""></path><path fill="#2944ae" d="M327.4 18.46c0-8.284-6.715-14.999-14.999-14.999H301.98c-3.86 0-7.39 2.16-9.16 5.59l-66.05 128.48h42.184L327.4 36.981z" opacity="1" data-original="#2944ae" class=""></path><path fill="#213993" d="M359.43 18.472 298.217 137.54H257.01l61.213-119.068c3.523-6.851-1.453-15.01-9.169-15.01h41.207c7.717 0 12.692 8.159 9.169 15.01z" opacity="1" data-original="#213993" class=""></path><path fill="#5169cd" d="M222.803 137.535h71.446L198.08 9.054c-1.765-3.433-6.006-5.592-18.32-5.592h-9.001c-7.709 0-12.686 8.156-9.162 15.012z" opacity="1" data-original="#5169cd"></path><path fill="#3351c5" d="m188.918 9.056 66.049 128.479h39.281L228.198 9.056a10.296 10.296 0 0 0-9.158-5.594h-39.281c3.853 0 7.397 2.163 9.159 5.594z" opacity="1" data-original="#3351c5"></path><path fill="#fff0ad" d="M235.4 264.841c-39.45-9.3-68.81-44.73-68.81-87.02 0-42.3 29.38-77.74 68.86-87.02 2.21-.05 74.33-.98 86.66 82.95 12.52 85.25-86.71 91.09-86.71 91.09z" opacity="1" data-original="#fff0ad"></path><path fill="#ffd15b" d="M345.409 177.823c0 49.377-40.033 89.409-89.409 89.409-7.088 0-13.99-.824-20.604-2.39 39.446-9.302 68.806-44.73 68.806-87.019s-29.36-77.717-68.806-87.019A89.358 89.358 0 0 1 256 88.414c49.376-.001 89.409 40.032 89.409 89.409z" opacity="1" data-original="#ffd15b" class=""></path><path fill="#ffd15b" d="M290.4 176.411c0 52.39-53.75 59.61-54.98 59.77-24.06-8.48-41.29-31.41-41.29-58.36 0-26.96 17.24-49.89 41.3-58.36 1.52.12 54.97 4.72 54.97 56.95z" opacity="1" data-original="#ffd15b" class=""></path><path fill="#feb237" d="M317.872 177.823c0 34.171-27.701 61.873-61.873 61.873a61.717 61.717 0 0 1-20.604-3.513c24.044-8.489 41.269-31.41 41.269-58.36s-17.225-49.871-41.269-58.36a61.717 61.717 0 0 1 20.604-3.513c34.171 0 61.873 27.702 61.873 61.873z" opacity="1" data-original="#feb237" class=""></path><path fill="#fe9901" d="M221.711 194.918A7.726 7.726 0 0 1 216 181.991c5.035-5.531 13.65-12.933 26.101-16.787a11.478 11.478 0 0 1 10.287 1.811 11.497 11.497 0 0 1 4.491 8.056c5.642-4.459 11.902-7.766 18.693-9.868a11.48 11.48 0 0 1 10.275 1.803 11.497 11.497 0 0 1 4.553 9.409l-.277 10.971c-.109 4.266-3.676 7.617-7.92 7.529a7.726 7.726 0 0 1-7.529-7.919l.126-4.967c-4.553 2.133-8.738 5.103-12.488 8.87-3.546 3.574-8.846 4.609-13.497 2.623-4.628-1.974-7.553-6.473-7.48-11.488-6.325 2.977-10.944 7.101-13.908 10.358a7.706 7.706 0 0 1-5.716 2.526zm29.648-14.917-.007.007a.023.023 0 0 1 .007-.007z" opacity="1" data-original="#fe9901"></path></g></svg>
+            </div>
+            <div class="congrats-icon" *ngIf="getPorcentage(data.numQuestions, data.correctas) > 50 && getPorcentage(data.numQuestions, data.correctas) < 100">
+              <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="50" x="0" y="0" viewBox="0 0 120 120" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><path fill="#ffbf4b" d="M75.7 107.4 60 97.5l-15.7 9.9V41.1h31.4z" opacity="1" data-original="#ffbf4b"></path><circle cx="60" cy="44.8" r="32.2" fill="#ededed" opacity="1" data-original="#ededed" class=""></circle><circle cx="60" cy="44.8" r="25.3" fill="#bcbcbc" opacity="1" data-original="#bcbcbc"></circle><path fill="#ffffff" d="m61.2 29.7 4.2 8.4c.2.4.6.7 1 .8l9.3 1.4c1.1.2 1.6 1.5.8 2.3l-6.7 6.6c-.3.3-.5.8-.4 1.2l1.6 9.3c.2 1.1-1 2-2 1.4l-8.3-4.4c-.4-.2-.9-.2-1.3 0L51 61.1c-1 .5-2.2-.3-2-1.4l1.6-9.3c.1-.4-.1-.9-.4-1.2l-6.7-6.6c-.8-.8-.4-2.2.8-2.3l9.3-1.4c.4-.1.8-.3 1-.8l4.2-8.4c.5-1 1.9-1 2.4 0z" opacity="1" data-original="#ffffff"></path></g></svg>
+            </div>
+            <div class="congrats-icon" *ngIf="getPorcentage(data.numQuestions, data.correctas) <= 50">
+              <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="50" x="0" y="0" viewBox="0 0 256 256" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><path fill="#995222" d="M147 18V9.625a5 5 0 0 0-5-5h-28a5 5 0 0 0-5 5V18zM109 147.488v98.887a5 5 0 0 0 5 5h28a5 5 0 0 0 5-5v-98.887z" opacity="1" data-original="#995222"></path><path fill="#8c3f0a" d="M147 18V9.625a5 5 0 0 0-5-5V18zM142 147.488v93.887a5 5 0 0 1-5 5h-28a5 5 0 0 0 5 5h28a5 5 0 0 0 5-5v-98.887z" opacity="1" data-original="#8c3f0a"></path><path fill="#e63950" d="M217.5 147.488h-179c-5.523 0-10-4.477-10-10V28c0-5.523 4.477-10 10-10h179c5.523 0 10 4.477 10 10v109.488c0 5.523-4.477 10-10 10z" opacity="1" data-original="#e63950" class=""></path><path fill="#e8566f" d="M34.5 102.25a2 2 0 0 1-2-2v-57a2 2 0 0 1 4 0v57a2 2 0 0 1-2 2zm0-65a2 2 0 0 1-2-2v-.75a2 2 0 0 1 4 0v.75a2 2 0 0 1-2 2z" opacity="1" data-original="#e8566f"></path><path fill="#d10028" d="M217.5 18v109.488c0 5.523-4.477 10-10 10h-179c0 5.523 4.477 10 10 10h179c5.523 0 10-4.477 10-10V28c0-5.523-4.477-10-10-10z" opacity="1" data-original="#d10028"></path><path fill="#b7022d" d="M221.61 18.89a9.95 9.95 0 0 1 .89 4.11v109.488c0 5.523-4.477 10-10 10h-179a9.954 9.954 0 0 1-4.11-.89c1.569 3.471 5.053 5.89 9.11 5.89h179c5.523 0 10-4.477 10-10V28c0-4.056-2.42-7.541-5.89-9.11z" opacity="1" data-original="#b7022d"></path><path fill="#ffd2c0" d="M167.706 79.279h3.124a8.581 8.581 0 0 0 .017-17.162l-3.896-.008h3.599a7.951 7.951 0 1 0-.014-15.902l-9.689.017h6.687a7.261 7.261 0 0 0 7.261-7.261v-.011a7.245 7.245 0 0 0-7.241-7.25c-9.411-.005-29.486-.013-45.319-.018-8.963-.003-16.226 7.262-16.226 16.224v37.781c4.63 5.617 11.397 15.722 14.358 22.217 6.63 14.544 4.954 25.152 9.695 25.152 7.645 0 12.184-9.939 12.184-17.708 0-6.202-1.421-8.195-2.771-12.178-1.368-4.04-.652-7.073 3.179-7.073H172a8.41 8.41 0 0 0 0-16.82z" opacity="1" data-original="#ffd2c0"></path><path fill="#fcc4ae" d="M137.246 115.351c0-6.202-1.421-8.195-2.771-12.178-1.368-4.04-.652-7.073 3.179-7.073h5c-3.831 0-4.547 3.034-3.179 7.073 1.349 3.984 2.771 5.976 2.771 12.178 0 7.769-4.539 17.708-12.184 17.708-.69 0-1.242-.231-1.705-.661 5.635-2.341 8.889-10.471 8.889-17.047zM180.409 87.688a8.41 8.41 0 0 1-8.41 8.411h-5a8.41 8.41 0 0 0 0-16.82h-1.17a8.581 8.581 0 0 0 .017-17.162l-3.896-.008h3.599a7.951 7.951 0 1 0-.014-15.902l-2.761.005c3.898-.128 7.02-3.32 7.02-7.249v-.011a7.245 7.245 0 0 0-7.241-7.25l-40.353-.017.035-.002c15.833.005 35.907.014 45.319.018a7.245 7.245 0 0 1 7.241 7.25v.011c0 3.929-3.122 7.121-7.02 7.249l2.761-.005a7.951 7.951 0 1 1 .014 15.902h-3.599l3.896.008a8.581 8.581 0 0 1-.017 17.162H172a8.41 8.41 0 0 1 8.409 8.41z" opacity="1" data-original="#fcc4ae"></path><path fill="#58595b" d="M106.009 36.678V86.69a5 5 0 0 1-5 5H80.591a5 5 0 0 1-5-5V36.678a5 5 0 0 1 5-5h20.418a5 5 0 0 1 5 5z" opacity="1" data-original="#58595b"></path><path fill="#414042" d="M101.009 31.678V81.69a5 5 0 0 1-5 5H75.591a5 5 0 0 0 5 5h20.418a5 5 0 0 0 5-5V36.678a5 5 0 0 0-5-5z" opacity="1" data-original="#414042"></path><path fill="#ffc91d" d="M92.014 38.917c-2.765 0-5 2.235-5 5s2.235 5 5 5 5-2.235 5-5-2.235-5-5-5z" opacity="1" data-original="#ffc91d"></path></g></svg>
+            </div>
+            <div class="congrats-message">
+              <p class="message-desempeno" *ngIf="getPorcentage(data.numQuestions, data.correctas) >= 100">¡Felicidades!</p>
+              <p class="message-desempeno" *ngIf="getPorcentage(data.numQuestions, data.correctas) > 50 && getPorcentage(data.numQuestions, data.correctas) < 100">¡Muy Bien!</p>
+              <p class="message-desempeno" *ngIf="getPorcentage(data.numQuestions, data.correctas) <= 50">¡Muy Mal!</p>
+              <p class="message-porcentaje">
+                Has respondido un 
+                <span *ngIf="getPorcentage(data.numQuestions, data.correctas) >= 100" class="excelente"> 
+                  {{ getPorcentage(data.numQuestions, data.correctas) }}% 
+                </span>
+                <span *ngIf="getPorcentage(data.numQuestions, data.correctas) > 50 && getPorcentage(data.numQuestions, data.correctas) < 100" class="bien"> 
+                  {{ getPorcentage(data.numQuestions, data.correctas) }}% 
+                </span> 
+                <span *ngIf="getPorcentage(data.numQuestions, data.correctas) <= 50" class="mal"> 
+                  {{ getPorcentage(data.numQuestions, data.correctas) }}% 
+                </span> 
+                del quiz</p>
+            </div>
+          </div>
+  
+          <!-- Iteramos sobre dataResultOfQuiz -->
+          <ng-container >
+            <div class="score-breakdown">
+              <div class="score-item">
+                <div class="score-card">
+                  <div class="score-value">
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><circle cx="256" cy="256" r="256" fill="#ff6529" opacity="1" data-original="#ff6529" class=""></circle><path fill="#ff6529" d="m504.581 317.355-163.87-163.87S256 137.834 214.247 142.902 183.62 364.395 183.62 364.395l138.867 138.867c89.646-24.046 159.861-95.533 182.094-185.907z" opacity="1" data-original="#e53b07" class=""></path><path fill="#f8fffb" d="M376.107 361.087 346.59 331.57c8.873-15.388 13.953-33.226 13.953-52.228v-64.556c0-57.834-47.051-104.885-104.885-104.885H244.92c-57.833 0-104.885 47.051-104.885 104.885v64.556c0 57.833 47.051 104.885 104.885 104.885h10.739c17.792 0 34.56-4.459 49.255-12.309l30.181 30.181zm-120.448-34.86H244.92c-25.853 0-46.885-21.032-46.885-46.885v-64.556c0-25.853 21.032-46.885 46.885-46.885h10.739c25.853 0 46.885 21.032 46.885 46.885v64.556c0 2.575-.217 5.1-.619 7.563l-27.826-27.826-41.012 41.012 25.997 25.997a47.326 47.326 0 0 1-3.425.139z" opacity="1" data-original="#f8fffb" class=""></path><path fill="#ffffff" d="M346.59 331.57c8.87-15.39 13.95-33.23 13.95-52.23v-64.55c0-57.73-46.87-104.7-104.54-104.89v58.01c25.69.17 46.54 21.13 46.54 46.88v64.55c0 2.58-.21 5.1-.62 7.56l-27.82-27.82-18.1 18.1v45.83l3.08 3.08c-1.02.07-2.04.13-3.08.14v58c17.66-.06 34.31-4.51 48.91-12.31l30.19 30.18 41.01-41.01z" opacity="1" data-original="#d8d8d8" class=""></path></g></svg>
+                    <p>{{ data.numQuestions }}</p>
+                  </div>
+                  <div class="score-label">
+                    <p>Preguntas</p>
+                  </div>
+                </div>
+              </div>
+  
+              <div class="score-item">
+                <div class="score-card">
+                  <div class="score-value">
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" x="0" y="0" viewBox="0 0 2.54 2.54" style="enable-background:new 0 0 512 512" xml:space="preserve" fill-rule="evenodd"><g><circle cx="1.27" cy="1.27" r="1.27" fill="#00ba00" opacity="1" data-original="#00ba00"></circle><path fill="#ffffff" d="M.873 1.89.41 1.391a.17.17 0 0 1 .008-.24.17.17 0 0 1 .24.009l.358.383.567-.53a.17.17 0 0 1 .016-.013l.266-.249a.17.17 0 0 1 .24.008.17.17 0 0 1-.008.24l-.815.76-.283.263-.125-.134z" opacity="1" data-original="#ffffff"></path></g></svg>
+                    <p>{{ data.correctas }}</p>
+                  </div>
+                  <div class="score-label">
+                    <p>Correctas</p>
+                  </div>
+                </div>
+              </div>
+  
+              <div class="score-item">
+                <div class="score-card">
+                  <div class="score-value">
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" x="0" y="0" viewBox="0 0 254000 254000" style="enable-background:new 0 0 512 512" xml:space="preserve" fill-rule="evenodd" class=""><g><path fill="#ff4141" d="M127000 0c70129 0 127000 56871 127000 127000s-56871 127000-127000 127000S0 197129 0 127000 56871 0 127000 0zM62810 172969l45969-45969-45969-45969c-2637-2638-2637-6941 0-9578l8643-8643c2637-2637 6940-2637 9578 0l45969 45969 45969-45969c2638-2637 6941-2637 9578 0l8643 8643c2637 2637 2637 6940 0 9578l-45969 45969 45969 45969c2637 2638 2637 6941 0 9578l-8643 8643c-2637 2637-6940 2637-9578 0l-45969-45969-45969 45969c-2638 2637-6941 2637-9578 0l-8643-8643c-2637-2637-2637-6940 0-9578z" opacity="1" data-original="#ff4141" class=""></path></g></svg>
+                    <p>{{ data.incorrectas }}</p>
+                  </div>
+                  <div class="score-label">
+                    <p>Incorrectas</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+  
+          <div class="result-actions">
+            <div class="button-group">
+              <div class="button-wrapper">
+                <button (click)="back()">Salir</button>
+              </div>
+             
+              <!-- <div class="button-wrapper" style="border-left: 1px solid #ececec;">
+                <button (click)="generarNuevoQuiz()">Generar nuevo quiz</button>
+              </div> -->
+            </div>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  </div>
+  

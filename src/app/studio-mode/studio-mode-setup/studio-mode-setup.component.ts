@@ -69,8 +69,9 @@ export class StudioModeSetupComponent implements OnInit {
     this.type = 'mode-studio';
     this.name = 'Modo Estudio';
     this.description = await this.generateData.description(this.textToGenerateModeStudio, this.type)
-    await this.localStorageServices.setNewMaterial(this.id, this.dataModeStudio, this.type, this.textToGenerateModeStudio, this.description, this.name); //Guardo la data del quiz
-    await this.router.navigate(['/material/mode-studio/',this.id]);
+    const url = '/material/'+this.type+'/'+this.id
+    await this.localStorageServices.setNewMaterial(this.id, this.dataModeStudio, this.type, this.textToGenerateModeStudio, this.description, this.name, url); //Guardo la data del quiz
+    await this.router.navigate([url]);
   }
 
 

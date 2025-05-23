@@ -144,16 +144,24 @@ cursor: pointer;
   margin-top: 20px;
   border-radius: 20px;
   overflow: hidden;
-  
 }
+
+
 .sumarize .content-sumarize  .item  .descripcion .image img{
   object-fit:contain;
   width: 100%;
   max-height: 500px;
-  
 }
 
-.sumarize .content-sumarize .item  .descripcion .btn-youtube button{
+.sumarize .content-sumarize  .item  .descripcion .btn-action{
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+
+
+.sumarize .content-sumarize .item  .descripcion .btn-action .btn-youtube button{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -166,14 +174,29 @@ cursor: pointer;
   cursor: pointer;  
 }
 
-.sumarize .content-sumarize .item  .descripcion .btn-youtube  button p{
+.sumarize .content-sumarize .item  .descripcion .btn-action .btn-youtube  button p{
   color: rgb(209, 84, 84);
   font-size: 10px;
 }
 
-/* .sumarize .content-sumarize  .descripcion  .video-container{
+.sumarize .content-sumarize .item  .descripcion .btn-action .btn-go-quiz button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  padding: 0px 10px;
+  border-radius: 10px;
   margin-top: 20px;
-} */
+  background-color: var(--primary-5);
+  border: 2px solid var(--primary-base);
+  cursor: pointer;  
+}
+
+
+.sumarize .content-sumarize .item  .descripcion .btn-action .btn-go-quiz button p{
+  color: var(--primary-60);
+  font-size: 12px;
+}
 
 
 
